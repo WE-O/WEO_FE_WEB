@@ -36,6 +36,7 @@ export default class MyDocument extends Document {
             type="text/javascript"
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ab9e4bfd68aad9f3a6bfb19a67105938"
           ></script>
+          <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"></script>
         </Head>
         <body>
           <Main></Main>
