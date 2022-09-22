@@ -1,18 +1,26 @@
 import styled from "styled-components";
+import MainHeaderLogo from "./MainHeaderLogo";
+import MainHeaderTab from "./MainHeaderTab";
+import MainHeaderBtn from "./MainHeaderBtn";
 
-const HeaderItems = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0px;
-  gap: 48px;
+const HeaderItemWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  position: relative;
+  width: 100%;
 
-  width: 544px;
-  height: 26px;
+  // display: flex;
+  // flex-direction: row;
+  // align-items: center;
+  // padding: 0px;
+  // gap: 48px;
 
-  flex: none;
-  order: 0;
-  flex-grow: 0;
+  // width: 544px;
+  // height: 26px;
+
+  // flex: none;
+  // order: 0;
+  // flex-grow: 0;
 `;
 
 // const LogoItems;
@@ -20,7 +28,11 @@ const HeaderItems = styled.div`
 const MainHeaderItems = () => {
   return (
     <>
-      <HeaderItems></HeaderItems>
+      <HeaderItemWrapper>
+        <MainHeaderLogo />
+        <MainHeaderTab />
+        <MainHeaderBtn />
+      </HeaderItemWrapper>
     </>
   );
 };

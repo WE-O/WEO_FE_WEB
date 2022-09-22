@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import MainHeaderItems from "./MainHeaderItems";
 
-const MainHeaderCss = styled.div`
+const MainHeaderWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -21,9 +21,9 @@ const MainHeaderCss = styled.div`
 
 const MainHeader = () => {
   return (
-    <MainHeaderCss>
+    <MainHeaderWrapper>
       <MainHeaderItems />
-    </MainHeaderCss>
+    </MainHeaderWrapper>
   );
 };
 
