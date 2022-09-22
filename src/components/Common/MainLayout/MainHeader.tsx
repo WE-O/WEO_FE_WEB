@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import MainHeaderItems from "./MainHeaderItems";
 
 const MainHeaderCss = styled.div`
   display: flex;
@@ -8,6 +9,7 @@ const MainHeaderCss = styled.div`
   padding: 16px 112px;
   gap: 80px;
 
+  width: 100%;
   height: 72px;
 
   background: #ffffff;
@@ -18,7 +20,11 @@ const MainHeaderCss = styled.div`
 `;
 
 const MainHeader = () => {
-  return <MainHeaderCss>TOPTOP</MainHeaderCss>;
+  return (
+    <MainHeaderCss>
+      <MainHeaderItems />
+    </MainHeaderCss>
+  );
 };
 
 export default MainHeader;
