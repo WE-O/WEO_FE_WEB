@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const FooterWrapper = styled.div`
-  height: 100px;
+  height: 15vh;
   padding: 15px;
 `;
 
