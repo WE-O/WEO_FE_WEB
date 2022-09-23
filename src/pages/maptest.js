@@ -17,7 +17,6 @@ const Maptest = () => {
           style={{
             width: "100%",
             position: "absolute",
-            zIndex: "100",
             textAlign: "center",
           }}
         >
