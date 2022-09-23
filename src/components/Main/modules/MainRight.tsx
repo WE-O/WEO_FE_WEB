@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import KakaoMap from "../../components/KakaoMap";
+import KakaoMap from "../../../components/KakaoMap";
 
 const MainRightWrapper = styled.div`
-  -webkit-flex: 1;
-  flex: 1;
+  // -webkit-flex: 1;
+  // flex: 1;
+  width: 75%;
 `;
 
 const MainRight = () => {

@@ -1,18 +1,12 @@
-import styled from "styled-components";
-import MainLeft from "./MainLeft";
-import MainRight from "./MainRight";
-
-const MainWrapper = styled.div`
-  display: -webkit-flex;
-  display: flex;
-`;
+import { MainContainer, Banner, Footer } from "./modules";
 
 const Main = () => {
   return (
-    <MainWrapper>
-      <MainLeft></MainLeft>
-      <MainRight></MainRight>
-    </MainWrapper>
+    <>
+      <MainContainer></MainContainer>
+      <Banner></Banner>
+      <Footer></Footer>
+    </>
   );
 };
 

@@ -10,7 +10,7 @@ const MainHeaderWrapper = styled.div`
   gap: 80px;
 
   width: 100%;
-  height: 120px;
+  height: 10vh;
 
   background: #ffffff;
 

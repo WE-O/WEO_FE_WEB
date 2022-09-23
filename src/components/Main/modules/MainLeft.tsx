@@ -3,10 +3,11 @@ import {
   MainLeftDefaultTop,
   MainLeftDefaultMid,
   MainLeftDefaultBot,
-} from "./modules/MainLeftDefault";
+} from "./MainLeftDefault";
 
 const MainLeftWrapper = styled.div`
-  width: 400px;
+  // width: 400px;
+  width: 25%;
   padding: 20px;
 `;
 
