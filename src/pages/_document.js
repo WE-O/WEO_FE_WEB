@@ -41,7 +41,6 @@ export default class MyDocument extends Document {
         <body>
           <Main></Main>
           <NextScript></NextScript>
-          <div id="overlays"></div>
         </body>
       </Html>
     );

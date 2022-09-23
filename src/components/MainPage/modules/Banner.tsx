@@ -1,22 +1,22 @@
 import styled from "styled-components";
 
-const FooterWrapper = styled.div`
-  height: 15vh;
+const BannerWrapper = styled.div`
+  height: 200px;
   padding: 15px;
 `;
 
-const Footer = () => {
+const Banner = () => {
   return (
-    <FooterWrapper>
+    <BannerWrapper>
       {/* 임시 */}
       <div
         style={{
-          background: "lightsalmon",
+          background: "lightblue",
           height: "100%",
         }}
       ></div>
-    </FooterWrapper>
+    </BannerWrapper>
   );
 };
 
-export default Footer;
+export default Banner;

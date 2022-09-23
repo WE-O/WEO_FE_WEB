@@ -1,8 +1,12 @@
-import type { NextPage } from "next";
-import Main from "../components/Main";
+import React, { useEffect } from "react";
+import Router from "next/router";
 
-const Home: NextPage = () => {
-  return <Main></Main>;
+type Props = {};
+const Index: React.FunctionComponent<Props> = () => {
+  useEffect(() => {
+    Router.push("/main", "http://localhost:3000/main");
+  }, []);
+  return <div />;
 };
 
-export default Home;
+export default Index;

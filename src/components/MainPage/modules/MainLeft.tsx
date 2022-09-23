@@ -6,7 +6,6 @@ import {
 } from "./MainLeftDefault";
 
 const MainLeftWrapper = styled.div`
-  // width: 400px;
   width: 25%;
   padding: 20px;
 `;

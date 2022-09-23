@@ -4,4 +4,11 @@
 
 body {
   margin: 0;
+  padding: 0;
+  display: block;
+}
+
+#__next {
+  overflow: hidden;
+  min-width: 1024px;
 }

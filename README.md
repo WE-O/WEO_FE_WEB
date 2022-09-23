@@ -25,4 +25,7 @@ WE'O Front ReactWeb 레파지토리
         - 공통 컴포넌트는 Common 폴더에 정의
         - 재사용 O: styled-components는 Common 폴더에서 관리
         - 재사용 X: styled-components는 사용하는 파일에서 관리
+
+** 동훈님 pages하위 페이지 폴더는 소문자로, 그 폴더 하위는 index.tsx로 구성하기! (=> 폴더 소문자로하는 이유는 폴더가 url 명이기때문에, 대소문자 구별함 Main !== main)
+** components폴더에 페이지 폴더+Page로 만들어서 그 부분 구현하기!
 ```

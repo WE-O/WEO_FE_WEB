@@ -3,10 +3,10 @@ import MainLeft from "./MainLeft";
 import MainRight from "./MainRight";
 
 const MainWrapper = styled.div`
-  // display: -webkit-flex;
   display: flex;
-  width: 100%;
-  height: 50vh;
+  width: 98%;
+  height: 525px;
+  margin: 0 auto;
 `;
 
 const MainContainer = () => {
