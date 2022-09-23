@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import Router from "next/router";
 
 type Props = {};
-const Index: React.FunctionComponent<Props> = () => {
+const Index: React.FC<Props> = () => {
   useEffect(() => {
-    Router.push("/main", "http://localhost:3000/main");
+    Router.push("/main", "/main");
   }, []);
   return <div />;
 };
