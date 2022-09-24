@@ -1,16 +1,20 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import LoginModal from "./LoginModal";
 
 export const ModalContainerWrapper = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  position: fixed;
   display: flex;
   flex-flow: row wrep;
   justify-content: center;
   align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index:999;
 `;
 
-export const ModalContanier = () => {
+const ModalContanier = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const openModalHandler = () => {
@@ -20,7 +24,10 @@ export const ModalContanier = () => {
     return (
         <>
             <ModalContainerWrapper>
+                <LoginModal />
             </ModalContainerWrapper>
         </>
     );
 };
+
+export default ModalContanier;

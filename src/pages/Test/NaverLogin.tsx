@@ -66,12 +66,7 @@ const NaverLogin: React.FC<AppProps> = (props) => {
 
 
     return (
-        <div style={{ marginLeft: "100px", marginTop: "50px" }}>
-            <br />
-            <div>네이버 로그인 테스트</div>
-            <div id='naverIdLogin' />
-        </div>
-
+        <div id='naverIdLogin' />
     )
 }
 

@@ -1,30 +1,32 @@
 import React, { ReactElement } from 'react';
 import styled from "styled-components";
+import NaverLogin from "../../../pages/Test/NaverLogin";
 
 interface props {
-    isOpen: boolean;
-    close: () => void; // 함수 타입 정의할 때
+    // isOpen: boolean;
+    // close: () => void; // 함수 타입 정의할 때
 }
 
 const LoginModalWrapper = styled.div`
-   align - items: center;
-    background - color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    height: 100 %;
-    justify - content: center;
-    left: 0;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    width: 100 %;
-    z - index: 100;
+  text-align: center;
+  text-decoration: none;
+  padding: 30px 90px;
+  background-color: white;
+  border-radius: 30px;
+  color: black;
 `;
 
 const LoginModal = (props: props): ReactElement => {
-    const { isOpen, close } = props;
+    
 
     return (
-        <LoginModalWrapper/>
+        <LoginModalWrapper>
+            로그인 모달 테스트
+            <br />
+            <br />
+            <NaverLogin name={"NaverLogin"} />
+            <br />
+        </LoginModalWrapper>
     );
 };
 
