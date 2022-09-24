@@ -9,6 +9,9 @@ const MainHeaderTabWrapper = styled.div`
   height: 26px;
 
   gap: 24px;
+  @media ${(props) => props.theme.mobile} {
+    gap: 12px;
+  }
 `;
 
 const MainHeaderTabItem = styled.div`
@@ -16,8 +19,6 @@ const MainHeaderTabItem = styled.div`
   flex-direction: row;
   align-items: flex-start;
   padding: 4px;
-  gap: 8px;
-
   height: 26px;
 
   flex: none;

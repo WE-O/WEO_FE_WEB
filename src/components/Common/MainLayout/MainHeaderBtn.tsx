@@ -7,9 +7,6 @@ const MainHeaderWrapper = styled.div`
   flex-direction: row;
   align-items: flex-start;
   padding: 0px;
-  gap: 24px;
-
-  // width: 600px;
   height: 26px;
 
   flex: none;
