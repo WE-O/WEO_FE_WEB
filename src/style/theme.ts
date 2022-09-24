@@ -1,5 +1,5 @@
 const size = {
-  mobile: "770px",
+  mobile: "768px",
 };
 
 const theme = {
