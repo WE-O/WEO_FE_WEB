@@ -1,10 +1,11 @@
 import "../../styles/globals.css";
-import type { AppProps } from "next/app";
-import Head from "next/head";
 import theme from "../style/theme";
+import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 import { MainLayout } from "../components/Common";
+import wrapper from "../store";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -26,4 +27,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);
