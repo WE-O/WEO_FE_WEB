@@ -16,8 +16,6 @@ const LocCertifyItem = styled.div`
   border: 1px solid #999999;
   border-radius: 10px;
 
-  font-weight: 400;
-  font-size: 14px;
   line-height: 16px;
   display: flex;
   align-items: center;

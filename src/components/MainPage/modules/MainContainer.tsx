@@ -5,8 +5,12 @@ import MainRight from "./MainRight";
 const MainWrapper = styled.div`
   display: flex;
   width: 98%;
-  height: 50vh;
   margin: 0 auto;
+
+  height: 500px;
+  @media ${(props) => props.theme.mobile} {
+    height: 300px;
+  }
 `;
 
 const MainContainer = () => {

@@ -7,10 +7,10 @@ type AppLayoutProps = {
 
 const MainLayout = ({ children }: AppLayoutProps) => {
   return (
-    <React.Fragment>
+    <>
       <MainHeader />
       {children}
-    </React.Fragment>
+    </>
   );
 };
 

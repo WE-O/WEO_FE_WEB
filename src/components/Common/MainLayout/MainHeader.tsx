@@ -3,20 +3,20 @@ import MainHeaderItems from "./MainHeaderItems";
 
 const MainHeaderWrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  padding: 16px 112px;
-  gap: 80px;
-
-  width: 100%;
-  height: 10vh;
-
+  margin: 0 auto;
+  width: 95%;
   background: #ffffff;
-
   flex: none;
   order: 0;
   flex-grow: 0;
+
+  font-size: 15px;
+  height: 100px;
+  @media ${(props) => props.theme.mobile} {
+    height: 60px;
+    font-size: 13px;
+  }
 `;
 
 const MainHeader = () => {

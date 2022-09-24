@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const HeaderLogoWrapper = styled.div`
-  // width: 60px;
   height: 25px;
 
   flex: none;

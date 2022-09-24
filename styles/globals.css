@@ -10,5 +10,5 @@ body {
 
 #__next {
   overflow: hidden;
-  min-width: 1024px;
+  /* min-width: 1024px; */
 }

@@ -1,19 +1,13 @@
 import styled from "styled-components";
+import Button from "../Button";
 
 const MainHeaderTabWrapper = styled.div`
   display: flex;
-  justify-content: flex-start;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 24px;
-
-  // width: 436px;
+  align-items: center;
+  justify-content: flex-end;
   height: 26px;
 
-  flex: none;
-  order: 1;
-  flex-grow: 0;
+  gap: 24px;
 `;
 
 const MainHeaderTabItem = styled.div`
@@ -37,6 +31,7 @@ const MainHeaderTab = () => {
       <MainHeaderTabItem>인기 장소</MainHeaderTabItem>
       <MainHeaderTabItem>식물 키우기 사전</MainHeaderTabItem>
       <MainHeaderTabItem>제보하기</MainHeaderTabItem>
+      <Button>로그인</Button>
     </MainHeaderTabWrapper>
   );
 };
