@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import LoginModal from "./LoginModal";
 
-// background: rgba(0, 0, 0, 0.5);
 export const ModalContainerWrapper = styled.div`
   top: 0px;
   width: 100%;
@@ -13,7 +12,7 @@ export const ModalContainerWrapper = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 999;
-  background-color: rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(2px);
   -webkit-scrollbar {
     display: none;
@@ -21,17 +20,12 @@ export const ModalContainerWrapper = styled.div`
 `;
 
 const ModalContanier = () => {
-  // const [isOpen, setIsOpen] = useState(false);
-
-  // const openModalHandler = () => {
-  //     setIsOpen(!isOpen);
-  // };
-
-  // 모달 열 때
+  // 모달 열 때 외부 스크롤 방지
   useEffect(() => {
     document.body.style.overflow = "hidden";
   }, []);
 
+  // 모달 닫을 떄 외부 스크롤 방지 해제
   // document.body.style.overflow = "unset";
 
   return (

@@ -13,7 +13,9 @@ const LoginSlice = createSlice({
     openModal: (state, action: PayloadAction<boolean>) => {
       state.openLogin = action.payload;
     },
-    closeModal: (state, action: PayloadAction<boolean>) => {},
+    closeModal: (state, action: PayloadAction<boolean>) => {
+      state.openLogin = action.payload;
+    },
   },
 });
 

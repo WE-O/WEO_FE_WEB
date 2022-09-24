@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Button from "../Button";
 import Link from "next/link";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { useAppDispatch } from "../../../store/hooks";
 import { openModal, closeModal } from "../../../store/modules/LoginSlice";
 
 const MainHeaderTab = () => {
