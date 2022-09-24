@@ -6,7 +6,6 @@ import { openModal, closeModal } from "../../../store/modules/LoginSlice";
 
 const MainHeaderTab = () => {
   const dispatch = useAppDispatch();
-  const value = useAppSelector((state) => state.login.openLogin);
 
   return (
     <MainHeaderTabWrapper>
@@ -22,7 +21,7 @@ const MainHeaderTab = () => {
       <Link href="/">
         <MainHeaderTabItem>제보하기</MainHeaderTabItem>
       </Link>
-      <Button>로그인</Button>
+      <Button onClick={() => dispatch(openModal(true))}>로그인</Button>
     </MainHeaderTabWrapper>
   );
 };

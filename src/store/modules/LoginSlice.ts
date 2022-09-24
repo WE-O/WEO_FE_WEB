@@ -11,13 +11,9 @@ const LoginSlice = createSlice({
   initialState,
   reducers: {
     openModal: (state, action: PayloadAction<boolean>) => {
-      debugger;
-      debugger;
+      state.openLogin = action.payload;
     },
-    closeModal: (state, action: PayloadAction<boolean>) => {
-      debugger;
-      debugger;
-    },
+    closeModal: (state, action: PayloadAction<boolean>) => {},
   },
 });
 

@@ -14,7 +14,7 @@ const HeaderLogoItem = styled.div`
   height: 14.94px;
   left: 2.5px;
   top: 5px;
-  cursor : pointer;
+  cursor: pointer;
 `;
 
 const MainHeaderLogo = () => {
