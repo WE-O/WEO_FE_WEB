@@ -20,13 +20,15 @@ export const ModalContainerWrapper = styled.div`
 `;
 
 const ModalContanier = () => {
-  // 모달 열 때 외부 스크롤 방지
   useEffect(() => {
+    // 모달 열 때 외부 스크롤 방지
     document.body.style.overflow = "hidden";
-  }, []);
 
-  // 모달 닫을 떄 외부 스크롤 방지 해제
-  // document.body.style.overflow = "unset";
+    // 모달 닫을 떄 외부 스크롤 방지 해제
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, []);
 
   return (
     <>
