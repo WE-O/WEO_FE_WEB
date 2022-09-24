@@ -18,7 +18,7 @@ const NaverLogin: React.FC<AppProps> = (props) => {
         const login = () => {
             naverLogin = new naver.LoginWithNaverId({
                 clientId: NAVER_Client_ID, // ClientID
-                callbackUrl: 'http://localhost:3000/main/Test/NaverLogin', // Callback URL
+                callbackUrl: 'http://localhost:3000/Test/NaverLogin', // Callback URL
                 isPopup: false, // 팝업 형태로 인증 여부
                 loginButton: {
                     color: 'green', // 색상

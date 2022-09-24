@@ -14,6 +14,7 @@ const ButtonBase = styled.button`
 
   width: 80px;
   height: 32px;
+  cursor : pointer;
 `;
 
 type Props = React.ComponentProps<typeof ButtonBase>;
