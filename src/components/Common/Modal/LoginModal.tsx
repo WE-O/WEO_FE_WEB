@@ -20,10 +20,7 @@ const LoginModalWrapper = styled.div`
   color: black;
 `;
 
-const KakagoLogin = styled.a`
-id:custom-login-btn;
-cursor: pointer;
-`;
+
 
 const LoginModal = (props: props): ReactElement => {
   const loginRef = useRef<HTMLDivElement>(null);
@@ -31,24 +28,18 @@ const LoginModal = (props: props): ReactElement => {
   useOnClickOutside(loginRef, () => dispatch(closeModal(false)));
 
 
-  
+
   return (
     <LoginModalWrapper ref={loginRef}>
       로그인 모달 테스트
       <br />
       <br />
-      {/* <NaverLoginButton /> */}
+      <NaverLoginButton />
       <br />
-
-      
-      <KakaoLoginButton/>
-
-      <KakagoLogin>
-        <img
-          src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
-          width="285"
-        />
-      </KakagoLogin>
+      <br />
+      <KakaoLoginButton />
+      <br />
+      <br />
 
     </LoginModalWrapper>
   );
