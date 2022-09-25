@@ -2,10 +2,10 @@ import { useState, useEffect } from "react"
 import Router from "next/router";
 
 type AppProps = {
-    name: string
+
 }
 
-const NaverLogin: React.FC<AppProps> = (props) => {
+export const NaverLoginButton: React.FC<AppProps> = (props) => {
 
     const NAVER_Client_ID: String = "HrncQLotFM9Or9LgmUjG";
     const NAVER_Client_Secret: String = "Vzg4KYhZUF";
@@ -38,13 +38,6 @@ const NaverLogin: React.FC<AppProps> = (props) => {
                     if (status) { // 로그인 상태 값이 있을 경우
 
                         debugger
-
-                        Router.push({
-                            pathname: 'http://localhost:3000/main/Test/NaverLogin',
-                            query: {
-                                token: token,
-                            }
-                        })
                     }
                 });
             }
@@ -53,21 +46,8 @@ const NaverLogin: React.FC<AppProps> = (props) => {
         getToken();
     }, [])
 
-    const UserProfile = () => {
-        location.href.includes('access_token') && getUser();
-    };
-    const getUser = () => {
-        const token = window.location.href.split('=')[1].split('&')[0];
-        //todo 여기 토큰 값을 back으로 전달하면 된다!.
-        console.log(token);
-    };
-    useEffect(UserProfile, []);
-
-
 
     return (
         <div id='naverIdLogin' />
     )
 }
-
-export default NaverLogin;
