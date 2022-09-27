@@ -24,7 +24,7 @@
 
 /** @type {import('next').NextConfig} */
 
-const result = require('dotenv').config()
+const result = require('dotenv').config({path: `./config/.env`})
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
