@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Button from "../Button";
 import Link from "next/link";
 import { useAppDispatch } from "../../../store/hooks";
-import { openModal, closeModal } from "../../../store/modules/LoginSlice";
+import { addModal } from "../../../store/modules/ModalSlice";
 
 const MainHeaderTab = () => {
   const dispatch = useAppDispatch();
@@ -21,14 +21,22 @@ const MainHeaderTab = () => {
       <Link href="/">
         <MainHeaderTabItem>제보하기</MainHeaderTabItem>
       </Link>
-      
+
+      {
+        <Button
+          onClick={() => {
+            dispatch(addModal("login"));
+          }}
+        >
+          TEST
+        </Button>
+      }
+
       {
         <Link href="/login">
           <Button>로그인</Button>
         </Link>
       }
-
-
     </MainHeaderTabWrapper>
   );
 };

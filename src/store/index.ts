@@ -9,10 +9,12 @@ import {
 } from "@reduxjs/toolkit";
 import { HYDRATE, createWrapper } from "next-redux-wrapper";
 import loginSlice, { loginState } from "./modules/LoginSlice";
+import modalSlice, { modalState } from "./modules/ModalSlice";
 
 // 리듀서 State 타입 정의
 export interface ReducerStates {
   login: loginState;
+  modal: modalState;
 }
 
 // 루트 리듀서 생성
@@ -24,8 +26,9 @@ const rootReducer = (state: ReducerStates, action: AnyAction) => {
     };
   }
   return combineReducers({
-    login: loginSlice,
     // 여기에 추가
+    login: loginSlice,
+    modal: modalSlice,
   })(state, action);
 };
 

@@ -1,10 +1,10 @@
 import React, { ReactElement, useRef, useEffect, useCallback } from "react";
 import styled from "styled-components";
-import { NaverLoginButton } from "../../../components/Common/Button/NaverLoginButton";
-import { KakaoLoginButton } from "../../../components/Common/Button/KakaoLoginButton";
-import { useAppDispatch } from "../../../store/hooks";
-import useOnClickOutside from "../hooks/useOnClickOutside";
-import { closeModal } from "../../../store/modules/LoginSlice";
+import { NaverLoginButton } from "../Common/Button/NaverLoginButton";
+import { KakaoLoginButton } from "../Common/Button/KakaoLoginButton";
+import { useAppDispatch } from "../../store/hooks";
+import useOnClickOutside from "./hooks/useOnClickOutside";
+import { deleteModal } from "../../store/modules/ModalSlice";
 
 interface props {
   // isOpen: boolean;
@@ -20,14 +20,10 @@ const LoginModalWrapper = styled.div`
   color: black;
 `;
 
-
-
 const LoginModal = (props: props): ReactElement => {
   const loginRef = useRef<HTMLDivElement>(null);
   const dispatch = useAppDispatch();
-  useOnClickOutside(loginRef, () => dispatch(closeModal(false)));
-
-
+  useOnClickOutside(loginRef, () => dispatch(deleteModal("login")));
 
   return (
     <LoginModalWrapper ref={loginRef}>
@@ -40,7 +36,6 @@ const LoginModal = (props: props): ReactElement => {
       <KakaoLoginButton />
       <br />
       <br />
-
     </LoginModalWrapper>
   );
 };
