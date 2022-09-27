@@ -21,7 +21,14 @@ const MainHeaderTab = () => {
       <Link href="/">
         <MainHeaderTabItem>제보하기</MainHeaderTabItem>
       </Link>
-      <Button onClick={() => dispatch(openModal(true))}>로그인</Button>
+      
+      {
+        <Link href="/login">
+          <Button>로그인</Button>
+        </Link>
+      }
+
+
     </MainHeaderTabWrapper>
   );
 };
