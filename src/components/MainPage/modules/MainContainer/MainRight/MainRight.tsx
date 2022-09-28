@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import KakaoMap from "../../KakaoMap";
+import KakaoMap from "../../../../KakaoMap";
 
 const MainRightWrapper = styled.div`
   width: 75%;

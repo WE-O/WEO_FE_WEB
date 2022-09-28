@@ -1,6 +1,6 @@
 import { MainContainer, Banner, Footer } from "./modules";
 
-const Main = () => {
+const MainPage = () => {
   return (
     <>
       <MainContainer></MainContainer>
@@ -10,4 +10,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default MainPage;

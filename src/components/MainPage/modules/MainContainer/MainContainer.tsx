@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import MainLeft from "./MainLeft";
-import MainRight from "./MainRight";
+import { MainLeft } from "./MainLeft";
+import { MainRight } from "./MainRight";
 
 const MainWrapper = styled.div`
   display: flex;
