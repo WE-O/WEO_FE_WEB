@@ -3,7 +3,7 @@ import {
   MainLeftDefaultTop,
   MainLeftDefaultMid,
   MainLeftDefaultBot,
-} from "./MainLeftDefault";
+} from "./index";
 
 const MainLeftWrapper = styled.div`
   width: 25%;
