@@ -25,7 +25,7 @@ const MainHeaderTab = () => {
       {
         <Button
           onClick={() => {
-            dispatch(addModal("login"));
+            dispatch(addModal("detailModal"));
           }}
         >
           TEST

@@ -19,7 +19,6 @@ const MainHeaderItems = () => {
       <HeaderItemWrapper>
         <MainHeaderLogo />
         <MainHeaderTab />
-        {/* <MainHeaderBtn /> */}
       </HeaderItemWrapper>
     </>
   );

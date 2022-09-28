@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import LoginModal from "./LoginModal";
 import { useAppSelector } from "../../store/hooks";
+import DetailModal from "./DetailModal";
 
 const ModalContanier = () => {
   const modalList = useAppSelector((state) => state.modal.modalList);
@@ -23,8 +23,8 @@ const ModalContanier = () => {
       {modalList.length > 0 && (
         <ModalContainerWrapper>
           {modalList.map((item: string) => {
-            if (item === "login") {
-              return <LoginModal />;
+            if (item === "detailModal") {
+              return <DetailModal key={"detailModal"} />;
             }
           })}
         </ModalContainerWrapper>
