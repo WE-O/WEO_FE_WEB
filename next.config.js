@@ -26,7 +26,7 @@
 
 const result = require('dotenv').config({path: `./config/.env`})
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: true,
   env: result.parsed,
 }
