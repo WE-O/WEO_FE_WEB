@@ -32,7 +32,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="kr">
         <Head>
-          <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ab9e4bfd68aad9f3a6bfb19a67105938" ></script>
+          {/* <script type="text/javascript" src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JS_API_KEY}`} ></script> */}
           <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" />
           <script type="text/javascript" src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_CLOUD_CLIENT_ID}`}></script>
         </Head>
