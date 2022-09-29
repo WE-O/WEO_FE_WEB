@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import NaverMap from "../../../../NaverMap";
+import KakaoMap from "../../../../KakaoMap";
 
 const MainRightWrapper = styled.div`
   width: 75%;
@@ -8,7 +9,8 @@ const MainRightWrapper = styled.div`
 const MainRight = () => {
   return (
     <MainRightWrapper>
-      <NaverMap />
+      {/* <NaverMap /> */}
+      <KakaoMap/>
     </MainRightWrapper>
   );
 };
