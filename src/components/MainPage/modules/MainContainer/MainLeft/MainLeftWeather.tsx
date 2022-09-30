@@ -4,7 +4,7 @@ import {
   MainLeftDeafultItemWrapper,
   MainLeftDeafultItemTitle,
   MainLeftDefaultContents,
-} from "./MainLeftDefaultCss";
+} from "./MainLefCss";
 
 const LocCertifyItem = styled.div`
   box-sizing: border-box;
@@ -23,7 +23,7 @@ const LocCertifyItem = styled.div`
   color: #999999;
 `;
 
-const MainLeftDefaultTop = () => {
+const MainLeftWeather = () => {
   return (
     <MainLeftDeafultItemWrapper>
       <MainLeftDeafultItemTitle>
@@ -35,4 +35,4 @@ const MainLeftDefaultTop = () => {
   );
 };
 
-export default MainLeftDefaultTop;
+export default MainLeftWeather;

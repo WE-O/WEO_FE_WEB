@@ -2,9 +2,9 @@ import {
   MainLeftDeafultItemWrapper,
   MainLeftDeafultItemTitle,
   MainLeftDefaultContents,
-} from "./MainLeftDefaultCss";
+} from "./MainLefCss";
 
-const MainLeftDefaultBot = () => {
+const MainLeftOffer = () => {
   return (
     <MainLeftDeafultItemWrapper>
       <MainLeftDeafultItemTitle>
@@ -15,4 +15,4 @@ const MainLeftDefaultBot = () => {
   );
 };
 
-export default MainLeftDefaultBot;
+export default MainLeftOffer;
