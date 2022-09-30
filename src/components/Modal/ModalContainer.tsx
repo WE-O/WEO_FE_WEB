@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useAppSelector } from "../../store/hooks";
-import DetailModal from "./DetailModal";
+import DetailModal from "./DetailModal/DetailModal";
 
 const ModalContanier = () => {
   const modalList = useAppSelector((state) => state.modal.modalList);
