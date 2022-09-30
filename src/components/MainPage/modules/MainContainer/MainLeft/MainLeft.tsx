@@ -1,9 +1,5 @@
 import styled from "styled-components";
-import {
-  MainLeftDefaultTop,
-  MainLeftDefaultMid,
-  MainLeftDefaultBot,
-} from "./index";
+import { MainLeftWeather, MainLeftPlace, MainLeftOffer } from "./index";
 
 const MainLeftWrapper = styled.div`
   width: 25%;
@@ -18,9 +14,9 @@ const MainLeftWrapper = styled.div`
 const MainLeft = () => {
   return (
     <MainLeftWrapper>
-      <MainLeftDefaultTop />
-      <MainLeftDefaultMid />
-      <MainLeftDefaultBot />
+      <MainLeftWeather />
+      <MainLeftPlace />
+      <MainLeftOffer />
     </MainLeftWrapper>
   );
 };

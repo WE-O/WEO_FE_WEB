@@ -2,9 +2,9 @@ import {
   MainLeftDeafultItemWrapper,
   MainLeftDeafultItemTitle,
   MainLeftDefaultContents,
-} from "./MainLeftDefaultCss";
+} from "./MainLefCss";
 
-const MainLeftDefaultMid = () => {
+const MainLeftPlace = () => {
   return (
     <MainLeftDeafultItemWrapper>
       <MainLeftDeafultItemTitle>{"저장한 장소"}</MainLeftDeafultItemTitle>
@@ -13,4 +13,4 @@ const MainLeftDefaultMid = () => {
   );
 };
 
-export default MainLeftDefaultMid;
+export default MainLeftPlace;

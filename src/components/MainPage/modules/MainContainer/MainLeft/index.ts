@@ -1,4 +1,4 @@
-export { default as MainLeftDefaultTop } from "./MainLeftDefaultTop";
-export { default as MainLeftDefaultMid } from "./MainLeftDefaultMid";
-export { default as MainLeftDefaultBot } from "./MainLeftDefaultBot";
+export { default as MainLeftWeather } from "./MainLeftWeather";
+export { default as MainLeftPlace } from "./MainLeftPlace";
+export { default as MainLeftOffer } from "./MainLeftOffer";
 export { default as MainLeft } from "./MainLeft";

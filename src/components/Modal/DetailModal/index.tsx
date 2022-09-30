@@ -1,8 +1,16 @@
 import styled from "styled-components";
+import { useRef } from "react";
+import { useAppDispatch } from "../../../store/hooks";
+import { deleteModal } from "../../../store/modules/ModalSlice";
+import useOnClickOutside from "../hooks/useOnClickOutside";
 
 const DetailModal = () => {
+  const detailRef = useRef<HTMLDivElement>(null);
+  const dispatch = useAppDispatch();
+  useOnClickOutside(detailRef, () => dispatch(deleteModal("detailModal")));
+
   return (
-    <DetailModalWrapper>
+    <DetailModalWrapper ref={detailRef}>
       <DetailModalHeader>
         <p style={{ fontSize: "20px" }}>상호명</p>
         <p style={{ fontSize: "15px" }}>업종 조회수 리뷰수</p>
