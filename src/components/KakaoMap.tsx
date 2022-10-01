@@ -1,15 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-
-// 카카오 REST API KEY          ==>    process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY;
-// 카카오 JavaScript API KEY    ==>    process.env.NEXT_PUBLIC_KAKAO_JS_API_KEY;
-// 카카오 Admin Key             ==>    process.env.NEXT_PUBLIC_KAKAO_ADMIN_KEY;
-// 카카오 Callback URL          ==>    process.env.NEXT_PUBLIC_CALLBACK_URL;
+import styled from "styled-components";
 
 declare global {
     interface Window {
         kakao: any;
     }
 }
+
+
 
 const KakaoMap = () => {
 
@@ -19,10 +17,8 @@ const KakaoMap = () => {
 
     useEffect(() => {
         const mapScript = document.createElement("script");
-
         mapScript.async = true;
         mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JS_API_KEY}&autoload=false`;
-
         document.head.appendChild(mapScript);
 
         const onLoadKakaoMap = () => {
@@ -50,11 +46,7 @@ const KakaoMap = () => {
                     message += '경도는 ' + latlng.getLng() + ' 입니다';
                     console.log(message);
                 });
-
             });
-
-            
-
         };
         mapScript.addEventListener("load", onLoadKakaoMap);
 
@@ -62,12 +54,33 @@ const KakaoMap = () => {
     }, []);
 
     return (
-        <div
-            id="map"
-            style={{ width: "100%", height: "100%" }}
-            ref={KakaoMapRef}
-        />
+        <>
+            <KakaoMapSearchWrapper>
+                <KakaoMapSearch placeholder="주인공 넙ㅐㅐㅐ 대 " />
+            </KakaoMapSearchWrapper>
+
+            <KakaoMapWrapper id="map" ref={KakaoMapRef} />
+        </>
+
     )
 }
-
 export default KakaoMap;
+
+
+const KakaoMapSearchWrapper = styled.div`
+    margin-top:15px;
+    z-index:10;
+    position:absolute;
+    width:34%;
+    left:50%;
+
+`
+const KakaoMapSearch = styled.input`
+  font-size:25px
+`;
+
+const KakaoMapWrapper = styled.div`
+width:100%;
+height:100%;
+`;
+
