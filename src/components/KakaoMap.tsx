@@ -56,7 +56,7 @@ const KakaoMap = () => {
     return (
         <>
             <KakaoMapSearchWrapper>
-                <KakaoMapSearch placeholder="주인공 넙ㅐㅐㅐ 대 " />
+                <KakaoMapSearch placeholder="아자아자 화이팅" />
             </KakaoMapSearchWrapper>
 
             <KakaoMapWrapper id="map" ref={KakaoMapRef} />
