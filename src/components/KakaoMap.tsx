@@ -73,17 +73,18 @@ const KakaoMapSearchWrapper = styled.div`
   margin-top: 15px;
   z-index: 10;
   position: absolute;
-  width: 34%;
-  left: 50%;
+  width: 100%;
+  text-align: center;
 `;
 const KakaoMapSearch = styled.input`
   border-radius: 26px;
   width: 530px;
   height: 45px;
   font-size: 18px;
+  padding: 10px 40px;
   ::-webkit-input-placeholder {
     color: black;
-    text-align: center;
+    text-align: left;
   }
 `;
 

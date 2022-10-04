@@ -4,6 +4,7 @@ import KakaoMap from "../../../../KakaoMap";
 
 const MainRightWrapper = styled.div`
   width: 800px;
+  position: relative;
 `;
 
 const MainRight = () => {
