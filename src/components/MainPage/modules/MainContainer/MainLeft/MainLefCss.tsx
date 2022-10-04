@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
+interface subProps {
+  height: string;
+}
+
 export const MainLeftDeafultItemWrapper = styled.div`
-  height: 33%;
   padding: 10px;
-  display: flex;
-  flex-direction: column;
 `;
 
 export const MainLeftDeafultItemTitle = styled.div`
@@ -17,7 +18,7 @@ export const MainLeftDeafultItemTitle = styled.div`
   align-items: center;
 `;
 
-export const MainLeftDefaultContents = styled.div`
-  height: 100%;
-  background: black;
+export const MainLeftDefaultContents = styled.div<subProps>`
+  background: ${(props) => props.theme.lightBackground1};
+  height: ${(subProps) => subProps.height};
 `;

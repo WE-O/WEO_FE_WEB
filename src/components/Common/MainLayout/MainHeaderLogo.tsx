@@ -1,13 +1,11 @@
+import Image from "next/image";
 import styled from "styled-components";
 import logoImg from "../../../utils/images/logo_horizontal.png";
-import Image from "next/image";
 
-const HeaderLogoWrapper = styled.div`
-  height: 25px;
-`;
+const HeaderLogoWrapper = styled.div``;
 
 const HeaderLogoItem = styled.div`
-  width: 120px;
+  width: 150px;
   height: 50px;
   cursor: pointer;
 `;

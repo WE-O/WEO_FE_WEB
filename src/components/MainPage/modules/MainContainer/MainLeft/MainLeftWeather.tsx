@@ -26,8 +26,10 @@ const LocCertifyItem = styled.div`
 const MainLeftWeather = () => {
   return (
     <MainLeftDeafultItemWrapper>
-      <MainLeftDeafultItemTitle>{"시흥시 은행동"}</MainLeftDeafultItemTitle>
-      <MainLeftDefaultContents></MainLeftDefaultContents>
+      <MainLeftDeafultItemTitle>
+        {"현재 위치가 들어갈 곳"}
+      </MainLeftDeafultItemTitle>
+      <MainLeftDefaultContents height={"100px"}></MainLeftDefaultContents>
     </MainLeftDeafultItemWrapper>
   );
 };

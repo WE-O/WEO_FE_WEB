@@ -82,8 +82,8 @@ const KakaoMapSearch = styled.input`
   height: 45px;
   font-size: 18px;
   padding: 10px 40px;
+  border-color: ${(props) => props.theme.primaryGreen};
   ::-webkit-input-placeholder {
-    color: black;
     text-align: left;
   }
 `;

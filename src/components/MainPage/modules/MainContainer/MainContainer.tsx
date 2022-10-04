@@ -6,8 +6,6 @@ const MainWrapper = styled.div`
   display: flex;
   width: 1200px;
   margin: 0 auto;
-
-  height: 500px;
   @media ${(props) => props.theme.mobile} {
     height: 300px;
   }

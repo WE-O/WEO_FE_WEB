@@ -5,16 +5,14 @@ const ButtonBase = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 0px;
-  box-shadow: 0 0 1px rgba(67, 90, 111, 0.03),
-    0 2px 2px -2px rgba(67, 90, 111, 0.2);
-  background: #111827;
-  border-radius: 6px;
+  background: ${(props) => props.theme.primaryGreen};
+  border: none;
   color: white;
+  border-radius: 6px;
 
   width: 80px;
   height: 32px;
-  cursor : pointer;
+  cursor: pointer;
 `;
 
 type Props = React.ComponentProps<typeof ButtonBase>;

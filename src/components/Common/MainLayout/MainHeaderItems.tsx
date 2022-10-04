@@ -8,6 +8,7 @@ const HeaderItemWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
+  align-items: center;
 `;
 
 // const LogoItems;

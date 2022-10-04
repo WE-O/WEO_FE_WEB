@@ -59,6 +59,8 @@ const MainHeaderTabItem = styled.div`
   align-items: flex-start;
   padding: 4px;
   height: 26px;
+  font-weight: 400;
+  font-size: 16px;
 
   flex: none;
   order: 0;
