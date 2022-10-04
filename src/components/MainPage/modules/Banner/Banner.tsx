@@ -51,7 +51,7 @@ const BannerItemBtn = styled.div`
 const BannerWrapper = styled.div`
   position: relative;
   width: 1200px;
-  margin: 20px auto;
+  margin: 30px auto;
   height: 200px;
   display: flex;
   justify-content: space-around;

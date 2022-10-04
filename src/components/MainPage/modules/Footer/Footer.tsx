@@ -23,7 +23,6 @@ export default Footer;
 const FooterWrapper = styled.div`
   width: 100%;
   height: 150px;
-  margin: 20px 0 0 0;
   background: ${(props) => props.theme.lightBackground3};
 `;
 
