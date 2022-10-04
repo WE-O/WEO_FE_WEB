@@ -4,6 +4,7 @@ import MainHeaderTab from "./MainHeaderTab";
 // import MainHeaderBtn from "./MainHeaderBtn";
 
 const HeaderItemWrapper = styled.div`
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;

@@ -60,7 +60,7 @@ const KakaoMap = () => {
   return (
     <>
       <KakaoMapSearchWrapper>
-        <KakaoMapSearch placeholder="아자아자 수진님 화이팅x2*3*31" />
+        <KakaoMapSearch placeholder="내주변 식물가게로 검색해 보세요." />
       </KakaoMapSearchWrapper>
 
       <KakaoMapWrapper id="map" ref={KakaoMapRef} />
@@ -77,7 +77,14 @@ const KakaoMapSearchWrapper = styled.div`
   left: 50%;
 `;
 const KakaoMapSearch = styled.input`
-  font-size: 25px;
+  border-radius: 26px;
+  width: 530px;
+  height: 45px;
+  font-size: 18px;
+  ::-webkit-input-placeholder {
+    color: black;
+    text-align: center;
+  }
 `;
 
 const KakaoMapWrapper = styled.div`
