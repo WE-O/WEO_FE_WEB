@@ -4,7 +4,7 @@ import { MainRight } from "./MainRight";
 
 const MainWrapper = styled.div`
   display: flex;
-  width: 98%;
+  width: 1200px;
   margin: 0 auto;
 
   height: 500px;

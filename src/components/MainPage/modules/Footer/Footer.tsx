@@ -17,7 +17,7 @@ const Footer = () => {
 export default Footer;
 
 const FooterWrapper = styled.div`
-  width: 100vw;
-  height: 15vh;
-  padding: 15px;
+  width: 100%;
+  height: 150px;
+  margin: 20px auto;
 `;

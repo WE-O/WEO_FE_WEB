@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { MainLeftWeather, MainLeftPlace, MainLeftOffer } from "./index";
 
 const MainLeftWrapper = styled.div`
-  width: 25%;
-  padding: 20px;
+  width: 400px;
+  padding: 0 10px 0 0;
 
   font-size: 15px;
   @media ${(props) => props.theme.mobile} {

@@ -17,7 +17,7 @@ const Banner = () => {
 export default Banner;
 
 const BannerWrapper = styled.div`
-  width: 100vw;
-  height: 25vh;
-  padding: 15px;
+  width: 1200px;
+  margin: 20px auto;
+  height: 200px;
 `;

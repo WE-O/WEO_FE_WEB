@@ -3,14 +3,14 @@ import NaverMap from "../../../../NaverMap";
 import KakaoMap from "../../../../KakaoMap";
 
 const MainRightWrapper = styled.div`
-  width: 75%;
+  width: 800px;
 `;
 
 const MainRight = () => {
   return (
     <MainRightWrapper>
       {/* <NaverMap /> */}
-      <KakaoMap/>
+      <KakaoMap />
     </MainRightWrapper>
   );
 };

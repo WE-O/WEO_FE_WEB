@@ -26,10 +26,7 @@ const LocCertifyItem = styled.div`
 const MainLeftWeather = () => {
   return (
     <MainLeftDeafultItemWrapper>
-      <MainLeftDeafultItemTitle>
-        {"시흥시 은행동"}
-        <LocCertifyItem>현재 위치 인증</LocCertifyItem>
-      </MainLeftDeafultItemTitle>
+      <MainLeftDeafultItemTitle>{"시흥시 은행동"}</MainLeftDeafultItemTitle>
       <MainLeftDefaultContents></MainLeftDefaultContents>
     </MainLeftDeafultItemWrapper>
   );

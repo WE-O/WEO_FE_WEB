@@ -4,6 +4,7 @@ import { useAppDispatch } from "../../../store/hooks";
 import { deleteModal } from "../../../store/modules/ModalSlice";
 import useOnClickOutside from "../hooks/useOnClickOutside";
 import DetailModalHeader from "./DetailModalHeader";
+import DetailModalLeft from "./DetailModalLeft";
 
 const DetailModal = () => {
   const detailRef = useRef<HTMLDivElement>(null);
@@ -15,7 +16,7 @@ const DetailModal = () => {
       <DetailModalHeader />
 
       <DetailModalContent>
-        <DetailContentLeft>Left</DetailContentLeft>
+        <DetailModalLeft />
         <DetailContentRight>Right</DetailContentRight>
       </DetailModalContent>
     </DetailModalWrapper>
@@ -37,14 +38,6 @@ const DetailModalWrapper = styled.div`
 
 const DetailModalContent = styled.div`
   display: flex;
-`;
-
-const DetailContentLeft = styled.div`
-  width: 50%;
-  text-align: center;
-  text-decoration: none;
-  padding: 0px 0px 0px 30px;
-  color: black;
 `;
 
 const DetailContentRight = styled.div`
