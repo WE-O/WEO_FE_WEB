@@ -29,7 +29,7 @@ const MainLeftWeather = () => {
       <MainLeftDeafultItemTitle>
         {"현재 위치가 들어갈 곳"}
       </MainLeftDeafultItemTitle>
-      <MainLeftDefaultContents height={"100px"}></MainLeftDefaultContents>
+      <MainLeftDefaultContents height={"130px"}></MainLeftDefaultContents>
     </MainLeftDeafultItemWrapper>
   );
 };
