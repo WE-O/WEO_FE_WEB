@@ -159,7 +159,9 @@ const getWeatherApi = async (
   let res: getWeatherResType = await call("GET", {
     url: "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst",
     data: {
-      serviceKey: encodeURI(process.env.NEXT_PUBLIC_WEATHER_SERVICE_KEY),
+      serviceKey: encodeURI(
+        process.env.NEXT_PUBLIC_WEATHER_SERVICE_KEY as string
+      ),
       dataType: "JSON", //요청자료형식(XML/JSON) Default: XML
       base_time: "0200",
       pageNo: 1,
