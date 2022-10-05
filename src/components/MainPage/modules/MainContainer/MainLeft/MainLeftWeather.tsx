@@ -8,7 +8,6 @@ import { SET_location } from "../../../../../store/modules/UserSlice";
 import {
   MainLeftDeafultItemWrapper,
   MainLeftDeafultItemTitle,
-  MainLeftDefaultContents,
 } from "./MainLefCss";
 
 const MainLeftWeather = () => {
@@ -59,30 +58,26 @@ const MainLeftWeather = () => {
   return (
     <MainLeftDeafultItemWrapper>
       <MainLeftDeafultItemTitle>{"위치"}</MainLeftDeafultItemTitle>
-      <MainLeftDefaultContents height={"130px"}>
-        <MainLeftWeatherItemWrapper>
-          <MainLeftDeafultItem>
-            {weatherData.mWeather ? <Image src={weatherData.mWeather} /> : "ㅡ"}
-            <MainLeftDeafultP type="text">오전</MainLeftDeafultP>
-          </MainLeftDeafultItem>
-
-          <MainLeftDeafultItem>
-            {weatherData.aWeather ? <Image src={weatherData.aWeather} /> : "ㅡ"}
-            <MainLeftDeafultP type="text">오후</MainLeftDeafultP>
-          </MainLeftDeafultItem>
-
-          <MainLeftDeafultItem>
-            {weatherData.mTmp ? `${weatherData.mTmp}°` : " ㅡ "}/
-            {weatherData.aTmp ? `${weatherData.aTmp}°` : " ㅡ "}
-          </MainLeftDeafultItem>
-
-          <MainLeftDeafultItem>
-            <MainLeftDeafulButton onClick={() => onHandleClick()}>
-              현재위치 인증
-            </MainLeftDeafulButton>
-          </MainLeftDeafultItem>
-        </MainLeftWeatherItemWrapper>
-      </MainLeftDefaultContents>
+      <MainLeftWeatherContents>
+        <MainLeftWeatherItem>
+          {weatherData.mWeather ? <Image src={weatherData.mWeather} /> : "ㅡ"}
+          <MainLeftWeatherP type="text">오전</MainLeftWeatherP>
+        </MainLeftWeatherItem>
+        {weatherData.mWeather && weatherData.aWeather && <span>|</span>}
+        <MainLeftWeatherItem>
+          {weatherData.aWeather ? <Image src={weatherData.aWeather} /> : "ㅡ"}
+          <MainLeftWeatherP type="text">오후</MainLeftWeatherP>
+        </MainLeftWeatherItem>
+        <MainLeftWeatherItem>
+          {weatherData.mTmp ? `${weatherData.mTmp}° ` : " ㅡ "}/
+          {weatherData.aTmp ? ` ${weatherData.aTmp}°` : " ㅡ "}
+        </MainLeftWeatherItem>
+        <MainLeftWeatherItem>
+          <MainLeftWeatherBtn onClick={() => onHandleClick()}>
+            현재위치 인증
+          </MainLeftWeatherBtn>
+        </MainLeftWeatherItem>
+      </MainLeftWeatherContents>
     </MainLeftDeafultItemWrapper>
   );
 };
@@ -93,24 +88,22 @@ interface Props {
   type: string;
 }
 
-const MainLeftWeatherItemWrapper = styled.div`
-  width: 100%;
-  position: absolute;
-  justify-content: space-evenly;
+const MainLeftWeatherContents = styled.div`
+  border-bottom: ${(props) => `1px solid ${props.theme.lightGrey1}`};
+  height: 130px;
   display: flex;
-  top: 30%;
-  gap: 25px;
-  align-items: baseline;
+  justify-content: space-around;
+  align-items: center;
 `;
 
-const MainLeftDeafultItem = styled.div`
+const MainLeftWeatherItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
 `;
 
-const MainLeftDeafultP = styled.span<Props>`
+const MainLeftWeatherP = styled.span<Props>`
   font-weight: 400;
 
   ${(Props) =>
@@ -128,7 +121,7 @@ const MainLeftDeafultP = styled.span<Props>`
     `}
 `;
 
-const MainLeftDeafulButton = styled.button`
+const MainLeftWeatherBtn = styled.button`
   width: 110px;
   height: 30px;
   font-size: 14px;
@@ -136,4 +129,5 @@ const MainLeftDeafulButton = styled.button`
   border: 1px solid #999999;
   border-radius: 10px;
   background: white;
+  cursor: pointer;
 `;
