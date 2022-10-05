@@ -85,6 +85,7 @@ const Login = () => {
     }
 
     const naverGetToken = (authCode: string) => {
+        console.log('');
         const token: string = authCode.split('=')[1].split('&')[0]; // 네이버 로그인을 통해 전달받은 hash 값
         const token_type: string = authCode.split("token_type=")[1].split('&')[0];
         const expires_in: string = authCode.split("expires_in=")[1];
