@@ -16,7 +16,6 @@ const Banner = () => {
       <Image
         src={footerImg}
         alt=""
-        // placeholder="blur"
       />
     </BannerWrapper>
   );

@@ -18,7 +18,6 @@ const MainHeaderLogo = () => {
           <Image
             src={logoImg}
             alt=""
-            // placeholder="blur"
           />
         </HeaderLogoItem>
       </HeaderLogoWrapper>
