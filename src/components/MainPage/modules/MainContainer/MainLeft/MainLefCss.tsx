@@ -17,9 +17,3 @@ export const MainLeftDeafultItemTitle = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-
-export const MainLeftDefaultContents = styled.div<subProps>`
-  border-bottom: ${(props) => `1px solid ${props.theme.lightGrey1}`};
-  height: ${(subProps) => subProps.height};
-  position: relative;
-`;

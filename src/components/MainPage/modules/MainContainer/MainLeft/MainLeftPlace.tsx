@@ -3,13 +3,14 @@ import Link from "next/link";
 import {
   MainLeftDeafultItemWrapper,
   MainLeftDeafultItemTitle,
-  MainLeftDefaultContents,
 } from "./MainLefCss";
 
 const MainLeftPlace = () => {
   return (
     <MainLeftDeafultItemWrapper>
-      <MainLeftDeafultItemTitle>{"저장한 장소"}</MainLeftDeafultItemTitle>
+      <MainLeftDeafultItemTitle>
+        <span>저장한 장소</span>
+      </MainLeftDeafultItemTitle>
       <MainLeftPlaceContents>
         <MainLeftPlaceItem>로그인하고 장소를 저장해보세요!</MainLeftPlaceItem>
         <Link href="/login">

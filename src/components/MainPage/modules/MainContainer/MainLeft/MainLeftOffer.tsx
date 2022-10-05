@@ -1,18 +1,34 @@
+import styled, { css } from "styled-components";
 import {
   MainLeftDeafultItemWrapper,
   MainLeftDeafultItemTitle,
-  MainLeftDefaultContents,
 } from "./MainLefCss";
+import MainLeftOfferCarouse from "./MainLeftOfferCarouse";
 
 const MainLeftOffer = () => {
   return (
     <MainLeftDeafultItemWrapper>
       <MainLeftDeafultItemTitle>
-        {"식집사를 위한 장소 추천"}
+        <span>식집사를 위한 장소 추천</span>
+        <MainLeftOfferSpan>더보기</MainLeftOfferSpan>
       </MainLeftDeafultItemTitle>
-      <MainLeftDefaultContents height={"270px"}></MainLeftDefaultContents>
+      <MainLeftOfferWrapper>
+        <MainLeftOfferCarouse />
+      </MainLeftOfferWrapper>
     </MainLeftDeafultItemWrapper>
   );
 };
 
 export default MainLeftOffer;
+
+const MainLeftOfferWrapper = styled.div`
+  border: none;
+  height: 300px;
+  overflow: hidden;
+`;
+
+const MainLeftOfferSpan = styled.span`
+  font-size: 14px;
+  color: #999999;
+  cursor: pointer;
+`;

@@ -4,7 +4,6 @@ import styled, { css } from "styled-components";
 import { useGetWeather } from "../../../Logics/mainLeftLogic";
 import { useAppDispatch } from "../../../../../store/hooks";
 import { SET_location } from "../../../../../store/modules/UserSlice";
-
 import {
   MainLeftDeafultItemWrapper,
   MainLeftDeafultItemTitle,
@@ -57,16 +56,18 @@ const MainLeftWeather = () => {
 
   return (
     <MainLeftDeafultItemWrapper>
-      <MainLeftDeafultItemTitle>{"위치"}</MainLeftDeafultItemTitle>
+      <MainLeftDeafultItemTitle>
+        <span>위치</span>
+      </MainLeftDeafultItemTitle>
       <MainLeftWeatherContents>
         <MainLeftWeatherItem>
           {weatherData.mWeather ? <Image src={weatherData.mWeather} /> : "ㅡ"}
-          <MainLeftWeatherP type="text">오전</MainLeftWeatherP>
+          <MainLeftWeatherSpan type="text">오전</MainLeftWeatherSpan>
         </MainLeftWeatherItem>
         {weatherData.mWeather && weatherData.aWeather && <span>|</span>}
         <MainLeftWeatherItem>
           {weatherData.aWeather ? <Image src={weatherData.aWeather} /> : "ㅡ"}
-          <MainLeftWeatherP type="text">오후</MainLeftWeatherP>
+          <MainLeftWeatherSpan type="text">오후</MainLeftWeatherSpan>
         </MainLeftWeatherItem>
         <MainLeftWeatherItem>
           {weatherData.mTmp ? `${weatherData.mTmp}° ` : " ㅡ "}/
@@ -103,7 +104,7 @@ const MainLeftWeatherItem = styled.div`
   gap: 12px;
 `;
 
-const MainLeftWeatherP = styled.span<Props>`
+const MainLeftWeatherSpan = styled.span<Props>`
   font-weight: 400;
 
   ${(Props) =>
