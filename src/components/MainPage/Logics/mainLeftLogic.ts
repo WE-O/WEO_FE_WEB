@@ -157,7 +157,7 @@ const getWeatherApi = async (
   };
 
   let res: getWeatherResType = await call("GET", {
-    url: "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst",
+    url: "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst",
     data: {
       serviceKey: encodeURI(
         process.env.NEXT_PUBLIC_WEATHER_SERVICE_KEY as string
