@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ReactElement } from "react";
 
 export interface modalState {
   modalList: string[];

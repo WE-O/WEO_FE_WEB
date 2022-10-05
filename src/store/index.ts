@@ -8,13 +8,13 @@ import {
   CombinedState,
 } from "@reduxjs/toolkit";
 import { HYDRATE, createWrapper } from "next-redux-wrapper";
-import loginSlice, { loginState } from "./modules/LoginSlice";
 import modalSlice, { modalState } from "./modules/ModalSlice";
+import userSlice, { userState } from "./modules/UserSlice";
 
-// 리듀서 State 타입 정의
+// 리듀서 State 타입 정의, 신규 추가 하기
 export interface ReducerStates {
-  login: loginState;
   modal: modalState;
+  user: userState;
 }
 
 // 루트 리듀서 생성
@@ -26,9 +26,9 @@ const rootReducer = (state: ReducerStates, action: AnyAction) => {
     };
   }
   return combineReducers({
-    // 여기에 추가
-    login: loginSlice,
+    // 신규 추가 하기
     modal: modalSlice,
+    user: userSlice,
   })(state, action);
 };
 

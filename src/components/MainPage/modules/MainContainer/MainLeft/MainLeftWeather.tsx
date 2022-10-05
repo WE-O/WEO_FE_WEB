@@ -1,6 +1,8 @@
 import Image from "next/image";
+import { useCallback } from "react";
 import styled, { css } from "styled-components";
 import sunnyOn from "../../../../../utils/images/sunny_on.png";
+import { useGetWeather } from "../../../Logics/mainLeftLogic";
 
 import {
   MainLeftDeafultItemWrapper,
@@ -9,29 +11,50 @@ import {
 } from "./MainLefCss";
 
 const MainLeftWeather = () => {
+  const getLocation = useCallback(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          useGetWeather(position.coords.latitude, position.coords.longitude);
+        },
+        function (error) {
+          console.error(error);
+        },
+        {
+          enableHighAccuracy: false,
+          maximumAge: 0,
+          timeout: Infinity,
+        }
+      );
+    } else {
+      alert("GPS를 지원하지 않습니다");
+    }
+  }, []);
+
   return (
     <MainLeftDeafultItemWrapper>
-      <MainLeftDeafultItemTitle>
-        {"현재 위치가 들어갈 곳"}
-      </MainLeftDeafultItemTitle>
+      <MainLeftDeafultItemTitle>{"위치"}</MainLeftDeafultItemTitle>
       <MainLeftDefaultContents height={"130px"}>
         <MainLeftWeatherItemWrapper>
           <MainLeftDeafultItem>
-            <Image src={sunnyOn} />
+            {/* <Image src={sunnyOn} /> */}-
             <MainLeftDeafultP type="text">오전</MainLeftDeafultP>
           </MainLeftDeafultItem>
 
           <MainLeftDeafultItem>
-            <Image src={sunnyOn} />
+            {/* <Image src={sunnyOn} /> */}-
             <MainLeftDeafultP type="text">오후</MainLeftDeafultP>
           </MainLeftDeafultItem>
 
           <MainLeftDeafultItem>
-            <MainLeftDeafultP type="number">14° / 28°</MainLeftDeafultP>
+            - / -
+            {/* <MainLeftDeafultP type="number">14° / 28°</MainLeftDeafultP> */}
           </MainLeftDeafultItem>
 
           <MainLeftDeafultItem>
-            <MainLeftDeafulButton>현재위치 인증</MainLeftDeafulButton>
+            <MainLeftDeafulButton onClick={() => getLocation()}>
+              현재위치 인증
+            </MainLeftDeafulButton>
           </MainLeftDeafultItem>
         </MainLeftWeatherItemWrapper>
       </MainLeftDefaultContents>
