@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styled from "styled-components";
-import logoImg from "../../../utils/images/logo_horizontal.png";
+import { logoHorizontal } from "../../../utils/images";
 
 const HeaderLogoWrapper = styled.div``;
 
@@ -15,10 +15,7 @@ const MainHeaderLogo = () => {
     <>
       <HeaderLogoWrapper>
         <HeaderLogoItem>
-          <Image
-            src={logoImg}
-            alt=""
-          />
+          <Image src={logoHorizontal} alt="" />
         </HeaderLogoItem>
       </HeaderLogoWrapper>
     </>

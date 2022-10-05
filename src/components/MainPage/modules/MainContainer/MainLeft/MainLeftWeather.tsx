@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { useCallback } from "react";
 import styled, { css } from "styled-components";
-import sunnyOn from "../../../../../utils/images/sunny_on.png";
 import { useGetWeather } from "../../../Logics/mainLeftLogic";
 
 import {
@@ -14,8 +13,13 @@ const MainLeftWeather = () => {
   const getLocation = useCallback(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        function (position) {
-          useGetWeather(position.coords.latitude, position.coords.longitude);
+        async function (position) {
+          let weatherData = await useGetWeather(
+            position.coords.latitude,
+            position.coords.longitude
+          );
+          debugger;
+          debugger;
         },
         function (error) {
           console.error(error);

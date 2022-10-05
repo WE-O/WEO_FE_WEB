@@ -1,4 +1,5 @@
 import { call } from "../../../api/apis";
+import sunnyOn from "../../../../../utils/images/sunny_on.png";
 
 const RE: number = 6371.00877; // 지구 반경(km)
 const GRID: number = 5.0; // 격자 간격(km)
@@ -73,7 +74,7 @@ interface convertWeatherDataType {
   TMP: string;
 }
 
-export const useGetWeather = (lat: number, lng: number) => {
+export const useGetWeather = async (lat: number, lng: number) => {
   if (lat !== -1 && lng !== -1) {
     const coordinate = xy_conv(lat, lng);
     const curDate: Date = new Date();
@@ -95,10 +96,12 @@ export const useGetWeather = (lat: number, lng: number) => {
       ).padStart(2, "0")}${String(preDate.getDate()).padStart(2, "0")}`;
     }
 
-    getWeatherApi({
+    const weatherData = await getWeatherApi({
       base_date,
       ...coordinate,
     });
+
+    return weatherData;
   }
 };
 

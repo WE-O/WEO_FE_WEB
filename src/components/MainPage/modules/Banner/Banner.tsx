@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styled from "styled-components";
-import footerImg from "../../../../utils/images/footer_frame.png";
+import { footerFrame } from "../../../../utils/images";
 
 const Banner = () => {
   return (
@@ -13,10 +13,7 @@ const Banner = () => {
         </BannerItemBtn>
       </BannerItemWrapper>
 
-      <Image
-        src={footerImg}
-        alt=""
-      />
+      <Image src={footerFrame} alt="" />
     </BannerWrapper>
   );
 };
