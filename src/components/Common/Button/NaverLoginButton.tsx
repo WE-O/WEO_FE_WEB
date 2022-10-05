@@ -7,17 +7,13 @@ type AppProps = {
 
 export const NaverLoginButton: React.FC<AppProps> = (props) => {
 
-    const NAVER_Client_ID: String = "HrncQLotFM9Or9LgmUjG";
-    const NAVER_Client_Secret: String = "Vzg4KYhZUF";
-
-
     useEffect(() => {
         const naver = (window as any).naver;
         let naverLogin: any;
 
         const login = () => {
             naverLogin = new naver.LoginWithNaverId({
-                clientId: NAVER_Client_ID, // ClientID
+                clientId: process.env.NEXT_PUBLIC_NAVER_CLIENT_ID,
                 callbackUrl: process.env.NEXT_PUBLIC_CALLBACK_URL,
                 isPopup: false, // 팝업 형태로 인증 여부
                 loginButton: {
