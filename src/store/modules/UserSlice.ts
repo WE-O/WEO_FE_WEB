@@ -11,11 +11,11 @@ const UserSlice = createSlice({
   name: "UserSlice",
   initialState,
   reducers: {
-    locationAuth: (
+    SET_location: (
       state,
       action: PayloadAction<{ lat: number; lng: number }>
     ) => {
-      state = {
+      return {
         ...state,
         ...action.payload,
       };
@@ -23,5 +23,5 @@ const UserSlice = createSlice({
   },
 });
 
-export const { locationAuth } = UserSlice.actions;
+export const { SET_location } = UserSlice.actions;
 export default UserSlice.reducer;

@@ -1,7 +1,9 @@
 import Image from "next/image";
-import { useCallback } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import styled, { css } from "styled-components";
 import { useGetWeather } from "../../../Logics/mainLeftLogic";
+import { useAppDispatch } from "../../../../../store/hooks";
+import { SET_location } from "../../../../../store/modules/UserSlice";
 
 import {
   MainLeftDeafultItemWrapper,
@@ -10,16 +12,27 @@ import {
 } from "./MainLefCss";
 
 const MainLeftWeather = () => {
+  const dispatch = useAppDispatch();
+  const [weatherData, setWeatherData] = useState({
+    aTmp: "",
+    aWeather: "",
+    mTmp: "",
+    mWeather: "",
+  });
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const getLocation = useCallback(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         async function (position) {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
           let weatherData = await useGetWeather(
             position.coords.latitude,
             position.coords.longitude
           );
-          debugger;
-          debugger;
+          dispatch(SET_location({ lat: lat, lng: lng }));
+          setWeatherData((prev) => ({ ...prev, ...weatherData }));
         },
         function (error) {
           console.error(error);
@@ -35,28 +48,36 @@ const MainLeftWeather = () => {
     }
   }, []);
 
+  const onHandleClick = useCallback(() => {
+    timer.current && clearTimeout(timer.current);
+
+    timer.current = setTimeout(() => {
+      getLocation();
+    }, 500);
+  }, [getLocation]);
+
   return (
     <MainLeftDeafultItemWrapper>
       <MainLeftDeafultItemTitle>{"위치"}</MainLeftDeafultItemTitle>
       <MainLeftDefaultContents height={"130px"}>
         <MainLeftWeatherItemWrapper>
           <MainLeftDeafultItem>
-            {/* <Image src={sunnyOn} /> */}-
+            {weatherData.mWeather ? <Image src={weatherData.mWeather} /> : "ㅡ"}
             <MainLeftDeafultP type="text">오전</MainLeftDeafultP>
           </MainLeftDeafultItem>
 
           <MainLeftDeafultItem>
-            {/* <Image src={sunnyOn} /> */}-
+            {weatherData.aWeather ? <Image src={weatherData.aWeather} /> : "ㅡ"}
             <MainLeftDeafultP type="text">오후</MainLeftDeafultP>
           </MainLeftDeafultItem>
 
           <MainLeftDeafultItem>
-            - / -
-            {/* <MainLeftDeafultP type="number">14° / 28°</MainLeftDeafultP> */}
+            {weatherData.mTmp ? `${weatherData.mTmp}°` : " ㅡ "}/
+            {weatherData.aTmp ? `${weatherData.aTmp}°` : " ㅡ "}
           </MainLeftDeafultItem>
 
           <MainLeftDeafultItem>
-            <MainLeftDeafulButton onClick={() => getLocation()}>
+            <MainLeftDeafulButton onClick={() => onHandleClick()}>
               현재위치 인증
             </MainLeftDeafulButton>
           </MainLeftDeafultItem>

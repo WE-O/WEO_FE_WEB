@@ -1,5 +1,13 @@
 import { call } from "../../../api/apis";
-import sunnyOn from "../../../../../utils/images/sunny_on.png";
+import {
+  sunnyOn,
+  cloudyOn,
+  fogOn,
+  rainOn,
+  sleetOn,
+  snowOn,
+  rainsunOn,
+} from "../../../utils/images";
 
 const RE: number = 6371.00877; // 지구 반경(km)
 const GRID: number = 5.0; // 격자 간격(km)
@@ -10,17 +18,17 @@ const OLAT: number = 38.0; // 기준점 위도(degree)
 const XO: number = 43; // 기준점 X좌표(GRID)
 const YO: number = 136; // 기1준점 Y좌표(GRID)
 
-const skyEnum: { [key: string]: string } = {
-  1: "맑음",
-  3: "구름많음",
-  4: "흐림",
+const skyEnum: { [key: string]: any } = {
+  1: sunnyOn, // "맑음",
+  3: cloudyOn, // "구름많음"
+  4: fogOn, // "흐림"
 };
-const ptyEnum: { [key: string]: string } = {
+const ptyEnum: { [key: string]: any } = {
   0: "없음",
-  1: "비",
-  2: "비/눈",
-  3: "눈",
-  4: "소나기",
+  1: rainOn, // "비"
+  2: sleetOn, // "비/눈"
+  3: snowOn, // "눈"
+  4: rainsunOn, // "소나기"
 };
 
 interface convType {
@@ -69,7 +77,7 @@ interface getWeatherResType {
 }
 
 interface convertWeatherDataType {
-  SKY: string | null;
+  SKY: string;
   PTY: string | null;
   TMP: string;
 }
@@ -96,7 +104,7 @@ export const useGetWeather = async (lat: number, lng: number) => {
       ).padStart(2, "0")}${String(preDate.getDate()).padStart(2, "0")}`;
     }
 
-    const weatherData = await getWeatherApi({
+    const weatherData: weatherType = await getWeatherApi({
       base_date,
       ...coordinate,
     });
@@ -211,7 +219,7 @@ const convertWeatherData = (
     SKY:
       lists.filter((item) => item.category === "SKY").length > 0
         ? lists.filter((item) => item.category === "SKY")[0].fcstValue
-        : null,
+        : "1",
     PTY:
       lists.filter((item) => item.category === "PTY").length > 0
         ? lists.filter((item) => item.category === "PTY")[0].fcstValue
