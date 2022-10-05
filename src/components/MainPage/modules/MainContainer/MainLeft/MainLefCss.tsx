@@ -19,6 +19,7 @@ export const MainLeftDeafultItemTitle = styled.div`
 `;
 
 export const MainLeftDefaultContents = styled.div<subProps>`
-  background: ${(props) => props.theme.lightBackground1};
+  border-bottom: ${(props) => `1px solid ${props.theme.lightGrey1}`};
   height: ${(subProps) => subProps.height};
+  position: relative;
 `;
