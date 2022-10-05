@@ -35,6 +35,7 @@ export default class MyDocument extends Document {
           <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" />
           <script type="text/javascript" src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_CLOUD_CLIENT_ID}`}></script>
         </Head>
+      
         <body>
           <Main></Main>
           <NextScript></NextScript>
