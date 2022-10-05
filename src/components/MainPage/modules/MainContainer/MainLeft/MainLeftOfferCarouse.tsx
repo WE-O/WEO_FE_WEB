@@ -61,7 +61,7 @@ const MainLeftOfferItem = styled.div`
   border: 1px solid #eeeeee;
   border-radius: 10px;
   box-shadow: 5px 5px 10px #cccccc;
-  margin: 0 9px;
+  margin: 10px 9px;
   width: 240px;
   height: 280px;
 `;

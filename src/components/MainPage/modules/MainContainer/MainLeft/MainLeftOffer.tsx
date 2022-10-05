@@ -23,7 +23,7 @@ export default MainLeftOffer;
 
 const MainLeftOfferWrapper = styled.div`
   border: none;
-  height: 300px;
+  height: 305px;
   overflow: hidden;
 `;
 
