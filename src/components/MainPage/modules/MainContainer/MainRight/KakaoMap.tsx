@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import KakaoMapSearch from "./KakaoMapSearch";
 
 declare global {
   interface Window {
@@ -45,11 +46,18 @@ const KakaoMap = () => {
             const latlng = mouseEvent.latLng;
             // 마커 위치를 클릭한 위치로 옮깁니다
             marker.setPosition(latlng);
-            let message = "클릭한 위치의 위도는 " + latlng.getLat() + " 이고, ";
-            message += "경도는 " + latlng.getLng() + " 입니다";
-            console.log(message);
+            console.log("위도 =", latlng.getLat(), "경도 =", latlng.getLng());
           }
         );
+
+        window.kakao.maps.event.addListener(map, 'dragend', function () {
+          // 지도 중심좌표를 얻어옵니다 
+          let latlng = map.getCenter();
+          console.log("위도 =", latlng.getLat(), "경도 =", latlng.getLng());
+        });
+
+
+
       });
     };
     mapScript.addEventListener("load", onLoadKakaoMap);
@@ -57,10 +65,11 @@ const KakaoMap = () => {
     return () => mapScript.removeEventListener("load", onLoadKakaoMap);
   }, []);
 
+
   return (
     <>
       <KakaoMapSearchWrapper>
-        <KakaoMapSearch placeholder="내주변 식물가게로 검색해 보세요." />
+        <KakaoMapSearch/>
       </KakaoMapSearchWrapper>
 
       <KakaoMapWrapper id="map" ref={KakaoMapRef} />
@@ -75,17 +84,6 @@ const KakaoMapSearchWrapper = styled.div`
   position: absolute;
   width: 100%;
   text-align: center;
-`;
-const KakaoMapSearch = styled.input`
-  border-radius: 26px;
-  width: 530px;
-  height: 45px;
-  font-size: 18px;
-  padding: 10px 40px;
-  border: 2px solid #22cc88;
-  ::-webkit-input-placeholder {
-    text-align: left;
-  }
 `;
 
 const KakaoMapWrapper = styled.div`

@@ -54,6 +54,7 @@ const Login = () => {
             .then(async (res) => {
                 const accessToken = res.data.access_token;
                 const expires_in = res.data.expires_in;
+                //todo 해당 부분 수정해야한다 :) 
                 const callAPIURL = "http://101.101.217.55:8080/api/member/kakao/login";
                 await axios.get(callAPIURL, {
                     params: {
