@@ -164,6 +164,7 @@ const CarouseArrow = styled.button<{
   background: rgba(250, 250, 250, 0.3);
   height: 100%;
   transform: translateY(-50%);
+  cursor: grab;
 
   img {
     cursor: pointer;
