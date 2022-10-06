@@ -1,101 +1,137 @@
 import styled, { css } from "styled-components";
 import Image from "next/image";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useRef } from "react";
 import { leftArrow, rightArrow } from "../../../../../utils/images";
 
 const MainLeftOfferCarouse = () => {
-  const CarouseWrapperRef = useRef<HTMLDivElement>(null);
+  const CarouseRef = useRef<HTMLDivElement>(null);
   const offsetX = useRef<number>(0);
+  const startXWidth = useRef<number>(0);
   const totalItemCnt = useRef<number>(3); //임시 테스트용
   const curItemCnt = useRef<number>(1); //임시 테스트용
 
   const onHandleClick = useCallback(
     (type: string): void => {
-      if (type === "prev") {
-        if (curItemCnt.current === 1) return;
+      if (type === "prev" && curItemCnt.current !== 1) {
         offsetX.current += 258;
         curItemCnt.current -= 1;
       }
 
-      if (type === "next") {
-        if (curItemCnt.current === totalItemCnt.current) return;
+      if (type === "next" && curItemCnt.current !== totalItemCnt.current) {
         offsetX.current -= 258;
         curItemCnt.current += 1;
       }
 
-      if (CarouseWrapperRef.current) {
-        CarouseWrapperRef.current.style.transform = `translateX(${offsetX.current}px)`;
+      if (CarouseRef.current) {
+        CarouseRef.current.style.transform = `translateX(${offsetX.current}px)`;
       }
     },
-    [CarouseWrapperRef]
+    [CarouseRef]
   );
 
+  const onHandleMouseDown = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      if (CarouseRef.current) {
+        startXWidth.current = e.pageX - CarouseRef.current.offsetLeft;
+        CarouseRef.current.addEventListener("mousemove", onHandleMouseMove);
+        document.addEventListener("mouseup", onHandleMousUp);
+      }
+    },
+    [CarouseRef]
+  );
+  const onHandleMousUp = useCallback(
+    (e: MouseEvent) => {
+      e.preventDefault();
+      if (CarouseRef.current) {
+        const endXWidth: number = e?.pageX - CarouseRef.current.offsetLeft;
+        const move: number = endXWidth - startXWidth.current;
+        console.log(move);
+        CarouseRef.current.removeEventListener("mousemove", onHandleMouseMove);
+        document.removeEventListener("mouseup", onHandleMousUp);
+
+        if (move >= 70) {
+          onHandleClick("prev");
+        } else if (move <= -70) {
+          onHandleClick("next");
+        } else {
+          onHandleClick("reload");
+        }
+
+        return;
+      }
+    },
+    [CarouseRef]
+  );
+  const onHandleMouseMove = useCallback((e: MouseEvent) => {
+    e.preventDefault();
+    if (CarouseRef.current) {
+      const move: number =
+        e?.pageX - CarouseRef.current.offsetLeft - startXWidth.current;
+      CarouseRef.current.style.transform = `translateX(${
+        offsetX.current + move
+      }px)`;
+    }
+  }, []);
+
   return (
-    <>
-      <CarouseArrow case="left" onClick={() => onHandleClick("prev")}>
-        <Image src={leftArrow} alt="" />
+    <Carouse onMouseDown={onHandleMouseDown}>
+      <CarouseArrow case="left">
+        <Image src={leftArrow} alt="" onClick={() => onHandleClick("prev")} />
       </CarouseArrow>
 
-      <Carouse>
-        <CarouseWrapper ref={CarouseWrapperRef}>
-          <MainLeftOfferItemBlank />
+      <CarouseWrapper ref={CarouseRef}>
+        <MainLeftOfferItemBlank />
 
-          <MainLeftOfferItem>
-            <MainLeftOfferItemImage></MainLeftOfferItemImage>
-            <MainLeftOfferItemContent>
-              <MainLeftOfferItemHeader>
-                (1)시흥 블루베리
-              </MainLeftOfferItemHeader>
-              <MainLeftOfferItemDetail>
-                <span>체험기간</span>
-                <MainLeftOfferItemDetailReview>
-                  리뷰 100개
-                </MainLeftOfferItemDetailReview>
-              </MainLeftOfferItemDetail>
-              <MainLeftOfferItemLabel>이번주에 가볼만한</MainLeftOfferItemLabel>
-            </MainLeftOfferItemContent>
-          </MainLeftOfferItem>
+        <MainLeftOfferItem>
+          <MainLeftOfferItemImage></MainLeftOfferItemImage>
+          <MainLeftOfferItemContent>
+            <MainLeftOfferItemHeader>(1)시흥 블루베리</MainLeftOfferItemHeader>
+            <MainLeftOfferItemDetail>
+              <span>체험기간</span>
+              <MainLeftOfferItemDetailReview>
+                리뷰 100개
+              </MainLeftOfferItemDetailReview>
+            </MainLeftOfferItemDetail>
+            <MainLeftOfferItemLabel>이번주에 가볼만한</MainLeftOfferItemLabel>
+          </MainLeftOfferItemContent>
+        </MainLeftOfferItem>
 
-          <MainLeftOfferItem>
-            <MainLeftOfferItemImage></MainLeftOfferItemImage>
-            <MainLeftOfferItemContent>
-              <MainLeftOfferItemHeader>
-                (2)시흥 블루베리
-              </MainLeftOfferItemHeader>
-              <MainLeftOfferItemDetail>
-                <span>체험기간</span>
-                <MainLeftOfferItemDetailReview>
-                  리뷰 100개
-                </MainLeftOfferItemDetailReview>
-              </MainLeftOfferItemDetail>
-              <MainLeftOfferItemLabel>이번주에 가볼만한</MainLeftOfferItemLabel>
-            </MainLeftOfferItemContent>
-          </MainLeftOfferItem>
+        <MainLeftOfferItem>
+          <MainLeftOfferItemImage></MainLeftOfferItemImage>
+          <MainLeftOfferItemContent>
+            <MainLeftOfferItemHeader>(2)시흥 블루베리</MainLeftOfferItemHeader>
+            <MainLeftOfferItemDetail>
+              <span>체험기간</span>
+              <MainLeftOfferItemDetailReview>
+                리뷰 100개
+              </MainLeftOfferItemDetailReview>
+            </MainLeftOfferItemDetail>
+            <MainLeftOfferItemLabel>이번주에 가볼만한</MainLeftOfferItemLabel>
+          </MainLeftOfferItemContent>
+        </MainLeftOfferItem>
 
-          <MainLeftOfferItem>
-            <MainLeftOfferItemImage></MainLeftOfferItemImage>
-            <MainLeftOfferItemContent>
-              <MainLeftOfferItemHeader>
-                (3)시흥 블루베리
-              </MainLeftOfferItemHeader>
-              <MainLeftOfferItemDetail>
-                <span>체험기간</span>
-                <MainLeftOfferItemDetailReview>
-                  리뷰 100개
-                </MainLeftOfferItemDetailReview>
-              </MainLeftOfferItemDetail>
-              <MainLeftOfferItemLabel>이번주에 가볼만한</MainLeftOfferItemLabel>
-            </MainLeftOfferItemContent>
-          </MainLeftOfferItem>
+        <MainLeftOfferItem>
+          <MainLeftOfferItemImage></MainLeftOfferItemImage>
+          <MainLeftOfferItemContent>
+            <MainLeftOfferItemHeader>(3)시흥 블루베리</MainLeftOfferItemHeader>
+            <MainLeftOfferItemDetail>
+              <span>체험기간</span>
+              <MainLeftOfferItemDetailReview>
+                리뷰 100개
+              </MainLeftOfferItemDetailReview>
+            </MainLeftOfferItemDetail>
+            <MainLeftOfferItemLabel>이번주에 가볼만한</MainLeftOfferItemLabel>
+          </MainLeftOfferItemContent>
+        </MainLeftOfferItem>
 
-          <MainLeftOfferItemBlank />
-        </CarouseWrapper>
-      </Carouse>
+        <MainLeftOfferItemBlank />
+      </CarouseWrapper>
 
-      <CarouseArrow case="right" onClick={() => onHandleClick("next")}>
-        <Image src={rightArrow} alt="" />
+      <CarouseArrow case="right">
+        <Image src={rightArrow} alt="" onClick={() => onHandleClick("next")} />
       </CarouseArrow>
-    </>
+    </Carouse>
   );
 };
 
