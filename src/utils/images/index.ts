@@ -8,3 +8,5 @@ export { default as rainOn } from "./rain_on.png";
 export { default as rainsunOn } from "./rainsun_on.png";
 export { default as sleetOn } from "./sleet_on.png";
 export { default as snowOn } from "./snow_on.png";
+export { default as leftArrow } from "./leftArrow.png";
+export { default as rightArrow } from "./rightArrow.png";

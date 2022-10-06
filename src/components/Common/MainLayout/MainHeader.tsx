@@ -13,10 +13,10 @@ const MainHeaderWrapper = styled.div`
   order: 0;
   flex-grow: 0;
 
-  @media ${(props) => props.theme.mobile} {
-    height: 60px;
-    font-size: 13px;
-  }
+  // @media ${(props) => props.theme.mobile} {
+  //   height: 60px;
+  //   font-size: 13px;
+  // }
 `;
 
 const MainHeader = () => {

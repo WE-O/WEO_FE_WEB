@@ -6,9 +6,9 @@ const MainLeftWrapper = styled.div`
   padding: 0 10px 0 0;
 
   font-size: 15px;
-  @media ${(props) => props.theme.mobile} {
-    font-size: 13px;
-  }
+  // @media ${(props) => props.theme.mobile} {
+  //   font-size: 13px;
+  // }
 `;
 
 const MainLeft = () => {
