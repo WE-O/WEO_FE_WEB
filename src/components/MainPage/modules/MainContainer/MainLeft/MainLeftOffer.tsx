@@ -24,7 +24,8 @@ export default MainLeftOffer;
 const MainLeftOfferWrapper = styled.div`
   border: none;
   height: 305px;
-  overflow: hidden;
+  position: relative;
+  width: 100%;
 `;
 
 const MainLeftOfferSpan = styled.span`

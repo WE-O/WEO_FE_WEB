@@ -51,7 +51,7 @@ const MainLeftWeather = () => {
 
     timer.current = setTimeout(() => {
       getLocation();
-    }, 500);
+    }, 150);
   }, [getLocation]);
 
   return (
@@ -85,10 +85,6 @@ const MainLeftWeather = () => {
 
 export default MainLeftWeather;
 
-interface Props {
-  type: string;
-}
-
 const MainLeftWeatherContents = styled.div`
   border-bottom: ${(props) => `1px solid ${props.theme.lightGrey1}`};
   height: 130px;
@@ -104,7 +100,7 @@ const MainLeftWeatherItem = styled.div`
   gap: 12px;
 `;
 
-const MainLeftWeatherSpan = styled.span<Props>`
+const MainLeftWeatherSpan = styled.span<{ type: string }>`
   font-weight: 400;
 
   ${(Props) =>
