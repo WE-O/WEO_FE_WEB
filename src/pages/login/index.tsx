@@ -34,7 +34,7 @@ const Login = () => {
     }, [])
 
     //! 카카오 로그인 함수
-    const kakaoLogin = async (authCode: string) => {
+    const kakaoLogin = (authCode: string) => {
         const formUrlEncoded = (x: any) =>
             Object.keys(x).reduce((p, c) => p + `&${c}=${encodeURIComponent(x[c])}`, '')
         const getTokenURL = "https://kauth.kakao.com/oauth/token"
@@ -42,7 +42,7 @@ const Login = () => {
             'Content-type': 'application/x-www-form-urlencoded;charset=utf-8',
         }
 
-        await axios.post(getTokenURL,
+        axios.post(getTokenURL,
             formUrlEncoded({
                 grant_type: "authorization_code",
                 client_id: KAKAO_REST_API_KEY,
@@ -51,12 +51,12 @@ const Login = () => {
             })
             , { headers }
         )
-            .then(async (res) => {
+            .then((res) => {
                 const accessToken = res.data.access_token;
                 const expires_in = res.data.expires_in;
                 //todo 해당 부분 수정해야한다 :) 
                 const callAPIURL = "http://101.101.217.55:8080/api/member/kakao/login";
-                await axios.get(callAPIURL, {
+                axios.get(callAPIURL, {
                     params: {
                         accessToken: accessToken,
                         expiresIn: expires_in

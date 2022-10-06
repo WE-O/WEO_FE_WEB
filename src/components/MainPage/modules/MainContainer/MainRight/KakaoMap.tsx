@@ -20,8 +20,10 @@ const KakaoMap = () => {
     document.head.appendChild(mapScript);
 
     const onLoadKakaoMap = () => {
+      
       let latitude = "33.450701";
       let longitude = "126.570667";
+
       window.kakao.maps.load(() => {
         const container = document.getElementById("map");
         const options = {
@@ -62,7 +64,10 @@ const KakaoMap = () => {
     };
     mapScript.addEventListener("load", onLoadKakaoMap);
 
-    return () => mapScript.removeEventListener("load", onLoadKakaoMap);
+    return () => {
+      mapScript.removeEventListener("load", onLoadKakaoMap);
+      document.head.removeChild(mapScript);
+    }
   }, []);
 
 
