@@ -1,0 +1,39 @@
+import styled from "styled-components";
+
+const MainLeftSearchContent = () => {
+  return (
+    <MainLeftSearchContentWrapper>
+      <MainLeftSearchContentItemWrapper>
+        <MainLeftSearchContentItem />
+        <MainLeftSearchContentItem />
+        <MainLeftSearchContentItem />
+        <MainLeftSearchContentItem />
+        <MainLeftSearchContentItem />
+      </MainLeftSearchContentItemWrapper>
+    </MainLeftSearchContentWrapper>
+  );
+};
+
+export default MainLeftSearchContent;
+
+const MainLeftSearchContentWrapper = styled.div`
+  width: 100%;
+  height: 560px;
+  overflow: scroll;
+`;
+
+const MainLeftSearchContentItemWrapper = styled.div`
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  gap: 25px;
+  flex-direction: column;
+  position: relative;
+`;
+
+const MainLeftSearchContentItem = styled.div`
+  width: 100%;
+  height: 170px;
+  border: ${(props) => `1px solid ${props.theme.primaryGreen}`};
+  border-radius: 10px;
+`;
