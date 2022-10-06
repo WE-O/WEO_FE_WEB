@@ -15,6 +15,7 @@ import { call } from "../../../../../api/apis";
 
   3. KakaoMapSearchComponent 부분 value, onKeyDown 불필요
   => 1,2번 수정하면 value, onKeyDown 불필요
+  => 사실상 onChange도 키워드 자동완성 기능 없으면 불필요
 
   4. 함수 선언 시 메모제이션 추가하기
   => 나중에 하려니까 귀찮; 개발하면서 추가해야 좋은듯요
