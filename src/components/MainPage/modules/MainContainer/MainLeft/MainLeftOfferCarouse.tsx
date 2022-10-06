@@ -63,16 +63,19 @@ const MainLeftOfferCarouse = () => {
     },
     [CarouseRef]
   );
-  const onHandleMouseMove = useCallback((e: MouseEvent) => {
-    e.preventDefault();
-    if (CarouseRef.current) {
-      const move: number =
-        e?.pageX - CarouseRef.current.offsetLeft - startXWidth.current;
-      CarouseRef.current.style.transform = `translateX(${
-        offsetX.current + move
-      }px)`;
-    }
-  }, []);
+  const onHandleMouseMove = useCallback(
+    (e: MouseEvent) => {
+      e.preventDefault();
+      if (CarouseRef.current) {
+        const move: number =
+          e?.pageX - CarouseRef.current.offsetLeft - startXWidth.current;
+        CarouseRef.current.style.transform = `translateX(${
+          offsetX.current + move
+        }px)`;
+      }
+    },
+    [CarouseRef]
+  );
 
   return (
     <Carouse onMouseDown={onHandleMouseDown}>
@@ -161,7 +164,10 @@ const CarouseArrow = styled.button<{
   background: rgba(250, 250, 250, 0.3);
   height: 100%;
   transform: translateY(-50%);
-  cursor: pointer;
+
+  img {
+    cursor: pointer;
+  }
 
   ${(Props) =>
     Props.case === "left" &&
