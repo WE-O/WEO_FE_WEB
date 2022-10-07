@@ -10,3 +10,5 @@ export { default as sleetOn } from "./sleet_on.png";
 export { default as snowOn } from "./snow_on.png";
 export { default as leftArrow } from "./leftArrow.png";
 export { default as rightArrow } from "./rightArrow.png";
+export { default as likeOff } from "./like_off.png";
+export { default as likeOn } from "./like_on.png";

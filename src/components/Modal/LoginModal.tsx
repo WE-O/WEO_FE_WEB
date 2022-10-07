@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { NaverLoginButton } from "../Common/Button/NaverLoginButton";
 import { KakaoLoginButton } from "../Common/Button/KakaoLoginButton";
 import { useAppDispatch } from "../../store/hooks";
-import useOnClickOutside from "./hooks/useOnClickOutside";
+import useOnClickOutside from "../Common/hooks/useOnClickOutside";
 import { deleteModal } from "../../store/modules/ModalSlice";
 
 interface props {

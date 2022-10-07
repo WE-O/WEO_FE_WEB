@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useRef } from "react";
 import { useAppDispatch } from "../../../store/hooks";
 import { deleteModal } from "../../../store/modules/ModalSlice";
-import useOnClickOutside from "../hooks/useOnClickOutside";
+import useOnClickOutside from "../../Common/hooks/useOnClickOutside";
 import DetailModalHeader from "./DetailModalHeader";
 import DetailModalLeft from "./DetailModalLeft";
 

@@ -1,13 +1,10 @@
 import styled from "styled-components";
+import MainLeftSearchContentItem from "./MainLeftSearchContentItem";
 
 const MainLeftSearchContent = () => {
   return (
     <MainLeftSearchContentWrapper>
       <MainLeftSearchContentItemWrapper>
-        <MainLeftSearchContentItem />
-        <MainLeftSearchContentItem />
-        <MainLeftSearchContentItem />
-        <MainLeftSearchContentItem />
         <MainLeftSearchContentItem />
       </MainLeftSearchContentItemWrapper>
     </MainLeftSearchContentWrapper>
@@ -29,11 +26,4 @@ const MainLeftSearchContentItemWrapper = styled.div`
   gap: 25px;
   flex-direction: column;
   position: relative;
-`;
-
-const MainLeftSearchContentItem = styled.div`
-  width: 100%;
-  height: 170px;
-  border: ${(props) => `1px solid ${props.theme.primaryGreen}`};
-  border-radius: 10px;
 `;

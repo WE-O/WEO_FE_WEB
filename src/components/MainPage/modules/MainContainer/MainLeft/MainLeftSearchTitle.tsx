@@ -1,17 +1,33 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { SelectBox } from "../../../../Common/SelectBox";
 
 const OPTIONS = [
-  { value: "전체", name: "전체(디자인 수정할 예정)" },
-  { value: "셀렉트 테스트1", name: "셀렉트 테스트1" },
-  { value: "셀렉트 테스트2", name: "셀렉트 테스트2" },
+  { key: "전체", value: "전체" },
+  { key: "셀렉트 테스트1", value: "셀렉트 테스트1" },
+  { key: "셀렉트 테스트2", value: "셀렉트 테스트2" },
 ];
 
 const MainLeftSearchTitle = () => {
+  const [selectValue, setSelectValue] = useState<string>("");
+
   return (
     <>
       <MainLeftSearchTitleWrapper>
-        {/* <SelectBox defaultValue={"전체"} options={OPTIONS} /> */}
+        <SelectBox
+          value={selectValue}
+          defaultValue={"전체"}
+          options={OPTIONS}
+          onHandleSelectChange={(select) => setSelectValue((prev) => select)}
+        />
+        <div
+          style={{
+            position: "absolute",
+            right: "10px",
+          }}
+        >
+          영업중인 장소
+        </div>
       </MainLeftSearchTitleWrapper>
     </>
   );
@@ -23,9 +39,9 @@ const MainLeftSearchTitleWrapper = styled.div`
   border-bottom: ${(props) => `1px solid ${props.theme.lightGrey1}`};
   width: 100%;
   height: 120px;
+  position: relative;
   margin: 0 0 20px 0;
-
   display: flex;
-  align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 40px 5px;
 `;

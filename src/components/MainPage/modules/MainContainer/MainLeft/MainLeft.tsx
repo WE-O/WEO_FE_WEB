@@ -21,8 +21,11 @@ const MainLeftWrapper = styled.div`
 const MainLeft = () => {
   return (
     <MainLeftWrapper>
+      {/* 검색영역 */}
       {/* <MainLeftSearchTitle />
       <MainLeftSearchContent /> */}
+
+      {/* 기본영역 */}
       <MainLeftWeather />
       <MainLeftPlace />
       <MainLeftOffer />
