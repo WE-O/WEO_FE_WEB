@@ -6,6 +6,9 @@ const OPTIONS = [
   { key: "전체", value: "전체" },
   { key: "셀렉트 테스트1", value: "셀렉트 테스트1" },
   { key: "셀렉트 테스트2", value: "셀렉트 테스트2" },
+  { key: "셀렉트 테스트3", value: "셀렉트 테스트3" },
+  { key: "셀렉트 테스트4", value: "셀렉트 테스트4" },
+  { key: "셀렉트 테스트5", value: "셀렉트 테스트5" },
 ];
 
 const MainLeftSearchTitle = () => {
