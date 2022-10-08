@@ -46,7 +46,6 @@ const MainLeftOfferCarouse = () => {
       if (CarouseRef.current) {
         const endXWidth: number = e?.pageX - CarouseRef.current.offsetLeft;
         const move: number = endXWidth - startXWidth.current;
-        console.log(move);
         CarouseRef.current.removeEventListener("mousemove", onHandleMouseMove);
         document.removeEventListener("mouseup", onHandleMousUp);
 
