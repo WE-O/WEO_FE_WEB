@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { SelectBox } from "../../../../Common/SelectBox";
+import { CheckBox } from "../../../../Common/CheckBox";
 
 const OPTIONS = [
   { key: "전체", value: "전체" },
@@ -21,16 +22,16 @@ const MainLeftSearchTitle = () => {
           value={selectValue}
           defaultValue={"전체"}
           options={OPTIONS}
-          onHandleSelectChange={(select) => setSelectValue((prev) => select)}
+          onHandleSelectChange={(select) => setSelectValue(select)}
         />
-        <div
-          style={{
-            position: "absolute",
-            right: "10px",
-          }}
-        >
-          영업중인 장소
-        </div>
+        <CheckBoxWrapper>
+          <CheckBox
+            onHandleSelectChange={() => {
+              // 영업중인 장소만 보기 이벤트
+            }}
+          />
+          <span>영업중인 장소만 보기</span>
+        </CheckBoxWrapper>
       </MainLeftSearchTitleWrapper>
     </>
   );
@@ -46,5 +47,20 @@ const MainLeftSearchTitleWrapper = styled.div`
   margin: 0 0 20px 0;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 40px 5px;
+`;
+
+const CheckBoxWrapper = styled.div`
+  position: absolute;
+  right: 10px;
+  display: flex;
+  align-items: center;
+
+  span {
+    margin-left: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 32px;
+  }
 `;
