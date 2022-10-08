@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import {
   MainLeftWeather,
   MainLeftPlace,
   MainLeftOffer,
   MainLeftSearchTitle,
   MainLeftSearchContent,
-} from "./index";
+} from './index';
 
 const MainLeftWrapper = styled.div`
   width: 400px;
