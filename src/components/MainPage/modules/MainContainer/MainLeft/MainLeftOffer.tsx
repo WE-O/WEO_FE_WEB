@@ -1,9 +1,9 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 import {
   MainLeftDeafultItemWrapper,
   MainLeftDeafultItemTitle,
-} from "./MainLefCss";
-import MainLeftOfferCarouse from "./MainLeftOfferCarouse";
+} from './MainLefCss';
+import MainLeftOfferCarouse from './MainLeftOfferCarouse';
 
 const MainLeftOffer = () => {
   return (

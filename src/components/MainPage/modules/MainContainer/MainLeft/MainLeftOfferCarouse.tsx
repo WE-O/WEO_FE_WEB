@@ -1,7 +1,7 @@
-import styled, { css } from "styled-components";
-import Image from "next/image";
-import { useCallback, useRef } from "react";
-import { leftArrow, rightArrow } from "../../../../../utils/images";
+import styled, { css } from 'styled-components';
+import Image from 'next/image';
+import { useCallback, useRef } from 'react';
+import { leftArrow, rightArrow } from '../../../../../utils/images';
 
 const MainLeftOfferCarouse = () => {
   const CarouseRef = useRef<HTMLDivElement>(null);
@@ -12,12 +12,12 @@ const MainLeftOfferCarouse = () => {
 
   const onHandleClick = useCallback(
     (type: string): void => {
-      if (type === "prev" && curItemCnt.current !== 1) {
+      if (type === 'prev' && curItemCnt.current !== 1) {
         offsetX.current += 258;
         curItemCnt.current -= 1;
       }
 
-      if (type === "next" && curItemCnt.current !== totalItemCnt.current) {
+      if (type === 'next' && curItemCnt.current !== totalItemCnt.current) {
         offsetX.current -= 258;
         curItemCnt.current += 1;
       }
@@ -26,7 +26,7 @@ const MainLeftOfferCarouse = () => {
         CarouseRef.current.style.transform = `translateX(${offsetX.current}px)`;
       }
     },
-    [CarouseRef]
+    [CarouseRef],
   );
 
   const onHandleMouseDown = useCallback(
@@ -34,11 +34,11 @@ const MainLeftOfferCarouse = () => {
       e.preventDefault();
       if (CarouseRef.current) {
         startXWidth.current = e.pageX - CarouseRef.current.offsetLeft;
-        CarouseRef.current.addEventListener("mousemove", onHandleMouseMove);
-        document.addEventListener("mouseup", onHandleMousUp);
+        CarouseRef.current.addEventListener('mousemove', onHandleMouseMove);
+        document.addEventListener('mouseup', onHandleMousUp);
       }
     },
-    [CarouseRef]
+    [CarouseRef],
   );
   const onHandleMousUp = useCallback(
     (e: MouseEvent) => {
@@ -46,21 +46,21 @@ const MainLeftOfferCarouse = () => {
       if (CarouseRef.current) {
         const endXWidth: number = e?.pageX - CarouseRef.current.offsetLeft;
         const move: number = endXWidth - startXWidth.current;
-        CarouseRef.current.removeEventListener("mousemove", onHandleMouseMove);
-        document.removeEventListener("mouseup", onHandleMousUp);
+        CarouseRef.current.removeEventListener('mousemove', onHandleMouseMove);
+        document.removeEventListener('mouseup', onHandleMousUp);
 
         if (move >= 70) {
-          onHandleClick("prev");
+          onHandleClick('prev');
         } else if (move <= -70) {
-          onHandleClick("next");
+          onHandleClick('next');
         } else {
-          onHandleClick("reload");
+          onHandleClick('reload');
         }
 
         return;
       }
     },
-    [CarouseRef]
+    [CarouseRef],
   );
   const onHandleMouseMove = useCallback(
     (e: MouseEvent) => {
@@ -73,13 +73,13 @@ const MainLeftOfferCarouse = () => {
         }px)`;
       }
     },
-    [CarouseRef]
+    [CarouseRef],
   );
 
   return (
     <Carouse onMouseDown={onHandleMouseDown}>
       <CarouseArrow case="left">
-        <Image src={leftArrow} alt="" onClick={() => onHandleClick("prev")} />
+        <Image src={leftArrow} alt="" onClick={() => onHandleClick('prev')} />
       </CarouseArrow>
 
       <CarouseWrapper ref={CarouseRef}>
@@ -131,7 +131,7 @@ const MainLeftOfferCarouse = () => {
       </CarouseWrapper>
 
       <CarouseArrow case="right">
-        <Image src={rightArrow} alt="" onClick={() => onHandleClick("next")} />
+        <Image src={rightArrow} alt="" onClick={() => onHandleClick('next')} />
       </CarouseArrow>
     </Carouse>
   );
@@ -170,13 +170,13 @@ const CarouseArrow = styled.button<{
   }
 
   ${(Props) =>
-    Props.case === "left" &&
+    Props.case === 'left' &&
     css`
       left: 0;
     `}
 
   ${(Props) =>
-    Props.case === "right" &&
+    Props.case === 'right' &&
     css`
       right: 0;
     `}
