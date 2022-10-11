@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { useAppDispatch, useAppSelector } from "../../../../../store/hooks";
+import { kakaoMap } from "../../../../../store/modules/MapSlice";
 import KakaoMapSearch from "./KakaoMapSearch";
+import { Map, MapMarker, useInjectKakaoMapApi } from "react-kakao-maps-sdk"
 
 declare global {
   interface Window {
@@ -10,74 +13,84 @@ declare global {
 
 const KakaoMap = () => {
   const KakaoMapRef = useRef(null);
-  let [Lat, setLat] = useState(null);
-  let [Lng, setLng] = useState(null);
+  const keyword = useAppSelector((state) => state.searchKey.searchKeyword);
+  const userLat = useAppSelector((state) => state.user.lat);
+  const userLng = useAppSelector((state) => state.user.lng);
+
+  const dispatch = useAppDispatch();
+
+  const [info, setInfo] = useState<any>()
+  const [markers, setMarkers] = useState<any[]>([])
+  const [map, setMap] = useState<any>()
+
+
 
   useEffect(() => {
-    const mapScript = document.createElement("script");
-    mapScript.async = true;
-    mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JS_API_KEY}&autoload=false`;
-    document.head.appendChild(mapScript);
+    if (!map) return
+    const ps = new kakao.maps.services.Places()
 
-    const onLoadKakaoMap = () => {
-      
-      let latitude = "33.450701";
-      let longitude = "126.570667";
-
-      window.kakao.maps.load(() => {
-        const container = document.getElementById("map");
-        const options = {
-          center: new window.kakao.maps.LatLng(latitude, longitude),
-        };
-        const map = new window.kakao.maps.Map(container, options);
-        const markerPosition = new window.kakao.maps.LatLng(
-          latitude,
-          longitude
-        );
-        const marker = new window.kakao.maps.Marker({
-          position: markerPosition,
-        });
-        marker.setMap(map);
-
-        // 지도 클릭 시 위도/경도 받아와서 setState
-        window.kakao.maps.event.addListener(
-          map,
-          "click",
-          function (mouseEvent: { latLng: any }) {
-            // 클릭한 위도, 경도 정보를 가져옵니다
-            const latlng = mouseEvent.latLng;
-            // 마커 위치를 클릭한 위치로 옮깁니다
-            marker.setPosition(latlng);
-            console.log("위도 =", latlng.getLat(), "경도 =", latlng.getLng());
-          }
-        );
-
-        window.kakao.maps.event.addListener(map, 'dragend', function () {
-          // 지도 중심좌표를 얻어옵니다 
-          let latlng = map.getCenter();
-          console.log("위도 =", latlng.getLat(), "경도 =", latlng.getLng());
-        });
+    ps.keywordSearch(keyword, (data, status, _pagination) => {
+      if (status === kakao.maps.services.Status.OK) {
+        debugger
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+        // LatLngBounds 객체에 좌표를 추가합니다
+        const bounds = new kakao.maps.LatLngBounds()
+        let markers = []
 
 
+        for (var i = 0; i < data.length; i++) {
+          // @ts-ignore
+          markers.push({
+            position: {
+              lat: data[i].y,
+              lng: data[i].x,
+            },
+            content: data[i].place_name,
+          })
+          // @ts-ignore
+          bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x))
+        }
+        setMarkers(markers)
 
-      });
-    };
-    mapScript.addEventListener("load", onLoadKakaoMap);
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+        map.setBounds(bounds)
+      }
+    }, {
+      page:1
+    })
+  }, [keyword])
 
-    return () => {
-      mapScript.removeEventListener("load", onLoadKakaoMap);
-      document.head.removeChild(mapScript);
-    }
-  }, []);
 
 
   return (
     <>
       <KakaoMapSearchWrapper>
-        <KakaoMapSearch/>
+        <KakaoMapSearch />
       </KakaoMapSearchWrapper>
+      <KakaoMapWrapper // 지도를 표시할 Container
+        center={{
+          // 지도의 중심좌표
+          lat: userLat,
+          lng: userLng,
+        }}
+        ref={KakaoMapRef}
+        onCreate={setMap}
+        level={3} // 지도의 확대 레벨
+      >
+        {markers.map((marker) => (
+          <MapMarker
+            key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
+            position={marker.position}
+            onClick={() => setInfo(marker)}
+          >
+            {info && info.content === marker.content && (
+              <div style={{ color: "#000" }}>{marker.content}</div>
+            )}
+          </MapMarker>
+        ))}
 
-      <KakaoMapWrapper id="map" ref={KakaoMapRef} />
+
+      </KakaoMapWrapper>
     </>
   );
 };
@@ -91,7 +104,7 @@ const KakaoMapSearchWrapper = styled.div`
   text-align: center;
 `;
 
-const KakaoMapWrapper = styled.div`
+const KakaoMapWrapper = styled(Map)`
   width: 100%;
   height: 100%;
 `;

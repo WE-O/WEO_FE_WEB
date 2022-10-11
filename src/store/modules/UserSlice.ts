@@ -5,7 +5,7 @@ export interface userState {
   lng: number; // 경도
 }
 
-const initialState: userState = { lat: -1, lng: -1 };
+const initialState: userState = { lat: 37.5666805, lng: 126.9784147 };
 
 const UserSlice = createSlice({
   name: "UserSlice",
