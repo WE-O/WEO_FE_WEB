@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface modalState {
   modalList: string[];
@@ -7,12 +7,12 @@ export interface modalState {
 const initialState: modalState = { modalList: [] };
 
 const ModalSlice = createSlice({
-  name: "ModalList",
+  name: 'ModalList',
   initialState,
   reducers: {
     addModal: (state, action: PayloadAction<string>) => {
       const filtered = state.modalList.filter(
-        (item) => item === action.payload
+        (item) => item === action.payload,
       );
 
       if (filtered.length === 0) {
@@ -21,9 +21,7 @@ const ModalSlice = createSlice({
     },
 
     deleteModal: (state, action: PayloadAction<string>) => {
-      state.modalList = state.modalList.filter(
-        (item) => item !== action.payload
-      );
+      state.modalList.pop();
     },
 
     clearModal: (state) => {

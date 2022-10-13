@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components";
-import Image from "next/image";
-import { likeOn, likeOff } from "../../../../../utils/images";
+import styled, { css } from 'styled-components';
+import Image from 'next/image';
+import { likeOn, likeOff } from '../../../../../utils/images';
 
 const MainLeftSearchContentItem = () => {
   return (
@@ -10,7 +10,7 @@ const MainLeftSearchContentItem = () => {
           <ItemSpan case="titleName">코코 다육이1</ItemSpan>
           <ItemSpan case="titleTag">원예,화훼농원</ItemSpan>
           <ItemTitleImg>
-            <Image src={likeOff} alt="" />
+            <Image src={likeOn} alt="" />
           </ItemTitleImg>
         </ItemTitle>
         <ItemContent>
@@ -177,14 +177,14 @@ const ItemSpan = styled.span<{
   isMagam?: boolean;
 }>`
   ${(Props) =>
-    Props.case === "titleName" &&
+    Props.case === 'titleName' &&
     css`
       font-weight: 700;
       font-size: 24px;
     `}
 
   ${(Props) =>
-    Props.case === "titleTag" &&
+    Props.case === 'titleTag' &&
     css`
       padding-left: 10px;
       font-size: 14px;
@@ -192,28 +192,28 @@ const ItemSpan = styled.span<{
     `}
 
     ${(Props) =>
-    Props.case === "contentTime" &&
+    Props.case === 'contentTime' &&
     css`
       font-size: 14px;
       margin-right: 15px;
-      color: ${Props.isMagam ? "red" : "color"};
+      color: ${Props.isMagam ? 'red' : 'color'};
     `}
 
     ${(Props) =>
-    Props.case === "contentAddress" &&
+    Props.case === 'contentAddress' &&
     css`
       font-size: 14px;
     `}
 
     ${(Props) =>
-    Props.case === "contentTag" &&
+    Props.case === 'contentTag' &&
     css`
       font-size: 14px;
       color: ${(props) => props.theme.primaryGreen};
     `}
 
     ${(Props) =>
-    Props.case === "contentCount" &&
+    Props.case === 'contentCount' &&
     css`
       font-size: 14px;
       color: #666666;
