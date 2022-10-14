@@ -1,7 +1,8 @@
 import axios from "axios";
+import Image from "next/image";
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import Router from "next/router";
+import { loginBanner } from "../../utils/images"
 
 
 const Login = () => {
@@ -110,19 +111,43 @@ const Login = () => {
 
 
     return (
-        <div>
-            테스트용 로그인 페이지
-            <br />
+        <LoginPageWrapper>
+            <LoginBoxContainer>
+                <LoginButtonContainer>
 
-            <div id='naverIdLogin' />
+                    1) 푸터붙이기<br />
+                    2) 카카오 네이버 로그인 버튼 css 수정하기<br />
+                    3) 글씨 크기 뭐 그런거 수정하기<br />
+                    4) 배경 이미지 그라데이션 넣기<br /><br />
 
-            <KakaoLoginButtonCase onClick={(e) => onBtnClick(e, 'kakao')}>
-                <img
-                    src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
-                    width="285"
+                    식식물물, 새로운 식물 집사 플랫폼
+                    <br />
+                    나와 함께 할 반려식물을 찾아보세요
+                    <br />
+                    🪴
+                    <br />
+                    
+                    <div id='naverIdLogin'/>
+                    <KakaoLoginButtonCase onClick={(e) => onBtnClick(e, 'kakao')}>
+                        <img
+                            src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
+                            width="285"
+                        />
+                    </KakaoLoginButtonCase>
+                </LoginButtonContainer>
+            </LoginBoxContainer>
+
+
+            <BackgroundImageWrapper>
+                <Image
+                    src={loginBanner}
+                    alt="메인 배경 이미지"
+                    layout="responsive"
+                    objectFit="cover"
+                    objectPosition="center"
                 />
-            </KakaoLoginButtonCase>
-        </div>
+            </BackgroundImageWrapper>
+        </LoginPageWrapper>
     )
 }
 
@@ -130,5 +155,38 @@ const KakaoLoginButtonCase = styled.a`
 id: custom-login-btn;
 cursor: pointer;
 `;
+
+const LoginPageWrapper = styled.div`
+    position: relative;
+`
+
+const BackgroundImageWrapper = styled.div`
+    // position:fixed;
+    width:100%;
+    height:100%;
+    opacity: 50%;
+`
+
+const LoginButtonContainer = styled.div`
+    // position:absolute;
+    // z-index:1;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+`
+const LoginBoxContainer = styled.div`
+    top:25%;
+    left:25%;
+    z-index: 1;
+    position: absolute;
+    width: 50vw;
+    height: 50vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+`
 
 export default Login;

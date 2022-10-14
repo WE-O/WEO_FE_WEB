@@ -17,3 +17,4 @@ export { default as address } from './address.png';
 export { default as delivery } from './delivery.png';
 export { default as phone } from './phone.png';
 export { default as url } from './url.png';
+export { default as loginBanner } from './loginBanner.png';
