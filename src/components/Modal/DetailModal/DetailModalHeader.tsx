@@ -1,18 +1,14 @@
-import Link from "next/link";
-import styled from "styled-components";
+import Link from 'next/link';
+import styled, { css } from 'styled-components';
 
 const DetailModalHeader = () => {
   return (
     <DetailModalHeaderWrapper>
-      <p style={{ fontSize: "20px" }}>상호명</p>
-      <p style={{ fontSize: "15px" }}>업종 조회수 리뷰수</p>
+      <HeaderSpan case="title">상호명</HeaderSpan>
+      <HeaderSpan case="sub">원예, 화훼농원</HeaderSpan>
       <DetailModalHeaderLink>
-        <Link href={"/"}>
-          <DetailModalHeaderLinkItem>후기 작성하기</DetailModalHeaderLinkItem>
-        </Link>
-        <Link href={"/"}>
-          <DetailModalHeaderLinkItem>정보 수정 요청</DetailModalHeaderLinkItem>
-        </Link>
+        <DetailModalHeaderLinkItem>후기 작성하기</DetailModalHeaderLinkItem>
+        <DetailModalHeaderLinkItem>정보 수정 요청</DetailModalHeaderLinkItem>
       </DetailModalHeaderLink>
     </DetailModalHeaderWrapper>
   );
@@ -24,18 +20,39 @@ const DetailModalHeaderWrapper = styled.div`
   position: relative;
   text-align: center;
   text-decoration: none;
-  padding: 0px 30px;
-  color: black;
+  margin: 0px 0px 30px 0px;
 `;
 
 const DetailModalHeaderLink = styled.div`
+  display: flex;
+  top: 0px;
+  gap: 20px;
   position: absolute;
-  bottom: 0px;
   right: 0px;
 `;
 
-const DetailModalHeaderLinkItem = styled.a`
-  text-decoration: underline;
-  margin: 10px;
-  color: black;
+const DetailModalHeaderLinkItem = styled.button`
+  width: 120px;
+  height: 35px;
+  color: ${(props) => props.theme.primaryGreen};
+  border: ${(props) => `1px solid ${props.theme.primaryGreen}`};
+  background: white;
+  border-radius: 10px;
+`;
+
+const HeaderSpan = styled.span<{ case: string }>`
+  ${(Props) =>
+    Props.case === 'title' &&
+    css`
+      font-weight: 700;
+      font-size: 32px;
+      margin-right: 20px;
+    `}
+
+  ${(Props) =>
+    Props.case === 'sub' &&
+    css`
+      font-size: 16px;
+      color: ${(props) => props.theme.grey1};
+    `}
 `;

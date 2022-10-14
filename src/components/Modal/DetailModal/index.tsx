@@ -1,1 +1,1 @@
-import { default as DetailModal } from "./DetailModal";
+import { default as DetailModal } from './DetailModal';
