@@ -19,11 +19,7 @@ interface imageProps {
 
 const Login = () => {
 
-    const REDIRECT_URI = process.env.NEXT_PUBLIC_CALLBACK_URL;
-    const KAKAO_REST_API_KEY = process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY;
-    const NAVER_Client_ID = process.env.NEXT_PUBLIC_NAVER_CLIENT_ID;
-    const NAVER_Client_Secret = process.env.NEXT_PUBLIC_NAVER_CLIENT_SECRET;
-    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY}&redirect_uri=${process.env.NEXT_PUBLIC_CALLBACK_URL}&response_type=code`;
 
     let naverLogin: any;
     let naver: any;
@@ -57,8 +53,8 @@ const Login = () => {
         axios.post(getTokenURL,
             formUrlEncoded({
                 grant_type: "authorization_code",
-                client_id: KAKAO_REST_API_KEY,
-                redirect_uri: REDIRECT_URI,
+                client_id: process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY,
+                redirect_uri: process.env.NEXT_PUBLIC_CALLBACK_URL,
                 code: authCode
             })
             , { headers }
@@ -84,8 +80,8 @@ const Login = () => {
 
     const naverInit = () => {
         naverLogin = new naver.LoginWithNaverId({
-            clientId: NAVER_Client_ID, // ClientID
-            callbackUrl: REDIRECT_URI,
+            clientId: process.env.NEXT_PUBLIC_NAVER_CLIENT_ID, // ClientID
+            callbackUrl: process.env.NEXT_PUBLIC_CALLBACK_URL,
             isPopup: false, // 팝업 형태로 인증 여부
             loginButton: {
                 color: 'green', // 색상

@@ -1,9 +1,11 @@
 import axios from "axios";
+import Image from "next/image";
 import { KeyboardEvent, useState } from "react";
 import styled from "styled-components";
 import { call } from "../../../../../api/apis";
 import { useAppDispatch } from "../../../../../store/hooks";
 import { changeSearchKeyword } from "../../../../../store/modules/SearchKeywordSlice";
+import { search_icon } from "../../../../../utils/images";
 
 /*
 이 부분들 수정하면 좋을듯요?
@@ -25,9 +27,9 @@ import { changeSearchKeyword } from "../../../../../store/modules/SearchKeywordS
 */
 
 const KakaoMapSearch = () => {
-  
+
   const dispatch = useAppDispatch();
- 
+
 
   // 추후 클릭이벤트 달아주기
   const handleOnSearch = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -38,10 +40,21 @@ const KakaoMapSearch = () => {
 
 
   return (
-    <KakaoMapSearchComponent
-      placeholder="내 주변 식물가게로 검색해보세요."
-      onKeyDown={(e) => handleOnSearch(e)}
-    />
+    <div>
+      <KakaoMapSearchComponent
+        placeholder="내 주변 식물가게로 검색해보세요. (예시 : 성수동 꽃집)"
+        onKeyDown={(e) => handleOnSearch(e)}
+
+      />
+
+      {/* <Image
+        src={search_icon}
+      /> */}
+
+
+    </div>
+
+
   );
 };
 

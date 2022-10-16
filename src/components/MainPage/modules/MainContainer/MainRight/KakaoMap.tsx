@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { SetStateAction, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../../../../store/hooks";
 import { kakaoMap } from "../../../../../store/modules/MapSlice";
@@ -22,25 +22,28 @@ const KakaoMap = () => {
   const [info, setInfo] = useState<any>()
   const [markers, setMarkers] = useState<any[]>([])
   const [map, setMap] = useState<any>()
+  const [isSearch, setIsSearch] = useState<Boolean>(false);
 
 
 
   useEffect(() => {
     if (!map) return
-    const ps = new kakao.maps.services.Places()
+
+    const ps = new kakao.maps.services.Places();
+    const mark: SetStateAction<any[]> = [];
 
     ps.keywordSearch(keyword, (data, status, _pagination) => {
+      debugger
       if (status === kakao.maps.services.Status.OK) {
-        debugger
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
         const bounds = new kakao.maps.LatLngBounds()
-        let markers = []
 
+        if (_pagination.hasNextPage) { _pagination.nextPage() }
 
-        for (var i = 0; i < data.length; i++) {
+        for (let i = 0; i < data.length; i++) {
           // @ts-ignore
-          markers.push({
+          mark.push({
             position: {
               lat: data[i].y,
               lng: data[i].x,
@@ -50,16 +53,29 @@ const KakaoMap = () => {
           // @ts-ignore
           bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x))
         }
-        setMarkers(markers)
-
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-        map.setBounds(bounds)
+        if (_pagination.hasNextPage === false) {
+          map.setBounds(bounds);
+          setIsSearch(!isSearch);
+          setMarkers(mark);
+        }
+
       }
-    }, {
-      page:1
-    })
+    },
+      {
+        // 여기에 지도 제한 둬야할 듯 뭔가 추가적인 정책이 필요하다.
+        // size:45
+      })
+
+
   }, [keyword])
 
+  useEffect(() => {
+    setMarkers(markers);
+    debugger
+  }, [isSearch])
+
+  
 
 
   return (

@@ -21,3 +21,5 @@ export { default as url } from './url.png';
 export { default as loginBanner } from './loginBanner.png';
 export { default as kakaoLoginButton } from './kakaoLoginButton.png';
 export { default as naverLoginButton } from './naverLoginButton.png';
+// 지도 위에 사용되는 이미지
+export { default as search_icon } from './search_icon.png';
