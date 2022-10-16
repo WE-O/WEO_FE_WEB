@@ -4,6 +4,10 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { loginBanner } from "../../utils/images"
 
+interface innerTextStyleProps {
+    readonly textSize?: string;
+    readonly textColor?: string;
+};
 
 const Login = () => {
 
@@ -113,21 +117,27 @@ const Login = () => {
     return (
         <LoginPageWrapper>
             <LoginBoxContainer>
+
+                <LoginExplainContainer>
+                    <LoginInnerTextWrapper textSize={"24px"} textColor={"black"}>
+                        식식물물, 새로운 식물 집사 플랫폼
+                    </LoginInnerTextWrapper>
+
+                    <LoginInnerTextWrapper textSize={"16x"} textColor={"gray"}>
+                        나와 함께 할 반려식물을 찾아보세요
+                    </LoginInnerTextWrapper>
+
+                    <LoginInnerTextWrapper textSize={"26x"}>
+                        🪴
+                    </LoginInnerTextWrapper>
+
+
+                </LoginExplainContainer>
+
+
+
                 <LoginButtonContainer>
-
-                    1) 푸터붙이기<br />
-                    2) 카카오 네이버 로그인 버튼 css 수정하기<br />
-                    3) 글씨 크기 뭐 그런거 수정하기<br />
-                    4) 배경 이미지 그라데이션 넣기<br /><br />
-
-                    식식물물, 새로운 식물 집사 플랫폼
-                    <br />
-                    나와 함께 할 반려식물을 찾아보세요
-                    <br />
-                    🪴
-                    <br />
-                    
-                    <div id='naverIdLogin'/>
+                    <div id='naverIdLogin' />
                     <KakaoLoginButtonCase onClick={(e) => onBtnClick(e, 'kakao')}>
                         <img
                             src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
@@ -158,35 +168,54 @@ cursor: pointer;
 
 const LoginPageWrapper = styled.div`
     position: relative;
-`
+    width: 100vw;
+    height: 100vh;
+`;
 
 const BackgroundImageWrapper = styled.div`
-    // position:fixed;
     width:100%;
     height:100%;
-    opacity: 50%;
-`
+`;
+
+const LoginExplainContainer = styled.div`
+    
+`;
+const LoginInnerTextWrapper = styled.p <innerTextStyleProps>`
+    text-align:center;
+    font-size: ${(props) => props.textSize};
+    color: ${(props) => props.textColor};
+    
+`;
 
 const LoginButtonContainer = styled.div`
-    // position:absolute;
-    // z-index:1;
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
-`
+    
+`;
+
 const LoginBoxContainer = styled.div`
-    top:25%;
-    left:25%;
+    // top:40%;
+    // left:40%;
+    left: 710px;
+    top: 223px;
     z-index: 1;
     position: absolute;
-    width: 50vw;
-    height: 50vh;
+    width: 500px;
+    height: 487px;
     background-color: white;
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: center;
     align-items: center;
-`
+
+
+    left: 50%;
+    top: 50%;
+
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+`;
 
 export default Login;
