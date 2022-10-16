@@ -137,14 +137,10 @@ const Login = () => {
                         나와 함께 할 반려식물을 찾아보세요
                     </LoginInnerTextWrapper>
 
-                    <LoginInnerTextWrapper textSize={"26x"}>
+                    <LoginInnerTextWrapper textSize={"30px"}>
                         🪴
                     </LoginInnerTextWrapper>
-
-
                 </LoginExplainContainer>
-
-
 
                 <LoginButtonContainer>
                     {/* display : none */}
@@ -175,6 +171,7 @@ const Login = () => {
                     layout="responsive"
                     objectFit="cover"
                     objectPosition="center"
+                    placeholder={"blur"}
                 />
             </BackgroundImageWrapper>
             {/* <Footer/> */}
@@ -203,7 +200,7 @@ const BackgroundImageWrapper = styled.div`
 `;
 
 const LoginExplainContainer = styled.div`
-    
+    margin-bottom : 20px;
 `;
 const LoginInnerTextWrapper = styled.p <innerTextStyleProps>`
     text-align:center;
@@ -215,6 +212,7 @@ const LoginInnerTextWrapper = styled.p <innerTextStyleProps>`
 const LoginButtonContainer = styled.div`
     display: flex;
     flex-direction: column;
+    margin-bottom : 10px;
 `;
 
 const LoginBoxContainer = styled.div`
