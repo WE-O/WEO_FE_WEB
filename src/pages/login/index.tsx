@@ -1,17 +1,25 @@
 import axios from "axios";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
-import { loginBanner } from "../../utils/images"
+import { Footer } from "../../components/MainPage/modules";
+import { loginBanner,naverLoginButton,kakaoLoginButton } from "../../utils/images"
 
 interface innerTextStyleProps {
     readonly textSize?: string;
     readonly textColor?: string;
 };
 
+interface imageProps {
+    readonly src: any;
+
+    readonly width?: string;
+    readonly height?: string;
+    readonly placeholder?: string;
+};
+
 const Login = () => {
 
-    //! API KEY & Callback URL 
     const REDIRECT_URI = process.env.NEXT_PUBLIC_CALLBACK_URL;
     const KAKAO_REST_API_KEY = process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY;
     const NAVER_Client_ID = process.env.NEXT_PUBLIC_NAVER_CLIENT_ID;
@@ -21,7 +29,8 @@ const Login = () => {
     let naverLogin: any;
     let naver: any;
 
-    //! useEffect
+    const naverRef = useRef<any>();
+    
     useEffect(() => {
         // 전역객체에서 네이버 SDK 가져오기
         naver = (window as any).naver;
@@ -38,7 +47,6 @@ const Login = () => {
         }
     }, [])
 
-    //! 카카오 로그인 함수
     const kakaoLogin = (authCode: string) => {
         const formUrlEncoded = (x: any) =>
             Object.keys(x).reduce((p, c) => p + `&${c}=${encodeURIComponent(x[c])}`, '')
@@ -75,7 +83,6 @@ const Login = () => {
             })
     }
 
-    //! 네이버 로그인 함수
     const naverInit = () => {
         naverLogin = new naver.LoginWithNaverId({
             clientId: NAVER_Client_ID, // ClientID
@@ -110,6 +117,9 @@ const Login = () => {
         e.preventDefault();
         if (type === "kakao") {
             window.location.href = KAKAO_AUTH_URL;
+        } else if (type === "naver") {
+            // 클릭이벤트는 기존 네이버에서 제공하는 div로 연결한다.
+            naverRef.current.children[0].click();
         }
     };
 
@@ -137,13 +147,23 @@ const Login = () => {
 
 
                 <LoginButtonContainer>
-                    <div id='naverIdLogin' />
-                    <KakaoLoginButtonCase onClick={(e) => onBtnClick(e, 'kakao')}>
-                        <img
-                            src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
-                            width="285"
+                    {/* display : none */}
+                    <div id="naverIdLogin" ref={naverRef} />
+                    
+                    <LoginButtonCase onClick={(e) => onBtnClick(e, 'naver')}>
+                        <LoginButtonImage
+                            src={naverLoginButton}
+                            placeholder={"blur"}
                         />
-                    </KakaoLoginButtonCase>
+                    </LoginButtonCase>
+                    
+                    <LoginButtonCase onClick={(e) => onBtnClick(e, 'kakao')}>
+                        <LoginButtonImage
+                            src={kakaoLoginButton} 
+                            placeholder={"blur"}
+                        />
+                    </LoginButtonCase>
+
                 </LoginButtonContainer>
             </LoginBoxContainer>
 
@@ -157,19 +177,24 @@ const Login = () => {
                     objectPosition="center"
                 />
             </BackgroundImageWrapper>
+            <Footer/>
         </LoginPageWrapper>
     )
 }
 
-const KakaoLoginButtonCase = styled.a`
-id: custom-login-btn;
-cursor: pointer;
+const LoginButtonCase = styled.a`
+    cursor: pointer;
+    margin:5px;
 `;
+
+const LoginButtonImage = styled(Image) <imageProps>`
+    width : 300px;
+    height : 45px;
+    src:${(props) => props.src};
+`
 
 const LoginPageWrapper = styled.div`
     position: relative;
-    width: 100vw;
-    height: 100vh;
 `;
 
 const BackgroundImageWrapper = styled.div`
@@ -188,14 +213,14 @@ const LoginInnerTextWrapper = styled.p <innerTextStyleProps>`
 `;
 
 const LoginButtonContainer = styled.div`
-    
+    display: flex;
+    flex-direction: column;
 `;
 
 const LoginBoxContainer = styled.div`
-    // top:40%;
-    // left:40%;
-    left: 710px;
-    top: 223px;
+    border-radius:16px;
+    left: 50%;
+    top: 35%;
     z-index: 1;
     position: absolute;
     width: 500px;
@@ -206,11 +231,6 @@ const LoginBoxContainer = styled.div`
     align-content: center;
     justify-content: center;
     align-items: center;
-
-
-    left: 50%;
-    top: 50%;
-
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);

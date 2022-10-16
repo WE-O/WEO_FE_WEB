@@ -17,4 +17,7 @@ export { default as address } from './address.png';
 export { default as delivery } from './delivery.png';
 export { default as phone } from './phone.png';
 export { default as url } from './url.png';
+// 로그인 페이지 내에서 사용되는 이미지
 export { default as loginBanner } from './loginBanner.png';
+export { default as kakaoLoginButton } from './kakaoLoginButton.png';
+export { default as naverLoginButton } from './naverLoginButton.png';
