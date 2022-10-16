@@ -2,7 +2,6 @@ import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
-import { Footer } from "../../components/MainPage/modules";
 import { loginBanner,naverLoginButton,kakaoLoginButton } from "../../utils/images"
 
 interface innerTextStyleProps {
