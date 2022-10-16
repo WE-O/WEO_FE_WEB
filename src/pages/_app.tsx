@@ -7,6 +7,7 @@ import { ThemeProvider } from "styled-components";
 import { MainLayout } from "../components/Common";
 import wrapper from "../store";
 import Script from "next/script";
+import { Footer } from "../components/MainPage/modules";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -29,6 +30,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
         <Component {...pageProps} />
       </MainLayout>
+      <Footer/>
     </ThemeProvider>
   );
 }

@@ -177,7 +177,7 @@ const Login = () => {
                     objectPosition="center"
                 />
             </BackgroundImageWrapper>
-            <Footer/>
+            {/* <Footer/> */}
         </LoginPageWrapper>
     )
 }

@@ -14,6 +14,7 @@ const brandColors = {
 
 const greyscaleColors = {
   white: `#FFFFFF`,
+  planGrey:`#999999`,
   lightGrey1: `#DFDFDF`,
   lightGrey2: `#C1C1C1`,
   grey1: `#9D9EA3`,
@@ -23,6 +24,7 @@ const greyscaleColors = {
   darkGrey1: `#3D3D3D`,
   darkGrey2: `#242424`,
   dark: `#000000`,
+
 };
 
 const backgroundColors = {

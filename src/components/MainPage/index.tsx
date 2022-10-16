@@ -5,7 +5,7 @@ const MainPage = () => {
     <>
       <MainContainer></MainContainer>
       <Banner></Banner>
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </>
   );
 };

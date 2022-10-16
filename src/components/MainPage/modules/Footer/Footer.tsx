@@ -10,7 +10,7 @@ const Footer = () => {
       </FooterItemTopWrapper>
 
       <FooterItemBotWrapper>
-        <FooterItems>
+        <FooterItems id={"copyright"}>
           © Copyright 2022 SicsicMulmul Inc. All Rights Reserved.
         </FooterItems>
       </FooterItemBotWrapper>
@@ -23,7 +23,7 @@ export default Footer;
 const FooterWrapper = styled.div`
   width: 100%;
   height: 150px;
-  background: ${(props) => props.theme.lightBackground3};
+  background: ${(props) => props.theme.darkGrey2};
 `;
 
 const FooterItemTopWrapper = styled.div`
@@ -36,7 +36,12 @@ const FooterItemTopWrapper = styled.div`
 }`;
 const FooterItemBotWrapper = styled.div`
     text-align: center;
+
+    #copyright{
+    font-style: italic;  
+    }
 }`;
 const FooterItems = styled.div`
-  color: ${(props) => props.theme.lightGrey2};
+  color: ${(props) => props.theme.planGrey};
+  
 `;
