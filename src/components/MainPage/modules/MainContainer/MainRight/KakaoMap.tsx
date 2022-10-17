@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../../../../store/hooks";
 import { kakaoMap } from "../../../../../store/modules/MapSlice";
 import KakaoMapSearch from "./KakaoMapSearch";
 import { Map, MapMarker, useInjectKakaoMapApi } from "react-kakao-maps-sdk"
+import axios from "axios";
 
 declare global {
   interface Window {
@@ -41,7 +42,20 @@ const KakaoMap = () => {
 
         if (_pagination.hasNextPage) { _pagination.nextPage() }
 
+        
+
         for (let i = 0; i < data.length; i++) {
+          
+          // category.name에 시장이 들어가있고 place_name에 꽃이 들어가있는 경우
+          // category.name에 꽃이 들어가있는 경우
+
+          // if (
+          //   (data[i].category_name && data[i].category_name.match(/꽃/g).length > 0) ||
+          //   (data[i].category_name && data[i].category_name.match(/시장/g).length && data[i].place_name.match(/꽃/g).length)
+          // ) {
+            
+          // }
+
           // @ts-ignore
           mark.push({
             position: {
@@ -72,17 +86,15 @@ const KakaoMap = () => {
 
   useEffect(() => {
     setMarkers(markers);
-    debugger
   }, [isSearch])
-
-  
-
 
   return (
     <>
+      
       <KakaoMapSearchWrapper>
         <KakaoMapSearch />
       </KakaoMapSearchWrapper>
+
       <KakaoMapWrapper // 지도를 표시할 Container
         center={{
           // 지도의 중심좌표
@@ -107,6 +119,7 @@ const KakaoMap = () => {
 
 
       </KakaoMapWrapper>
+
     </>
   );
 };

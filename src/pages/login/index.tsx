@@ -2,7 +2,7 @@ import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
-import { loginBanner,naverLoginButton,kakaoLoginButton } from "../../utils/images"
+import { loginBanner, naverLoginButton, kakaoLoginButton } from "../../utils/images"
 
 interface innerTextStyleProps {
     readonly textSize?: string;
@@ -25,7 +25,7 @@ const Login = () => {
     let naver: any;
 
     const naverRef = useRef<any>();
-    
+
     useEffect(() => {
         // 전역객체에서 네이버 SDK 가져오기
         naver = (window as any).naver;
@@ -124,15 +124,15 @@ const Login = () => {
             <LoginBoxContainer>
 
                 <LoginExplainContainer>
-                    <LoginInnerTextWrapper textSize={"24px"} textColor={"black"}>
+                    <LoginInnerTextWrapper textSize={"26px"} textColor={"black"}>
                         식식물물, 새로운 식물 집사 플랫폼
                     </LoginInnerTextWrapper>
 
-                    <LoginInnerTextWrapper textSize={"16x"} textColor={"gray"}>
+                    <LoginInnerTextWrapper textSize={"16px"} textColor={"gray"}>
                         나와 함께 할 반려식물을 찾아보세요
                     </LoginInnerTextWrapper>
 
-                    <LoginInnerTextWrapper textSize={"30px"}>
+                    <LoginInnerTextWrapper textSize={"40px"}>
                         🪴
                     </LoginInnerTextWrapper>
                 </LoginExplainContainer>
@@ -140,19 +140,25 @@ const Login = () => {
                 <LoginButtonContainer>
                     {/* display : none */}
                     <div id="naverIdLogin" ref={naverRef} />
-                    
+
                     <LoginButtonCase onClick={(e) => onBtnClick(e, 'naver')}>
-                        <LoginButtonImage
-                            src={naverLoginButton}
-                            placeholder={"blur"}
-                        />
+                        <LoginButtonWrapper>
+                            <Image
+                                src={naverLoginButton}
+                                placeholder={"blur"}
+                            />
+                        </LoginButtonWrapper>
+
                     </LoginButtonCase>
-                    
+
                     <LoginButtonCase onClick={(e) => onBtnClick(e, 'kakao')}>
-                        <LoginButtonImage
-                            src={kakaoLoginButton} 
-                            placeholder={"blur"}
-                        />
+                        <LoginButtonWrapper>
+                            <Image
+                                src={kakaoLoginButton}
+                                placeholder={"blur"}
+                            />
+                        </LoginButtonWrapper>
+
                     </LoginButtonCase>
 
                 </LoginButtonContainer>
@@ -179,10 +185,9 @@ const LoginButtonCase = styled.a`
     margin:5px;
 `;
 
-const LoginButtonImage = styled(Image) <imageProps>`
-    width : 300px;
-    height : 45px;
-    src:${(props) => props.src};
+const LoginButtonWrapper = styled.div`
+    width:400px;
+    height:60px;
 `
 
 const LoginPageWrapper = styled.div`
