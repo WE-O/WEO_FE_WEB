@@ -1,6 +1,6 @@
 import axios from "axios";
 import Image from "next/image";
-import { KeyboardEvent, useState } from "react";
+import { KeyboardEvent, useCallback, useState } from "react";
 import styled from "styled-components";
 import { call } from "../../../../../api/apis";
 import { useAppDispatch } from "../../../../../store/hooks";
@@ -16,6 +16,8 @@ import { search_icon } from "../../../../../utils/images";
 
   2. handleOnSearch => 엔터 키 체크 onKeyDown 으로 체크하지 않고 다른방법으로 간단하게 가능함
   => 인풋테그를 다른테그(찾아서 공부)로 감싸서 사용하면 됨 (이렇게 처리하는 걸 권장하는듯)
+  => <Form submit => > 새창 열리면 norerefer noopnerer ? -> 보안 때문에  _target_ 
+
 
   3. KakaoMapSearchComponent 부분 value, onKeyDown 불필요
   => 1,2번 수정하면 value, onKeyDown 불필요
@@ -32,11 +34,11 @@ const KakaoMapSearch = () => {
 
 
   // 추후 클릭이벤트 달아주기
-  const handleOnSearch = (e: KeyboardEvent<HTMLInputElement>) => {
+  const handleOnSearch = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       dispatch(changeSearchKeyword(e.currentTarget.value));
     }
-  };
+  },[]);
 
 
   return (
