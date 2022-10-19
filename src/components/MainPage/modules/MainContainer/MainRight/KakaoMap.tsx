@@ -103,7 +103,8 @@ const KakaoMap = () => {
         }}
         ref={KakaoMapRef}
         onCreate={setMap}
-        level={3} // 지도의 확대 레벨
+        level={4} // 지도의 확대 레벨
+        maxLevel={5}
       >
         {markers.map((marker) => (
           <MapMarker
