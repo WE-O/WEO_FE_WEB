@@ -37,6 +37,7 @@ const KakaoMapSearch = () => {
   const handleOnSearch = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       dispatch(changeSearchKeyword(e.currentTarget.value));
+      e.currentTarget.value = "";
     }
   },[]);
 

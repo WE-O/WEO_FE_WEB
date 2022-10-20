@@ -32,9 +32,8 @@ const KakaoMap = () => {
 
     const ps = new kakao.maps.services.Places();
     const mark: SetStateAction<any[]> = [];
-
+    const center = map.getCenter();
     ps.keywordSearch(keyword, (data, status, _pagination) => {
-      debugger
       if (status === kakao.maps.services.Status.OK) {
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
@@ -42,45 +41,46 @@ const KakaoMap = () => {
 
         if (_pagination.hasNextPage) { _pagination.nextPage() }
 
-        
-
         for (let i = 0; i < data.length; i++) {
-          
-          // category.name에 시장이 들어가있고 place_name에 꽃이 들어가있는 경우
-          // category.name에 꽃이 들어가있는 경우
-
-          // if (
-          //   (data[i].category_name && data[i].category_name.match(/꽃/g).length > 0) ||
-          //   (data[i].category_name && data[i].category_name.match(/시장/g).length && data[i].place_name.match(/꽃/g).length)
-          // ) {
-            
-          // }
-
-          // @ts-ignore
-          mark.push({
-            position: {
-              lat: data[i].y,
-              lng: data[i].x,
-            },
-            content: data[i].place_name,
-          })
-          // @ts-ignore
-          bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x))
+          if (
+            (data[i].category_name && data[i].category_name.includes("꽃")) ||
+            (data[i].category_name && (data[i].category_name.includes("시장") && data[i].place_name.includes("꽃")))
+          ) {
+            // @ts-ignore
+            mark.push({
+              position: {
+                lat: data[i].y,
+                lng: data[i].x,
+              },
+              content: data[i].place_name,
+            })
+            // @ts-ignore
+            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x))
+          }
         }
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-        if (_pagination.hasNextPage === false) {
-          map.setBounds(bounds);
-          setIsSearch(!isSearch);
-          setMarkers(mark);
+        if (_pagination.hasNextPage === false && mark.length > 0) {
+          setTimeout(() => {
+            // 카카오맵 자체 오류 방어를 위해 bounds에 강제적으로 하나 넣어주기
+            bounds.extend(new kakao.maps.LatLng(mark[0].position.lat, mark[0].position.lng))
+            map.setBounds(bounds);
+            setIsSearch(!isSearch);
+            setMarkers(mark);
+          })
+
         }
 
       }
     },
       {
-        // 여기에 지도 제한 둬야할 듯 뭔가 추가적인 정책이 필요하다.
-        // size:45
+        location: center,
+        // sort: kakao.maps.services.SortBy.DISTANCE,
       })
 
+    if (mark.length === 0) {
+      //todo 이 부분 얼럿을 띄우든 토스트를 띄우든 해야한다.
+      console.log("검색 결과가 없습니다.")
+    }
 
   }, [keyword])
 
@@ -90,7 +90,7 @@ const KakaoMap = () => {
 
   return (
     <>
-      
+
       <KakaoMapSearchWrapper>
         <KakaoMapSearch />
       </KakaoMapSearchWrapper>
@@ -103,7 +103,7 @@ const KakaoMap = () => {
         }}
         ref={KakaoMapRef}
         onCreate={setMap}
-        level={4} // 지도의 확대 레벨
+        level={3} // 지도의 확대 레벨
         maxLevel={5}
       >
         {markers.map((marker) => (
