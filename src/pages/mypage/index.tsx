@@ -16,5 +16,8 @@ export default MyPage;
 
 
 const MyPageWrapper = styled.div`
+    padding : 72px;
+    height: 100%;
     background:#F7F7F7;
+    position: relative;
 `;

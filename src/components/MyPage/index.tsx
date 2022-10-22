@@ -3,22 +3,22 @@ import { LeftArea, RightArea } from "./Modules";
 
 const MyPageContainer = () => {
     return (
-        <MyPageContainerWapper>
-            <LeftArea />
-            <RightArea />
-        </MyPageContainerWapper>
+        <MyPageContainerWrapper>
+                <LeftArea />
+                <RightArea />
+        </MyPageContainerWrapper>
     )
 }
 
 export default MyPageContainer;
 
-const MyPageContainerWapper = styled.div`
+const MyPageContainerWrapper = styled.div`
     display: flex;
-    width: 1200px;
-    height: 782px;
     margin: auto;
     border-radius: 10px;
     background: white;
     justify-content: center;
     flex-direction: row;
+    width: 1200px;
+    height: 782px;
 `

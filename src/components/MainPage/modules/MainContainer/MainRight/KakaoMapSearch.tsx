@@ -49,12 +49,6 @@ const KakaoMapSearch = () => {
         onKeyDown={(e) => handleOnSearch(e)}
 
       />
-
-      {/* <Image
-        src={search_icon}
-      /> */}
-
-
     </div>
 
 
