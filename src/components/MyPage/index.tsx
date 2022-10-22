@@ -5,7 +5,7 @@ const MyPageContainer = () => {
     return (
         <MyPageContainerWapper>
             <LeftArea />
-            <RightArea/>
+            <RightArea />
         </MyPageContainerWapper>
     )
 }
@@ -13,7 +13,12 @@ const MyPageContainer = () => {
 export default MyPageContainer;
 
 const MyPageContainerWapper = styled.div`
-    width:100px;
-    height:100px;
-    background:white;
+    display: flex;
+    width: 1200px;
+    height: 782px;
+    margin: auto;
+    border-radius: 10px;
+    background: white;
+    justify-content: center;
+    flex-direction: row;
 `

@@ -1,9 +1,15 @@
+import styled from "styled-components";
+
 const LeftAreaContainer = () => {
     return (
-        <div>
+        <LeftAreaWrapper>
             왼쪽영역
-        </div>
+        </LeftAreaWrapper>
     )
 }
 
 export default LeftAreaContainer;
+
+const LeftAreaWrapper = styled.div`
+    width:292px;
+`

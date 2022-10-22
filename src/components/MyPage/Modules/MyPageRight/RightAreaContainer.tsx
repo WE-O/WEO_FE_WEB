@@ -1,9 +1,15 @@
+import styled from "styled-components";
+
 const RightAreaContainer = () => {
     return (
-        <div>
+        <RightAreaWrapper>
             오른쪽 영역
-        </div>
+        </RightAreaWrapper>
     )
 }
 
 export default RightAreaContainer;
+
+const RightAreaWrapper = styled.div`
+    width:907px;
+`
