@@ -1,9 +1,15 @@
 import Image from "next/image";
 import styled from "styled-components";
-import { kakaoLoginButton } from "../../../../utils/images"
+import {
+    profile_edit_icon,
+    profile_kakao_icon,
+    profile_naver_icon,
+    profile_arrow,
+    test_IMG,
+} from "../../../../utils/images"
 
-interface imgProps{
-    imgSrc : any
+interface imgProps {
+    imgSrc: any
 }
 
 const LeftAreaContainer = () => {
@@ -11,30 +17,46 @@ const LeftAreaContainer = () => {
         <LeftAreaWrapper>
 
             <ImageWrapper>
-                <ImageCircle imgSrc={""}/>
-                <ImageEdit imgSrc={""}>
-                    ⭐️
-                </ImageEdit>
+                <ImageCircle imgSrc={test_IMG}>
+                    <ImageEdit>
+                        <Image
+                            src={profile_edit_icon}
+                            width={"18px"}
+                            height={"18px"}
+                        />
+                    </ImageEdit>
+                </ImageCircle>
+
             </ImageWrapper>
 
             <UserInfoWrapper>
 
-                <UserNameBox>
-                    { "이름  👉"}
-                </UserNameBox>
+                <UserNameWrapper>
+                    <span>
+                        닉네임은최대10글자로제한
+                    </span>
+                    <Image
+                        src={profile_arrow}
+                        width={"12px"}
+                        height={"15px"}
+                    />
+
+                </UserNameWrapper>
 
                 <UserEmailWapper>
-                    <UserEmail>
-                        <LoginTypeImage>
-                            ✅
-                        </LoginTypeImage>
-                        psh950@naver.com
-                    </UserEmail>
+                        <Image
+                            src={profile_kakao_icon}
+                            width={"20px"}
+                            height={"20px"}
+                        />
+                        <span>
+                            psh950@naver.com
+                        </span>
                 </UserEmailWapper>
 
             </UserInfoWrapper>
 
-            
+
             <LogoutButton>
                 로그아웃 버튼
             </LogoutButton>
@@ -50,43 +72,73 @@ const LeftAreaWrapper = styled.div`
     min-width: 350px;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 `
 const ImageWrapper = styled.div`
     padding:36px;
 `
 const ImageCircle = styled.div`
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     box-sizing: border-box;
     border: 1px solid #C1C1C1;
     position: relative;
-    background-image:${(props: imgProps) => props.imgSrc};
+    background-image:${(props: imgProps) => `url(${props.imgSrc.src})`};
+    background-size: cover;
 `
 const ImageEdit = styled.div`
-    position: relative;
-    // background-image:${(props: imgProps) => props.imgSrc};
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 1px solid #C1C1C1;
+    right: 0;
+    bottom: 0;
+    background:white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    cursor:pointer
 `
+
 const UserInfoWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
 `
-const UserNameBox = styled.div`
-    padding:36px;
+const UserNameWrapper = styled.div`
+    font-size: 20px;
+    font-family: 'Noto Sans CJK KR';
+    font-style: normal;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    gap:10px;
 `
+
 const UserEmailWapper = styled.div`
-    padding:27px;
-`
-
-const LoginTypeImage = styled.span`
-
-`
-
-const UserEmail = styled.div`
-
+    padding:36px;
+    font-family: 'Noto Sans CJK KR';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #9D9EA3;
+    display: flex;
+    gap: 5px;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
 `
 const LogoutButton = styled.button`
     
+    width: 120px;
+    height: 40px;
+    background: #FFFFFF;
+    border: 1px solid #9D9EA3;
+    border-radius: 4px;
+    cursor : pointer;
 `

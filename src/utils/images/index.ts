@@ -21,5 +21,11 @@ export { default as url } from './url.png';
 export { default as loginBanner } from './loginBanner.png';
 export { default as kakaoLoginButton } from './kakaoLoginButton.png';
 export { default as naverLoginButton } from './naverLoginButton.png';
+// 마이페이지 내에서 사용되는 이미지
+export { default as profile_edit_icon } from './profile_edit_icon.png';
+export { default as profile_kakao_icon } from './profile_kakao_icon.png';
+export { default as profile_naver_icon } from './profile_naver_icon.png';
+export { default as profile_arrow } from './profile_arrow.png';
+export { default as test_IMG } from './test_IMG.png';
 // 지도 위에 사용되는 이미지
 export { default as search_icon } from './search_icon.png';

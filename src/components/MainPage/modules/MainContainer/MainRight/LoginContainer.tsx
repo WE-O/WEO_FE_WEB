@@ -167,7 +167,7 @@ const Login = () => {
                     placeholder={"blur"}
                 />
             </BackgroundImageWrapper>
-            {/* <Footer/> */}
+            
         </LoginPageWrapper>
     )
 }
