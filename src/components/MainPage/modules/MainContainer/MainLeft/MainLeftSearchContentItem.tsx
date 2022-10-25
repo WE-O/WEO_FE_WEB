@@ -1,159 +1,59 @@
 import styled, { css } from 'styled-components';
 import Image from 'next/image';
 import { likeOn, likeOff } from '../../../../../utils/images';
+import { useAppDispatch, useAppSelector } from '../../../../../store/hooks';
+import { addModal } from '../../../../../store/modules/ModalSlice';
 
 const MainLeftSearchContentItem = () => {
+  const searchData = useAppSelector((state) => state.map.searchData);
+  const dispatch = useAppDispatch();
+
   return (
     <>
-      <Item>
-        <ItemTitle>
-          <ItemSpan case="titleName">코코 다육이1</ItemSpan>
-          <ItemSpan case="titleTag">원예,화훼농원</ItemSpan>
-          <ItemTitleImg>
-            <Image src={likeOn} alt="" />
-          </ItemTitleImg>
-        </ItemTitle>
-        <ItemContent>
-          <li>
-            <ItemSpan case="contentTime">영업 마감</ItemSpan>
-            <ItemSpan case="contentTime">10:00에 영업시작</ItemSpan>
-          </li>
-          <li>
-            <ItemSpan case="contentAddress">
-              서울시 도봉구 도봉로143길 60 102호
-            </ItemSpan>
-          </li>
-          <li>
-            <ItemSpan case="contentTag">
-              #다육이#선인장#친환경#초록식물#식집사들
-            </ItemSpan>
-          </li>
-          <li>
-            <ItemSpan case="contentCount">조회수 20</ItemSpan>
-            <ItemSpan case="contentCount">리뷰수 30</ItemSpan>
-          </li>
-        </ItemContent>
-      </Item>
-
-      <Item>
-        <ItemTitle>
-          <ItemSpan case="titleName">코코 다육이2</ItemSpan>
-          <ItemSpan case="titleTag">원예,화훼농원</ItemSpan>
-          <ItemTitleImg>
-            <Image src={likeOff} alt="" />
-          </ItemTitleImg>
-        </ItemTitle>
-        <ItemContent>
-          <li>
-            <ItemSpan case="contentTime">영업 마감</ItemSpan>
-            <ItemSpan case="contentTime">10:00에 영업시작</ItemSpan>
-          </li>
-          <li>
-            <ItemSpan case="contentAddress">
-              서울시 도봉구 도봉로143길 60 102호
-            </ItemSpan>
-          </li>
-          <li>
-            <ItemSpan case="contentTag">
-              #다육이#선인장#친환경#초록식물#식집사들
-            </ItemSpan>
-          </li>
-          <li>
-            <ItemSpan case="contentCount">조회수 20</ItemSpan>
-            <ItemSpan case="contentCount">리뷰수 30</ItemSpan>
-          </li>
-        </ItemContent>
-      </Item>
-
-      <Item>
-        <ItemTitle>
-          <ItemSpan case="titleName">코코 다육이3</ItemSpan>
-          <ItemSpan case="titleTag">원예,화훼농원</ItemSpan>
-          <ItemTitleImg>
-            <Image src={likeOff} alt="" />
-          </ItemTitleImg>
-        </ItemTitle>
-        <ItemContent>
-          <li>
-            <ItemSpan case="contentTime">영업 마감</ItemSpan>
-            <ItemSpan case="contentTime">10:00에 영업시작</ItemSpan>
-          </li>
-          <li>
-            <ItemSpan case="contentAddress">
-              서울시 도봉구 도봉로143길 60 102호
-            </ItemSpan>
-          </li>
-          <li>
-            <ItemSpan case="contentTag">
-              #다육이#선인장#친환경#초록식물#식집사들
-            </ItemSpan>
-          </li>
-          <li>
-            <ItemSpan case="contentCount">조회수 20</ItemSpan>
-            <ItemSpan case="contentCount">리뷰수 30</ItemSpan>
-          </li>
-        </ItemContent>
-      </Item>
-
-      <Item>
-        <ItemTitle>
-          <ItemSpan case="titleName">코코 다육이4</ItemSpan>
-          <ItemSpan case="titleTag">원예,화훼농원</ItemSpan>
-          <ItemTitleImg>
-            <Image src={likeOff} alt="" />
-          </ItemTitleImg>
-        </ItemTitle>
-        <ItemContent>
-          <li>
-            <ItemSpan case="contentTime">영업 마감</ItemSpan>
-            <ItemSpan case="contentTime">10:00에 영업시작</ItemSpan>
-          </li>
-          <li>
-            <ItemSpan case="contentAddress">
-              서울시 도봉구 도봉로143길 60 102호
-            </ItemSpan>
-          </li>
-          <li>
-            <ItemSpan case="contentTag">
-              #다육이#선인장#친환경#초록식물#식집사들
-            </ItemSpan>
-          </li>
-          <li>
-            <ItemSpan case="contentCount">조회수 20</ItemSpan>
-            <ItemSpan case="contentCount">리뷰수 30</ItemSpan>
-          </li>
-        </ItemContent>
-      </Item>
-
-      <Item>
-        <ItemTitle>
-          <ItemSpan case="titleName">코코 다육이5</ItemSpan>
-          <ItemSpan case="titleTag">원예,화훼농원</ItemSpan>
-          <ItemTitleImg>
-            <Image src={likeOff} alt="" />
-          </ItemTitleImg>
-        </ItemTitle>
-        <ItemContent>
-          <li>
-            <ItemSpan case="contentTime">영업 마감</ItemSpan>
-            <ItemSpan case="contentTime">10:00에 영업시작</ItemSpan>
-          </li>
-          <li>
-            <ItemSpan case="contentAddress">
-              서울시 도봉구 도봉로143길 60 102호
-            </ItemSpan>
-          </li>
-          <li>
-            <ItemSpan case="contentTag">
-              #다육이#선인장#친환경#초록식물#식집사들
-            </ItemSpan>
-          </li>
-          <li>
-            <ItemSpan case="contentCount">조회수 20</ItemSpan>
-            <ItemSpan case="contentCount">리뷰수 30</ItemSpan>
-          </li>
-        </ItemContent>
-      </Item>
+      {searchData.map((item, idx) => {
+        return (
+          <Item
+            key={`temp_${idx}`}
+            onClick={() => {
+              dispatch(addModal('detailModal'));
+            }}
+          >
+            <ItemTitle>
+              <ItemSpan case="titleName">{item.place_name}</ItemSpan>
+              {/* <ItemSpan case="titleTag">{item.category_name}</ItemSpan> */}
+              <ItemTitleImg>
+                {item.like ? (
+                  <Image src={likeOn} alt="" />
+                ) : (
+                  <Image src={likeOff} alt="" />
+                )}
+              </ItemTitleImg>
+            </ItemTitle>
+            <ItemContent>
+              <li>
+                <ItemSpan case="contentTag">{`#${item.category_name}`}</ItemSpan>
+              </li>
+              <li>
+                <ItemSpan case="contentAddress">
+                  {item.road_address_name}
+                </ItemSpan>
+              </li>
+              <li>
+                <ItemSpan case="contentAddress">{item.phone}</ItemSpan>
+              </li>
+              {/* <li>
+                <ItemSpan case="contentTag">
+                  #다육이#선인장#친환경#초록식물#식집사들
+                </ItemSpan>
+              </li> */}
+              <li>
+                <ItemSpan case="contentCount">{`조회수 ${item.searchCnt}`}</ItemSpan>
+                <ItemSpan case="contentCount">{`리뷰수 ${item.reviewCnt}`}</ItemSpan>
+              </li>
+            </ItemContent>
+          </Item>
+        );
+      })}
     </>
   );
 };
@@ -166,6 +66,7 @@ const Item = styled.div`
   border: ${(props) => `1px solid ${props.theme.primaryGreen}`};
   border-radius: 10px;
   padding: 15px;
+  cursor: pointer;
 `;
 
 const ItemTitle = styled.div`
@@ -223,6 +124,7 @@ const ItemSpan = styled.span<{
 
 const ItemTitleImg = styled.span`
   float: right;
+  cursor: wait;
 `;
 const ItemContent = styled.ul`
   width: 100%;
@@ -231,6 +133,6 @@ const ItemContent = styled.ul`
   list-style: none;
 
   li {
-    height: 25px;
+    height: 30px;
   }
 `;

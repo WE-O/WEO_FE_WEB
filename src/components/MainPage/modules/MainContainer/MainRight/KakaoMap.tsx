@@ -105,6 +105,7 @@ const KakaoMap = () => {
     if (mark.length === 0) {
       //todo 이 부분 얼럿을 띄우든 토스트를 띄우든 해야한다.
       console.log('검색 결과가 없습니다.');
+      dispatch(setSearchData([]));
     }
   }, [keyword]);
 

@@ -6,6 +6,7 @@ import {
   MainLeftSearchTitle,
   MainLeftSearchContent,
 } from './index';
+import { useAppSelector } from '../../../../../store/hooks';
 
 const MainLeftWrapper = styled.div`
   width: 400px;
@@ -19,16 +20,24 @@ const MainLeftWrapper = styled.div`
 `;
 
 const MainLeft = () => {
+  const searchData = useAppSelector((state) => state.map.searchData);
+
   return (
     <MainLeftWrapper>
-      {/* 검색영역 */}
-      {/* <MainLeftSearchTitle />
-      <MainLeftSearchContent /> */}
-
-      {/* 기본영역 */}
-      <MainLeftWeather />
-      <MainLeftPlace />
-      <MainLeftOffer />
+      {searchData.length > 0 ? (
+        <>
+          {/* 검색영역 */}
+          {/* <MainLeftSearchTitle /> */}
+          <MainLeftSearchContent />
+        </>
+      ) : (
+        <>
+          {/* 기본영역 */}
+          <MainLeftWeather />
+          <MainLeftPlace />
+          <MainLeftOffer />
+        </>
+      )}
     </MainLeftWrapper>
   );
 };
