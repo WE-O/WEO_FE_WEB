@@ -21,7 +21,14 @@ const MainLeftSearchContentItem = () => {
             <ItemTitle>
               <ItemSpan case="titleName">{item.place_name}</ItemSpan>
               {/* <ItemSpan case="titleTag">{item.category_name}</ItemSpan> */}
-              <ItemTitleImg>
+              <ItemTitleImg
+                onClick={(e) => {
+                  debugger;
+                  debugger;
+                  e.stopPropagation();
+                  console.log('즐겨찾기 업데이트 API');
+                }}
+              >
                 {item.like ? (
                   <Image src={likeOn} alt="" />
                 ) : (
@@ -81,7 +88,7 @@ const ItemSpan = styled.span<{
     Props.case === 'titleName' &&
     css`
       font-weight: 700;
-      font-size: 24px;
+      font-size: 22px;
     `}
 
   ${(Props) =>
@@ -122,9 +129,10 @@ const ItemSpan = styled.span<{
     `}
 `;
 
-const ItemTitleImg = styled.span`
+const ItemTitleImg = styled.div`
   float: right;
   cursor: wait;
+  z-index: 10;
 `;
 const ItemContent = styled.ul`
   width: 100%;

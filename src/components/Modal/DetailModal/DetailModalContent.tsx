@@ -72,5 +72,5 @@ const DetailModalContentHeaderItem = styled.span<{ isClicked: boolean }>`
 const DetailModalContentMainWrapper = styled.div`
   height: 370px;
   width: 850px;
-  margin: 35px auto;
+  margin: 50px auto 20px auto;
 `;
