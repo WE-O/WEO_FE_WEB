@@ -1,11 +1,11 @@
-import axios from "axios";
-import Image from "next/image";
-import { KeyboardEvent, useCallback, useState } from "react";
-import styled from "styled-components";
-import { call } from "../../../../../api/apis";
-import { useAppDispatch } from "../../../../../store/hooks";
-import { changeSearchKeyword } from "../../../../../store/modules/SearchKeywordSlice";
-import { search_icon } from "../../../../../utils/images";
+import axios from 'axios';
+import Image from 'next/image';
+import { KeyboardEvent, useCallback, useRef, useState } from 'react';
+import styled from 'styled-components';
+import { call } from '../../../../../api/apis';
+import { useAppDispatch } from '../../../../../store/hooks';
+import { changeSearchKeyword } from '../../../../../store/modules/SearchKeywordSlice';
+import { search_icon } from '../../../../../utils/images';
 
 /*
 이 부분들 수정하면 좋을듯요?
@@ -29,29 +29,29 @@ import { search_icon } from "../../../../../utils/images";
 */
 
 const KakaoMapSearch = () => {
-
   const dispatch = useAppDispatch();
-
+  const KimHero = useRef<any>(null);
 
   // 추후 클릭이벤트 달아주기
-  const handleOnSearch = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      dispatch(changeSearchKeyword(e.currentTarget.value));
-      e.currentTarget.value = "";
-    }
-  },[]);
-
+  const handleOnSearch = useCallback((e: any) => {
+    e.preventDefault();
+    dispatch(changeSearchKeyword(KimHero.current.value));
+    KimHero.current.value = '';
+  }, []);
 
   return (
     <div>
-      <KakaoMapSearchComponent
-        placeholder="내 주변 식물가게로 검색해보세요. (예시 : 성수동 꽃집)"
-        onKeyDown={(e) => handleOnSearch(e)}
-
-      />
+      <form
+        onSubmit={(e) => {
+          handleOnSearch(e);
+        }}
+      >
+        <KakaoMapSearchComponent
+          ref={KimHero}
+          placeholder="내 주변 식물가게로 검색해보세요. (예시 : 성수동 꽃집)"
+        />
+      </form>
     </div>
-
-
   );
 };
 
