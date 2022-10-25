@@ -1,10 +1,10 @@
 import { SetStateAction, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../../../../../store/hooks';
-import { kakaoMap } from '../../../../../store/modules/MapSlice';
+import { setSearchData } from '../../../../../store/modules/MapSlice';
 import KakaoMapSearch from './KakaoMapSearch';
 import { Map, MapMarker, useInjectKakaoMapApi } from 'react-kakao-maps-sdk';
-import axios from 'axios';
+import { searchData } from '../../../../../types/types';
 
 declare global {
   interface Window {
@@ -31,6 +31,8 @@ const KakaoMap = () => {
     const ps = new kakao.maps.services.Places();
     const mark: SetStateAction<any[]> = [];
     const center = map.getCenter();
+
+    let newData: searchData[] = [];
 
     ps.keywordSearch(
       keyword,
@@ -61,8 +63,20 @@ const KakaoMap = () => {
               });
               // @ts-ignore
               bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+
+              newData.push({
+                place_name: data[i].place_name, // 상가명
+                category_name: data[i].category_name, // 카테고리
+                address_name: data[i].address_name, // 주소
+                road_address_name: data[i].road_address_name, // 도로명 주소
+                phone: data[i].phone, // 전화번호
+                searchCnt: 0, // 조회수
+                reviewCnt: 0, // 리뷰수
+                like: false, // 즐겨찾기 여부
+              });
             }
           }
+
           // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
           if (_pagination.hasNextPage === false && mark.length > 0) {
             setTimeout(() => {
@@ -76,6 +90,8 @@ const KakaoMap = () => {
               map.setBounds(bounds);
               setIsSearch(!isSearch);
               setMarkers(mark);
+
+              dispatch(setSearchData(newData));
             });
           }
         }
