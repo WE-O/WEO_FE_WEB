@@ -53,17 +53,17 @@ const Login = () => {
         )
             .then((res) => {
                 const accessToken = res.data.access_token;
-                const expires_in = res.data.expires_in;
-                //todo 해당 부분 수정해야한다 :) 
-                const callAPIURL = "http://101.101.217.55:8080/api/member/kakao/login";
+                debugger
+                const callAPIURL = `${process.env.NEXT_PUBLIC_API_DOMAIN}api/v1/member/login`;
                 axios.get(callAPIURL, {
                     params: {
                         accessToken: accessToken,
-                        expiresIn: expires_in
+                        snsType: "kakao",
                     },
                     withCredentials: true
                 })
-                    .then((res) => {
+                    .then((responseData) => {
+                        debugger
                         //todo back API 호출부! 백쪽에서 개발이 완료되면 여기서
                         //todo localStorage에 setItem 해줘야한다. :)
                     })
@@ -167,7 +167,7 @@ const Login = () => {
                     placeholder={"blur"}
                 />
             </BackgroundImageWrapper>
-            
+
         </LoginPageWrapper>
     )
 }

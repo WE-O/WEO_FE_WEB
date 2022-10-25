@@ -30,13 +30,13 @@ import { search_icon } from '../../../../../utils/images';
 
 const KakaoMapSearch = () => {
   const dispatch = useAppDispatch();
-  const KimHero = useRef<any>(null);
+  const searchRef = useRef<any>(null);
 
   // 추후 클릭이벤트 달아주기
   const handleOnSearch = useCallback((e: any) => {
     e.preventDefault();
-    dispatch(changeSearchKeyword(KimHero.current.value));
-    KimHero.current.value = '';
+    dispatch(changeSearchKeyword(searchRef.current.value));
+    searchRef.current.value = '';
   }, []);
 
   return (
@@ -47,7 +47,7 @@ const KakaoMapSearch = () => {
         }}
       >
         <KakaoMapSearchComponent
-          ref={KimHero}
+          ref={searchRef}
           placeholder="내 주변 식물가게로 검색해보세요. (예시 : 성수동 꽃집)"
         />
       </form>
