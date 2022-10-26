@@ -6,7 +6,6 @@ import ReviewInfo from './ReviewInfo';
 
 const selectType: string[] = [
   '상세정보',
-  '가격정보',
   '식물집사가 작성한 방문후기',
   '식물집사가 선택한 키워드',
 ];
@@ -32,8 +31,7 @@ const DetailModalContentHeader = () => {
 
       <DetailModalContentMainWrapper>
         {type === 'type0' && <AddressInfo />}
-        {type === 'type1' && <PriceInfo />}
-        {type === 'type2' && <ReviewInfo />}
+        {type === 'type1' && <ReviewInfo />}
       </DetailModalContentMainWrapper>
     </>
   );
