@@ -2,7 +2,7 @@ import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
-import { loginBanner, naverLoginButton, kakaoLoginButton } from "../../../../../utils/images"
+import { loginBanner, naverLoginButton, kakaoLoginButton, plant_icon_2 } from "../../../../../utils/images"
 
 interface innerTextStyleProps {
     readonly textSize?: string;
@@ -125,7 +125,7 @@ const Login = () => {
                     </LoginInnerTextWrapper>
 
                     <LoginInnerTextWrapper textSize={"40px"}>
-                        🪴
+                        <Image src={plant_icon_2}/>
                     </LoginInnerTextWrapper>
                 </LoginExplainContainer>
 
