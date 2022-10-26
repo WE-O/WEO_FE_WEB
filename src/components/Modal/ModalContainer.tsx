@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-import { useAppSelector } from "../../store/hooks";
-import DetailModal from "./DetailModal/DetailModal";
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { useAppSelector } from '../../store/hooks';
+import DetailModal from './DetailModal/DetailModal';
+import ReviewModal from './ReviewModal/ReviewModal';
 
 const ModalContanier = () => {
   const modalList = useAppSelector((state) => state.modal.modalList);
@@ -9,11 +10,11 @@ const ModalContanier = () => {
   useEffect(() => {
     if (modalList.length > 0) {
       // 모달 열 때 외부 스크롤 방지
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
 
       // 모달 닫을 떄 외부 스크롤 방지 해제
       return () => {
-        document.body.style.overflow = "unset";
+        document.body.style.overflow = 'unset';
       };
     }
   }, [modalList]);
@@ -22,11 +23,13 @@ const ModalContanier = () => {
     <>
       {modalList.length > 0 && (
         <ModalContainerWrapper>
-          {modalList.map((item: string) => {
-            if (item === "detailModal") {
-              return <DetailModal key={"detailModal"} />;
-            }
-          })}
+          {modalList.includes('detailModal') && (
+            <DetailModal key={'detailModal'} />
+          )}
+
+          {modalList.includes('reviewModal') && (
+            <ReviewModal key={'reviewModal'} />
+          )}
         </ModalContainerWrapper>
       )}
     </>

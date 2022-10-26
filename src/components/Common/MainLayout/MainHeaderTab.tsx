@@ -5,6 +5,8 @@ import { useAppDispatch } from '../../../store/hooks';
 import { addModal } from '../../../store/modules/ModalSlice';
 
 const MainHeaderTab = () => {
+  const dispatch = useAppDispatch();
+
   return (
     <MainHeaderTabWrapper>
       <Link href="/">
@@ -19,6 +21,16 @@ const MainHeaderTab = () => {
       <Link href="/">
         <MainHeaderTabItem>제보하기</MainHeaderTabItem>
       </Link>
+
+      {
+        <Button
+          onClick={() => {
+            dispatch(addModal('reviewModal'));
+          }}
+        >
+          Test
+        </Button>
+      }
 
       {
         <Link href="/login">

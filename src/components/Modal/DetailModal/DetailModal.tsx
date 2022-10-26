@@ -28,10 +28,11 @@ export default DetailModal;
 const DetailModalWrapper = styled.div`
   width: 1200px;
   height: 600px;
-  position: absolute;
-  top: 100px;
   padding: 40px;
   background-color: white;
   border-radius: 30px;
   color: black;
+
+  // position: absolute;
+  // top: 100px;
 `;
