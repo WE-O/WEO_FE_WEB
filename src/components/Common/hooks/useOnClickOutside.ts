@@ -1,20 +1,21 @@
-import { RefObject, useEffect } from "react";
+import { RefObject, useEffect } from 'react';
 
 const useOnClickOutside = (
   ref: RefObject<HTMLDivElement>,
-  clickFunc: () => void
+  clickFunc: () => void,
 ) => {
   useEffect(() => {
     const listnerEvent = (e: MouseEvent) => {
       const target = e.target as Element;
       if (!ref.current?.contains(target)) {
+        e.stopPropagation();
         clickFunc();
       }
     };
 
-    document.addEventListener("mousedown", listnerEvent);
+    document.addEventListener('mousedown', listnerEvent);
     return () => {
-      document.removeEventListener("mousedown", listnerEvent);
+      document.removeEventListener('mousedown', listnerEvent);
     };
   }, [ref, clickFunc]);
 };
