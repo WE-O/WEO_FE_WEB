@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import Image from "next/image";
 import { plant_icon_1, plant_icon_3 } from "../../../../utils/images"
-import Carousel from "../Component/Carousel";
+// import Carousel from "../Component/Carousel/Carousel";
+import ContentsBox from "../Component/ContentsBox/ContentsBOx";
 
 const RightMain = () => {
     return (
@@ -37,7 +38,8 @@ const RightMain = () => {
 
                 <ScrapContents>
 
-                    <Carousel/>
+                    
+                    <ContentsBox props={ null } />
 
                     <WithDrawal>
                         회원탈퇴
@@ -112,7 +114,6 @@ const ScrapContents = styled.div`
     background: #FFFFFF;
     width: 820px;
     height:90%;
-    background: #C1C1C1;
 `;
 
 const WithDrawal = styled.div`
