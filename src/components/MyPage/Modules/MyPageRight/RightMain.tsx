@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
-import { plant_icon_1, plant_icon_3 } from "../../../../utils/images"
+import { plant_icon_1, plant_icon_3 , profile_rightArrow , profile_leftArrow} from "../../../../utils/images"
 // import Carousel from "../Component/Carousel/Carousel";
 import ContentsBox from "../Component/ContentsBox/ContentsBOx";
 
@@ -9,8 +9,11 @@ const RightMain = () => {
         <RightAreaWrapper>
             <TopWrapper>
                 <TitleWrapper>
-                    <Image src={plant_icon_3} width={"20px"} height={"20px"} />
-                    <span>활동현황</span>
+                    <div>
+                        <Image src={plant_icon_3} width={"20px"} height={"20px"} />
+                        <span>활동현황</span>
+                    </div>
+
                 </TitleWrapper>
 
                 <StatusBoard>
@@ -31,15 +34,29 @@ const RightMain = () => {
             </TopWrapper>
             <BottomWrapper>
                 <TitleWrapper>
-                    <Image src={plant_icon_1} width={"20px"} height={"20px"} />
-                    <span>스크랩한 콘텐츠</span>
+                    <div>
+                        <Image src={plant_icon_1} width={"20px"} height={"20px"} />
+                        <span>스크랩한 콘텐츠</span>
+                    </div>
+
+                    <ButtonWrapper>
+                        <button>
+                            <Image src={profile_leftArrow} />
+                        </button>
+                        <button>
+                            <Image src={profile_rightArrow} />
+                        </button>
+                    </ButtonWrapper>
+
                 </TitleWrapper>
 
 
+                
                 <ScrapContents>
 
-                    
-                    <ContentsBox props={ null } />
+
+                    {/*  콘텐츠 보여주는 박스 */}
+                    <ContentsBox />
 
                     <WithDrawal>
                         회원탈퇴
@@ -71,6 +88,9 @@ const TitleWrapper = styled.div`
     font-size: 20px;
     line-height: 21px;
     color: #242424;
+
+    display: flex;
+    justify-content: space-between;
 
     span{
         padding : 15px;
@@ -121,10 +141,10 @@ const WithDrawal = styled.div`
         right : 0;
         bottom : 0;
         font-weight: 400;
-        font-size: 14px;
+        font-size: 18px;
         line-height: 21px;
         text-decoration-line: underline;
-        cusor : pointer;
+        cursor : pointer;
         color: #9D9EA3;
 `
 
@@ -133,6 +153,13 @@ const BottomWrapper = styled.div`
     height:65%;
 `;
 
-const textWrapper = styled.span`
-    padding:5px;
-`;
+const ButtonWrapper = styled.div`
+    
+    button {
+        border : 0;
+        background : white;
+        width : 25px;
+        margin : 5px;
+        
+    }
+`

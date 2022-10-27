@@ -4,7 +4,7 @@ import {
     profile_edit_icon,
     profile_kakao_icon,
     profile_naver_icon,
-    profile_arrow,
+    profile_rightArrow,
     test_IMG,
 } from "../../../../utils/images"
 
@@ -36,7 +36,7 @@ const LeftAreaContainer = () => {
                         닉네임은최대10글자로제한
                     </span>
                     <Image
-                        src={profile_arrow}
+                        src={profile_rightArrow}
                         width={"12px"}
                         height={"15px"}
                     />

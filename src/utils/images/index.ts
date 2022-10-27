@@ -27,7 +27,9 @@ export { default as plant_icon_2 } from './plant_icon_2.png';
 export { default as profile_edit_icon } from './profile_edit_icon.png';
 export { default as profile_kakao_icon } from './profile_kakao_icon.png';
 export { default as profile_naver_icon } from './profile_naver_icon.png';
-export { default as profile_arrow } from './profile_arrow.png';
+export { default as profile_rightArrow } from './profile_rightArrow.png';
+export { default as profile_leftArrow } from './profile_leftArrow.png';
+
 export { default as test_IMG } from './test_IMG.png';
 export { default as plant_icon_1 } from './plant_icon_1.png';
 export { default as plant_icon_3 } from './plant_icon_3.png';

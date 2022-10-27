@@ -20,5 +20,5 @@ const MyPageContainerWrapper = styled.div`
     justify-content: center;
     flex-direction: row;
     width: 1200px;
-    height: 782px;
+    height: 700px;
 `
