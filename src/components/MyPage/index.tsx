@@ -1,11 +1,15 @@
 import styled from "styled-components";
+import { useAppDispatch } from "../../store/hooks";
+import { addModal } from "../../store/modules/ModalSlice";
+import CommonModal from "../Modal/CommonModal/CommonModal";
 import { LeftArea, RightArea } from "./Modules";
 
 const MyPageContainer = () => {
+
     return (
         <MyPageContainerWrapper>
-                <LeftArea />
-                <RightArea />
+            <LeftArea />
+            <RightArea />
         </MyPageContainerWrapper>
     )
 }

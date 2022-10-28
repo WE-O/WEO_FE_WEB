@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useAppSelector } from '../../store/hooks';
 import DetailModal from './DetailModal/DetailModal';
 import ReviewModal from './ReviewModal/ReviewModal';
+import CommonModal from './CommonModal/CommonModal';
 
 const ModalContanier = () => {
   const modalList = useAppSelector((state) => state.modal.modalList);
@@ -29,6 +30,9 @@ const ModalContanier = () => {
 
           {modalList.includes('reviewModal') && (
             <ReviewModal key={'reviewModal'} />
+          )}
+          {modalList.includes('commonModal') && (
+            <CommonModal key={'commonModal'} />
           )}
         </ModalContainerWrapper>
       )}

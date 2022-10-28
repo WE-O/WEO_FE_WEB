@@ -1,5 +1,8 @@
 import Image from "next/image";
+import React, { ReactHTMLElement, useCallback, useRef } from "react";
 import styled from "styled-components";
+import { useAppDispatch } from "../../../../store/hooks";
+import { addModal, deleteModal } from "../../../../store/modules/ModalSlice";
 import {
     profile_edit_icon,
     profile_kakao_icon,
@@ -7,14 +10,22 @@ import {
     profile_rightArrow,
     test_IMG,
 } from "../../../../utils/images"
+import useOnClickOutside from "../../../Common/hooks/useOnClickOutside";
 
 interface imgProps {
     imgSrc: any
 }
 
 const LeftAreaContainer = () => {
+
+    const dispatch = useAppDispatch();
+    
+    const handleOnClick = useCallback((e: React.MouseEvent<HTMLElement>) => {
+        dispatch(addModal('commonModal'));
+    },[])
+
     return (
-        <LeftAreaWrapper>
+        <LeftAreaWrapper >
 
             <ImageWrapper>
                 <ImageCircle imgSrc={test_IMG}>
@@ -35,23 +46,26 @@ const LeftAreaContainer = () => {
                     <span>
                         닉네임은최대10글자로제한
                     </span>
-                    <Image
-                        src={profile_rightArrow}
-                        width={"12px"}
-                        height={"15px"}
-                    />
+                    <ChangeNickNameButton onClick={handleOnClick}>
+                        <Image
+                            src={profile_rightArrow}
+                            width={"12px"}
+                            height={"15px"}
+                        />
+                    </ChangeNickNameButton>
+
 
                 </UserNameWrapper>
 
                 <UserEmailWapper>
-                        <Image
-                            src={profile_kakao_icon}
-                            width={"20px"}
-                            height={"20px"}
-                        />
-                        <span>
-                            psh950@naver.com
-                        </span>
+                    <Image
+                        src={profile_kakao_icon}
+                        width={"20px"}
+                        height={"20px"}
+                    />
+                    <span>
+                        psh950@naver.com
+                    </span>
                 </UserEmailWapper>
 
             </UserInfoWrapper>
@@ -140,5 +154,11 @@ const LogoutButton = styled.button`
     background: #FFFFFF;
     border: 1px solid #9D9EA3;
     border-radius: 4px;
+    cursor : pointer;
+`
+
+const ChangeNickNameButton = styled.button`
+    border : 0;
+    background : white;
     cursor : pointer;
 `
