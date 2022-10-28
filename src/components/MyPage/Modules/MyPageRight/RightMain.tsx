@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import { plant_icon_1, plant_icon_3 , profile_rightArrow , profile_leftArrow} from "../../../../utils/images"
 // import Carousel from "../Component/Carousel/Carousel";
-import ContentsBox from "../Component/ContentsBox/ContentsBOx";
+import ContentsBox from "../Component/ContentsBox/ContentsBox";
 
 const RightMain = () => {
     return (
