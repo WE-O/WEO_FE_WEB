@@ -2,7 +2,8 @@ import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
-import { loginBanner, naverLoginButton, kakaoLoginButton, plant_icon_2 } from "../../../../../utils/images"
+import { loginBanner, naverLoginButton, kakaoLoginButton, plant_icon_2 } from "../../../../../utils/images";
+import { useRouter } from 'next/router';
 
 interface innerTextStyleProps {
     readonly textSize?: string;
@@ -15,8 +16,16 @@ const Login = () => {
 
     let naverLogin: any;
     let naver: any;
+    const router = useRouter();
 
     const naverRef = useRef<any>();
+
+
+    useEffect(() => {
+        if (localStorage?.UserInfo && JSON.parse(localStorage.UserInfo).memberId) {
+            router.push("/mypage")
+        }
+    },[]);
 
     useEffect(() => {
         // 전역객체에서 네이버 SDK 가져오기
@@ -64,10 +73,19 @@ const Login = () => {
                     withCredentials: true
                 })
                     .then((responseData) => {
-                        debugger
-                        //todo back API 호출부! 백쪽에서 개발이 완료되면 여기서
-                        //todo localStorage에 setItem 해줘야한다. :)
+                        if (responseData.status === 200 && Object.keys(responseData.data).length > 0) {
+                            debugger
+                            localStorage.setItem("UserInfo", JSON.stringify(responseData.data));
+                            router.push("/main");
+                        } else {
+                            // 로그인 실패했을 때 어케 해줘야하지 ? 
+                            console.log(" 네트워크 에러가 발생하였습니다. ")
+                        }
                     })
+                    .catch((error) => {
+                        // 에러처리
+                        console.log(error);
+                })
             })
     }
 
