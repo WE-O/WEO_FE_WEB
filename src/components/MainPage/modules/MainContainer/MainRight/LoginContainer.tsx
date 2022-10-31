@@ -54,6 +54,7 @@ const Login = () => {
             .then((res) => {
                 const accessToken = res.data.access_token;
                 debugger
+                console.log("access token ->", accessToken);
                 const callAPIURL = `${process.env.NEXT_PUBLIC_API_DOMAIN}api/v1/member/join`;
                 axios.get(callAPIURL, {
                     params: {
@@ -125,7 +126,7 @@ const Login = () => {
                     </LoginInnerTextWrapper>
 
                     <LoginInnerTextWrapper textSize={"40px"}>
-                        <Image src={plant_icon_2}/>
+                        <Image src={plant_icon_2} />
                     </LoginInnerTextWrapper>
                 </LoginExplainContainer>
 
