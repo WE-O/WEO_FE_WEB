@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import Button from '../Button';
 import Link from 'next/link';
-import { useAppDispatch } from '../../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { addModal } from '../../../store/modules/ModalSlice';
 
 const MainHeaderTab = () => {
   const dispatch = useAppDispatch();
+  const isLogin = useAppSelector((state) => state.user.isLogIn);
 
   return (
     <MainHeaderTabWrapper>
@@ -33,9 +34,15 @@ const MainHeaderTab = () => {
       }
 
       {
-        <Link href="/login">
-          <Button>로그인</Button>
-        </Link>
+        isLogin ?
+          <Link href="/login">
+            <Button>마이페이지</Button>
+          </Link>
+          :
+          <Link href="/login">
+            <Button>로그인</Button>
+          </Link>
+
       }
     </MainHeaderTabWrapper>
   );

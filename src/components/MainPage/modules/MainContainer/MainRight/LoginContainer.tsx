@@ -4,6 +4,8 @@ import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { loginBanner, naverLoginButton, kakaoLoginButton, plant_icon_2 } from "../../../../../utils/images";
 import { useRouter } from 'next/router';
+import { useAppDispatch } from "../../../../../store/hooks";
+import { userLogIn } from "../../../../../store/modules/UserSlice";
 
 interface innerTextStyleProps {
     readonly textSize?: string;
@@ -13,12 +15,13 @@ interface innerTextStyleProps {
 const Login = () => {
 
     const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY}&redirect_uri=${process.env.NEXT_PUBLIC_CALLBACK_URL}&response_type=code`;
-
+    const naverRef = useRef<any>();
     let naverLogin: any;
     let naver: any;
-    const router = useRouter();
 
-    const naverRef = useRef<any>();
+    const router = useRouter();
+    const dispatch = useAppDispatch();
+    
 
 
     useEffect(() => {
@@ -62,7 +65,6 @@ const Login = () => {
         )
             .then((res) => {
                 const accessToken = res.data.access_token;
-                debugger
                 console.log("access token ->", accessToken);
                 const callAPIURL = `${process.env.NEXT_PUBLIC_API_DOMAIN}api/v1/member/join`;
                 axios.get(callAPIURL, {
@@ -74,7 +76,7 @@ const Login = () => {
                 })
                     .then((responseData) => {
                         if (responseData.status === 200 && Object.keys(responseData.data).length > 0) {
-                            debugger
+                            handleOnLogin();
                             localStorage.setItem("UserInfo", JSON.stringify(responseData.data));
                             router.push("/main");
                         } else {
@@ -128,6 +130,10 @@ const Login = () => {
             naverRef.current.children[0].click();
         }
     };
+
+    const handleOnLogin = () => {
+        dispatch(userLogIn());
+    }
 
 
     return (
