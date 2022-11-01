@@ -66,7 +66,6 @@ const Login = () => {
         )
             .then((res) => {
                 const accessToken: string = res.data.access_token;
-                console.log("토큰 : ", accessToken)
                 CallLoginAPI(accessToken);
             })
     }
