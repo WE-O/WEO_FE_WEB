@@ -115,6 +115,7 @@ const Login = () => {
     }
 
     const CallLoginAPI = (token: string, type: string) => {
+        debugger
         const param = {
             url: `${process.env.NEXT_PUBLIC_API_DOMAIN}api/v1/member/join`,
             data: {
@@ -124,10 +125,15 @@ const Login = () => {
         }
         const responseData = call("GET", param);
         responseData.then((resData) => {
+            console.log("resData >>", resData);
             debugger
-            handleOnLogin();
-            localStorage.setItem("UserInfo", JSON.stringify(resData));
-            router.push("/main");
+            if (typeof window !== "undefined") {
+                debugger
+                handleOnLogin();
+                localStorage.setItem("UserInfo", JSON.stringify(resData));
+                router.push("/main");
+            }
+            
         })
     }
 
