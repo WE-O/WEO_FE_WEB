@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { ReactHTMLElement, useCallback, useRef } from "react";
+import React, { ReactHTMLElement, useCallback, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useAppDispatch } from "../../../../store/hooks";
 import { addModal, deleteModal } from "../../../../store/modules/ModalSlice";
@@ -22,6 +22,10 @@ const LeftAreaContainer = () => {
     
     const handleOnClick = useCallback((e: React.MouseEvent<HTMLElement>) => {
         dispatch(addModal('commonModal'));
+    }, [])
+    
+    useEffect(() => {
+        const callAPIURL = `${process.env.NEXT_PUBLIC_API_DOMAIN}api/v1/member/join`;
     },[])
 
     return (

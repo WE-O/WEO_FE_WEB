@@ -3,10 +3,19 @@ import Button from '../Button';
 import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { addModal } from '../../../store/modules/ModalSlice';
+import { userLogIn } from '../../../store/modules/UserSlice';
+import { useEffect } from 'react';
 
 const MainHeaderTab = () => {
   const dispatch = useAppDispatch();
   const isLogin = useAppSelector((state) => state.user.isLogIn);
+
+  useEffect(() => {
+    if (localStorage.UserInfo !== undefined && JSON.parse(localStorage.UserInfo).memberId !== undefined) {
+      dispatch(userLogIn());
+    }
+  }, []);
+
 
   return (
     <MainHeaderTabWrapper>
@@ -35,7 +44,7 @@ const MainHeaderTab = () => {
 
       {
         isLogin ?
-          <Link href="/login">
+          <Link href="/mypage">
             <Button>마이페이지</Button>
           </Link>
           :

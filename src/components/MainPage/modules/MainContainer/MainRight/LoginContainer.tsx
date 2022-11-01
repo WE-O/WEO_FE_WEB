@@ -6,6 +6,7 @@ import { loginBanner, naverLoginButton, kakaoLoginButton, plant_icon_2 } from ".
 import { useRouter } from 'next/router';
 import { useAppDispatch } from "../../../../../store/hooks";
 import { userLogIn } from "../../../../../store/modules/UserSlice";
+import { call } from "../../../../../api/apis"
 
 interface innerTextStyleProps {
     readonly textSize?: string;
@@ -21,14 +22,14 @@ const Login = () => {
 
     const router = useRouter();
     const dispatch = useAppDispatch();
-    
+
 
 
     useEffect(() => {
         if (localStorage?.UserInfo && JSON.parse(localStorage.UserInfo).memberId) {
             router.push("/mypage")
         }
-    },[]);
+    }, []);
 
     useEffect(() => {
         // 전역객체에서 네이버 SDK 가져오기
@@ -64,30 +65,9 @@ const Login = () => {
             , { headers }
         )
             .then((res) => {
-                const accessToken = res.data.access_token;
-                console.log("access token ->", accessToken);
-                const callAPIURL = `${process.env.NEXT_PUBLIC_API_DOMAIN}api/v1/member/join`;
-                axios.get(callAPIURL, {
-                    params: {
-                        accessToken: accessToken,
-                        snsType: "kakao",
-                    },
-                    withCredentials: true
-                })
-                    .then((responseData) => {
-                        if (responseData.status === 200 && Object.keys(responseData.data).length > 0) {
-                            handleOnLogin();
-                            localStorage.setItem("UserInfo", JSON.stringify(responseData.data));
-                            router.push("/main");
-                        } else {
-                            // 로그인 실패했을 때 어케 해줘야하지 ? 
-                            console.log(" 네트워크 에러가 발생하였습니다. ")
-                        }
-                    })
-                    .catch((error) => {
-                        // 에러처리
-                        console.log(error);
-                })
+                const accessToken: string = res.data.access_token;
+                console.log("토큰 : ", accessToken)
+                CallLoginAPI(accessToken);
             })
     }
 
@@ -107,14 +87,14 @@ const Login = () => {
 
     const naverGetToken = (authCode: string) => {
         console.log('');
-        const token: string = authCode.split('=')[1].split('&')[0]; // 네이버 로그인을 통해 전달받은 hash 값
-        const token_type: string = authCode.split("token_type=")[1].split('&')[0];
+        const token: string = authCode.split('=')[1]?.split('&')[0]; // 네이버 로그인을 통해 전달받은 hash 값
+        const token_type: string = authCode.split("token_type=")[1]?.split('&')[0];
         const expires_in: string = authCode.split("expires_in=")[1];
         if (token) {
             naverLogin.getLoginStatus((status: any) => {
                 if (status) { // 로그인 상태 값이 있을 경우
-                    debugger
-                    //? 토큰 값 백으로 전달하기 :)
+                    console.log("토큰 : ", token);
+                    CallLoginAPI(token);
                 }
             });
         }
@@ -135,6 +115,21 @@ const Login = () => {
         dispatch(userLogIn());
     }
 
+    const CallLoginAPI = (token) => {
+        const param = {
+            url: `${process.env.NEXT_PUBLIC_API_DOMAIN}api/v1/member/join`,
+            data: {
+                accessToken: token,
+                snsType: "kakao",
+            }
+        }
+        const responseData = call("GET", param);
+        responseData.then((resData) => {
+            handleOnLogin();
+            localStorage.setItem("UserInfo", JSON.stringify(resData));
+            router.push("/main");
+        })
+    }
 
     return (
         <LoginPageWrapper>

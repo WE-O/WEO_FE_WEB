@@ -14,6 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   if (router.pathname === "_error") return <Component {...pageProps} />;
 
+    
   return (
     <ThemeProvider theme={theme}>
       <MainLayout>
@@ -22,6 +23,8 @@ function MyApp({ Component, pageProps }: AppProps) {
             name="viewport"
             content="initial-scale=1.0, width=device-width"
           />
+          <title>식식물물, 새로운 식물 집사 플랫폼</title>
+          <link rel="icon" href="/favicon.png" />
         </Head>
         <Script
           src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JS_API_KEY}&autoload=false&libraries=services`}
