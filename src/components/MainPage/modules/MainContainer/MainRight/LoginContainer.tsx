@@ -124,6 +124,7 @@ const Login = () => {
         }
         const responseData = call("GET", param);
         responseData.then((resData) => {
+            debugger
             handleOnLogin();
             localStorage.setItem("UserInfo", JSON.stringify(resData));
             router.push("/main");
