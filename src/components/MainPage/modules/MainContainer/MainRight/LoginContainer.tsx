@@ -25,11 +25,11 @@ const Login = () => {
 
 
 
-    useEffect(() => {
-        if (localStorage?.UserInfo && JSON.parse(localStorage.UserInfo).memberId) {
-            router.push("/mypage")
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (localStorage?.UserInfo && JSON.parse(localStorage.UserInfo).memberId) {
+    //         router.push("/mypage")
+    //     }
+    // }, []);
 
     useEffect(() => {
         // 전역객체에서 네이버 SDK 가져오기
@@ -126,7 +126,7 @@ const Login = () => {
         const responseData = call("GET", param);
         responseData.then((resData) => {
             handleOnLogin();
-            localStorage.setItem("UserInfo", JSON.stringify(resData));
+            // localStorage.setItem("UserInfo", JSON.stringify(resData));
             router.push("/main");
         })
     }
