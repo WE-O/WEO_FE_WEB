@@ -66,7 +66,7 @@ const Login = () => {
         )
             .then((res) => {
                 const accessToken: string = res.data.access_token;
-                CallLoginAPI(accessToken);
+                CallLoginAPI(accessToken, "kakao");
             })
     }
 
@@ -93,7 +93,7 @@ const Login = () => {
             naverLogin.getLoginStatus((status: any) => {
                 if (status) { // 로그인 상태 값이 있을 경우
                     console.log("토큰 : ", token);
-                    CallLoginAPI(token);
+                    CallLoginAPI(token, "naver");
                 }
             });
         }
@@ -114,12 +114,12 @@ const Login = () => {
         dispatch(userLogIn());
     }
 
-    const CallLoginAPI = (token: string) => {
+    const CallLoginAPI = (token: string, type: string) => {
         const param = {
             url: `${process.env.NEXT_PUBLIC_API_DOMAIN}api/v1/member/join`,
             data: {
                 accessToken: token,
-                snsType: "kakao",
+                snsType: type,
             }
         }
         const responseData = call("GET", param);
