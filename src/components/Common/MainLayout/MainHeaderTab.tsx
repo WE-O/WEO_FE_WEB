@@ -10,12 +10,12 @@ const MainHeaderTab = () => {
   const dispatch = useAppDispatch();
   const isLogin = useAppSelector((state) => state.user.isLogIn);
 
-  useEffect(() => {
-    debugger
-    if (localStorage.getItem("UserInfo") !== null && JSON.parse(localStorage.UserInfo)?.memberId) {
-      dispatch(userLogIn());
-    }
-  }, []);
+  // useEffect(() => {
+  //   debugger
+  //   if (localStorage.getItem("UserInfo") !== null && JSON.parse(localStorage.UserInfo)?.memberId) {
+  //     dispatch(userLogIn());
+  //   }
+  // }, []);
 
 
   return (
