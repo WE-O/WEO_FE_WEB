@@ -128,6 +128,8 @@ const Login = () => {
             handleOnLogin();
             localStorage.setItem("UserInfo", JSON.stringify(resData));
             router.push("/main");
+        }).catch((error) => {
+            debugger
         })
     }
 
