@@ -11,9 +11,9 @@ const MainHeaderTab = () => {
   const isLogin = useAppSelector((state) => state.user.isLogIn);
 
   useEffect(() => {
-    // if (localStorage.UserInfo !== undefined && JSON.parse(localStorage.UserInfo).memberId !== undefined) {
-      // dispatch(userLogIn());
-    // }
+    if (localStorage?.UserInfo !== undefined && JSON.parse(localStorage.UserInfo).memberId !== undefined) {
+      dispatch(userLogIn());
+    }
   }, []);
 
 
