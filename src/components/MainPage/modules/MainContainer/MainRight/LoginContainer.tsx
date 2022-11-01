@@ -15,7 +15,7 @@ interface innerTextStyleProps {
 
 const Login = () => {
 
-    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY}&redirect_uri=${process.env.NEXT_PUBLIC_CALLBACK_URL}&response_type=code`;
+    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY}&redirect_uri=${process.env.NEXT_PUBLIC_CALLBACK_URL_DEV}&response_type=code`;
     const naverRef = useRef<any>();
     let naverLogin: any;
     let naver: any;
@@ -59,7 +59,7 @@ const Login = () => {
             formUrlEncoded({
                 grant_type: "authorization_code",
                 client_id: process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY,
-                redirect_uri: process.env.NEXT_PUBLIC_CALLBACK_URL,
+                redirect_uri: process.env.NEXT_PUBLIC_CALLBACK_URL_DEV,
                 code: authCode
             })
             , { headers }
@@ -74,7 +74,7 @@ const Login = () => {
     const naverInit = () => {
         naverLogin = new naver.LoginWithNaverId({
             clientId: process.env.NEXT_PUBLIC_NAVER_CLIENT_ID, // ClientID
-            callbackUrl: process.env.NEXT_PUBLIC_CALLBACK_URL,
+            callbackUrl: process.env.NEXT_PUBLIC_CALLBACK_URL_DEV,
             isPopup: false, // 팝업 형태로 인증 여부
             loginButton: {
                 color: 'green', // 색상
@@ -115,7 +115,7 @@ const Login = () => {
         dispatch(userLogIn());
     }
 
-    const CallLoginAPI = (token) => {
+    const CallLoginAPI = (token: string) => {
         const param = {
             url: `${process.env.NEXT_PUBLIC_API_DOMAIN}api/v1/member/join`,
             data: {
