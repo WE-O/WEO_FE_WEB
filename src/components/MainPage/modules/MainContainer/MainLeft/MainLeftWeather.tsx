@@ -1,22 +1,21 @@
-import Image from "next/image";
-import React, { useCallback, useRef, useState } from "react";
-import styled, { css } from "styled-components";
-import { useGetWeather } from "../../../Logics/mainLeftLogic";
-import { useAppDispatch } from "../../../../../store/hooks";
-import { SET_location } from "../../../../../store/modules/UserSlice";
+import Image from 'next/image';
+import React, { useCallback, useRef, useState } from 'react';
+import styled, { css } from 'styled-components';
+import { useGetWeather } from '../../../Logics/mainLeftLogic';
+import { useAppDispatch, useAppSelector } from '../../../../../store/hooks';
+import {
+  SET_weatherData,
+  SET_location,
+} from '../../../../../store/modules/UserSlice';
 import {
   MainLeftDeafultItemWrapper,
   MainLeftDeafultItemTitle,
-} from "./MainLefCss";
+} from './MainLefCss';
 
 const MainLeftWeather = () => {
   const dispatch = useAppDispatch();
-  const [weatherData, setWeatherData] = useState({
-    aTmp: "",
-    aWeather: "",
-    mTmp: "",
-    mWeather: "",
-  });
+  const weatherData = useAppSelector((state) => state.user.weatherData);
+
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const getLocation = useCallback(() => {
@@ -25,12 +24,12 @@ const MainLeftWeather = () => {
         async function (position) {
           const lat = position.coords.latitude;
           const lng = position.coords.longitude;
-          let weatherData = await useGetWeather(
+          const getWeatherData = await useGetWeather(
             position.coords.latitude,
-            position.coords.longitude
+            position.coords.longitude,
           );
           dispatch(SET_location({ lat: lat, lng: lng }));
-          setWeatherData((prev) => ({ ...prev, ...weatherData }));
+          dispatch(SET_weatherData(getWeatherData));
         },
         function (error) {
           console.error(error);
@@ -39,10 +38,10 @@ const MainLeftWeather = () => {
           enableHighAccuracy: false,
           maximumAge: 0,
           timeout: Infinity,
-        }
+        },
       );
     } else {
-      alert("GPS를 지원하지 않습니다");
+      alert('GPS를 지원하지 않습니다');
     }
   }, []);
 
@@ -61,17 +60,17 @@ const MainLeftWeather = () => {
       </MainLeftDeafultItemTitle>
       <MainLeftWeatherContents>
         <MainLeftWeatherItem>
-          {weatherData.mWeather ? <Image src={weatherData.mWeather} /> : "ㅡ"}
+          {weatherData?.mWeather ? <Image src={weatherData.mWeather} /> : 'ㅡ'}
           <MainLeftWeatherSpan type="text">오전</MainLeftWeatherSpan>
         </MainLeftWeatherItem>
-        {weatherData.mWeather && weatherData.aWeather && <span>|</span>}
+        {weatherData?.mWeather && weatherData.aWeather && <span>|</span>}
         <MainLeftWeatherItem>
-          {weatherData.aWeather ? <Image src={weatherData.aWeather} /> : "ㅡ"}
+          {weatherData?.aWeather ? <Image src={weatherData.aWeather} /> : 'ㅡ'}
           <MainLeftWeatherSpan type="text">오후</MainLeftWeatherSpan>
         </MainLeftWeatherItem>
         <MainLeftWeatherItem>
-          {weatherData.mTmp ? `${weatherData.mTmp}° ` : " ㅡ "}/
-          {weatherData.aTmp ? ` ${weatherData.aTmp}°` : " ㅡ "}
+          {weatherData?.mTmp ? `${weatherData.mTmp}° ` : ' ㅡ '}/
+          {weatherData?.aTmp ? ` ${weatherData.aTmp}°` : ' ㅡ '}
         </MainLeftWeatherItem>
         <MainLeftWeatherItem>
           <MainLeftWeatherBtn onClick={() => onHandleClick()}>
@@ -104,14 +103,14 @@ const MainLeftWeatherSpan = styled.span<{ type: string }>`
   font-weight: 400;
 
   ${(Props) =>
-    Props.type === "text" &&
+    Props.type === 'text' &&
     css`
       font-size: 14px;
       color: #999999;
     `}
 
   ${(Props) =>
-    Props.type === "number" &&
+    Props.type === 'number' &&
     css`
       font-size: 16px;
       font-weight: 400;

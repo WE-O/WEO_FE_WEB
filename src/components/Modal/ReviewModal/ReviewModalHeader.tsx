@@ -3,12 +3,10 @@ import styled, { css } from 'styled-components';
 const ReviewModalHeader = () => {
   return (
     <ReviewModalHeaderWrapper>
-      <HeaderBtn btnType="cancle">취소</HeaderBtn>
-      <HeaderText>
-        상호명
+      <HeaderWrapper>
+        <HeaderText>상호명</HeaderText>
         <HeaderTextSub>업종</HeaderTextSub>
-      </HeaderText>
-      <HeaderBtn btnType="ok">등록</HeaderBtn>
+      </HeaderWrapper>
     </ReviewModalHeaderWrapper>
   );
 };
@@ -19,8 +17,24 @@ const ReviewModalHeaderWrapper = styled.div`
   height: 130px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 10px 0 10px 0;
+`;
+
+const HeaderWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 30px;
+`;
+
+const HeaderText = styled.span`
+  font-size: 30px;
+  font-weight: 600;
+`;
+
+const HeaderTextSub = styled.span`
+  font-size: 15px;
+  color: gray;
 `;
 
 const HeaderBtn = styled.button<{ btnType: string }>`
@@ -29,18 +43,4 @@ const HeaderBtn = styled.button<{ btnType: string }>`
   font-size: 20px;
   font-weight: 600;
   border: none;
-`;
-
-const HeaderText = styled.span`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  font-size: 30px;
-  font-weight: 600;
-  gap: 10px;
-`;
-
-const HeaderTextSub = styled.span`
-  font-size: 15px;
-  color: gray;
 `;

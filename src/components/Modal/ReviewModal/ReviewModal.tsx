@@ -8,7 +8,7 @@ const ReviewModal = () => {
     <ReviewModalWrapper>
       <ReviewModalHeader />
       <ReviewContent />
-      <ReviewWrite />
+      {/* <ReviewWrite /> */}
     </ReviewModalWrapper>
   );
 };
@@ -16,8 +16,8 @@ const ReviewModal = () => {
 export default ReviewModal;
 
 const ReviewModalWrapper = styled.div`
-  width: 610px;
-  height: 800px;
+  width: 800px;
+  height: 700px;
   background-color: white;
   border-radius: 10px;
   padding: 10px 30px 10px 30px;
