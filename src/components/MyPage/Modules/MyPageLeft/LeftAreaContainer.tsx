@@ -2,7 +2,7 @@ import Image from "next/image";
 import router from "next/router";
 import React, { ReactHTMLElement, useCallback, useEffect, useRef } from "react";
 import styled from "styled-components";
-import { useAppDispatch } from "../../../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
 import { addModal, deleteModal } from "../../../../store/modules/ModalSlice";
 import { userLogOut } from "../../../../store/modules/UserSlice";
 import {
@@ -15,7 +15,7 @@ import {
 import useOnClickOutside from "../../../Common/hooks/useOnClickOutside";
 
 interface imgProps {
-    imgSrc: any
+    imgSrc: string
 }
 
 
@@ -23,16 +23,17 @@ interface imgProps {
 const LeftAreaContainer = () => {
 
     const dispatch = useAppDispatch();
+    const profileData = useAppSelector((state) => state.user.userData);
 
     const clickEventType = {
         changeImage() {
 
         },
-        changeNickname() {
+        changeNickName() {
             dispatch(addModal('commonModal'));
+            // 닉네임 변경 API 주소 -> /api​/v1 / member / nickname
         },
         logOut() {
-            debugger
             dispatch(userLogOut());
             localStorage.removeItem("UserInfo");
             router.push("/main");
@@ -49,7 +50,7 @@ const LeftAreaContainer = () => {
         <LeftAreaWrapper >
 
             <ImageWrapper>
-                <ImageCircle imgSrc={test_IMG}>
+                <ImageCircle imgSrc={profileData.profileImg}>
                     <ImageEdit>
                         <Image
                             src={profile_edit_icon}
@@ -65,7 +66,7 @@ const LeftAreaContainer = () => {
 
                 <UserNameWrapper>
                     <span>
-                        닉네임은최대10글자로제한
+                        {profileData.nickname}
                     </span>
                     <ChangeNickNameButton onClick={() => { handleOnClick("changeNickName") }}>
                         <Image
@@ -80,12 +81,16 @@ const LeftAreaContainer = () => {
 
                 <UserEmailWapper>
                     <Image
-                        src={profile_kakao_icon}
+                        src={
+                            profileData.snsType === "kakao" ? profile_kakao_icon :
+                                profileData.snsType === "naver" ? profile_naver_icon :
+                                    ""
+                        }
                         width={"20px"}
                         height={"20px"}
                     />
                     <span>
-                        psh950@naver.com
+                        {profileData.email}
                     </span>
                 </UserEmailWapper>
 
@@ -119,7 +124,7 @@ const ImageCircle = styled.div`
     box-sizing: border-box;
     border: 1px solid #C1C1C1;
     position: relative;
-    background-image:${(props: imgProps) => `url(${props.imgSrc.src})`};
+    background-image:${(props: imgProps) => `url(${props.imgSrc})`};
     background-size: cover;
 `
 const ImageEdit = styled.div`

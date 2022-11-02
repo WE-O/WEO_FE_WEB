@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { loginBanner, naverLoginButton, kakaoLoginButton, plant_icon_2 } from "../../../../../utils/images";
 import { useRouter } from 'next/router';
 import { useAppDispatch } from "../../../../../store/hooks";
-import { userLogIn } from "../../../../../store/modules/UserSlice";
+import { userLogIn, SET_userInfo } from "../../../../../store/modules/UserSlice";
 import { call } from "../../../../../api/apis"
 
 interface innerTextStyleProps {
@@ -15,7 +15,7 @@ interface innerTextStyleProps {
 
 const Login = () => {
 
-    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY}&redirect_uri=${process.env.NEXT_PUBLIC_CALLBACK_URL_DEV}&response_type=code`;
+    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY}&redirect_uri=${process.env.NEXT_PUBLIC_CALLBACK_URL}&response_type=code`;
     const naverRef = useRef<any>();
     let naverLogin: any;
     let naver: any;
@@ -59,7 +59,7 @@ const Login = () => {
             formUrlEncoded({
                 grant_type: "authorization_code",
                 client_id: process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY,
-                redirect_uri: process.env.NEXT_PUBLIC_CALLBACK_URL_DEV,
+                redirect_uri: process.env.NEXT_PUBLIC_CALLBACK_URL,
                 code: authCode
             })
             , { headers }
@@ -125,9 +125,15 @@ const Login = () => {
         }
         const responseData = call("GET", param);
         responseData.then((resData) => {
-            debugger
             handleOnLogin();
-            localStorage.setItem("UserInfo", JSON.stringify(resData));
+            localStorage.setItem("UserInfo", JSON.stringify(resData.memberId));
+            const userInfoActionPayload = {
+                email: resData.email,
+                nickname: resData.nickname,
+                profileImg: resData.profileImg,
+                snsType: resData.snsType
+            }
+            dispatch(SET_userInfo(userInfoActionPayload));
             router.push("/main");
         }).catch((error) => {
             debugger

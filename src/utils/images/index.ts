@@ -37,6 +37,7 @@ export { default as test_IMG } from './test_IMG.png';
 export { default as plant_icon_1 } from './plant_icon_1.png';
 export { default as plant_icon_3 } from './plant_icon_3.png';
 export { default as mypage_test } from './mypage_test.png';
+export { default as bookmark_icon } from './bookmark_icon.png';
 
 // 지도 위에 사용되는 이미지
 export { default as search_icon } from './search_icon.png';
