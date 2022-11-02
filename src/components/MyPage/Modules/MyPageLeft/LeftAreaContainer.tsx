@@ -158,6 +158,7 @@ const LogoutButton = styled.button`
     background: #FFFFFF;
     border: 1px solid #9D9EA3;
     border-radius: 4px;
+    color: rgba(37, 40, 47, 0.65);
     cursor : pointer;
 `
 

@@ -91,6 +91,7 @@ const Login = () => {
         const expires_in: string = authCode.split("expires_in=")[1];
         if (token) {
             naverLogin.getLoginStatus((status: any) => {
+                debugger
                 if (status) { // 로그인 상태 값이 있을 경우
                     console.log("토큰 : ", token);
                     CallLoginAPI(token, "naver");
