@@ -1,28 +1,48 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+interface weather {
+  aTmp: string;
+  aWeather: string;
+  mTmp: string;
+  mWeather: string;
+}
 
 export interface userState {
   lat: number; // 위도
   lng: number; // 경도
-  isLogIn: boolean // 로그인 유무
+  isLogIn: boolean; // 로그인 유무
+  weatherData: weather;
 }
 
 const initialState: userState = {
   lat: 37.5666805,
   lng: 126.9784147,
   isLogIn: false,
+  weatherData: {
+    aTmp: '',
+    aWeather: '',
+    mTmp: '',
+    mWeather: '',
+  },
 };
 
 const UserSlice = createSlice({
-  name: "UserSlice",
+  name: 'UserSlice',
   initialState,
   reducers: {
     SET_location: (
       state,
-      action: PayloadAction<{ lat: number; lng: number }>
+      action: PayloadAction<{ lat: number; lng: number }>,
     ) => {
       return {
         ...state,
         ...action.payload,
+      };
+    },
+    SET_weatherData: (state, action: PayloadAction<weather>) => {
+      return {
+        ...state,
+        weatherData: action.payload,
       };
     },
     userLogIn(state) {
@@ -34,5 +54,6 @@ const UserSlice = createSlice({
   },
 });
 
-export const { SET_location, userLogIn, userLogOut } = UserSlice.actions;
+export const { SET_location, SET_weatherData, userLogIn, userLogOut } =
+  UserSlice.actions;
 export default UserSlice.reducer;
