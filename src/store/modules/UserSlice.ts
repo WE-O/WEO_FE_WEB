@@ -3,13 +3,19 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface userState {
   lat: number; // 위도
   lng: number; // 경도
-  isLogIn: boolean // 로그인 유무
+  isLogIn: boolean; // 로그인 유무
+  email: string;
+  nickname: string;
+  profileImg: string;
 }
 
 const initialState: userState = {
   lat: 37.5666805,
   lng: 126.9784147,
   isLogIn: false,
+  email: "",
+  nickname: "",
+  profileImg:"",
 };
 
 const UserSlice = createSlice({
@@ -24,6 +30,14 @@ const UserSlice = createSlice({
         ...state,
         ...action.payload,
       };
+    },
+    SET_userInfo: (
+      state,
+      action: PayloadAction<userState>
+    ) => {
+      console.log(action);
+        debugger
+      
     },
     userLogIn(state) {
       state.isLogIn = true;

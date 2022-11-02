@@ -1,8 +1,10 @@
 import Image from "next/image";
+import router from "next/router";
 import React, { ReactHTMLElement, useCallback, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useAppDispatch } from "../../../../store/hooks";
 import { addModal, deleteModal } from "../../../../store/modules/ModalSlice";
+import { userLogOut } from "../../../../store/modules/UserSlice";
 import {
     profile_edit_icon,
     profile_kakao_icon,
@@ -16,17 +18,32 @@ interface imgProps {
     imgSrc: any
 }
 
+
+
 const LeftAreaContainer = () => {
 
     const dispatch = useAppDispatch();
-    
-    const handleOnClick = useCallback((e: React.MouseEvent<HTMLElement>) => {
-        dispatch(addModal('commonModal'));
+
+    const clickEventType = {
+        changeImage() {
+
+        },
+        changeNickname() {
+            dispatch(addModal('commonModal'));
+        },
+        logOut() {
+            debugger
+            dispatch(userLogOut());
+            localStorage.removeItem("UserInfo");
+            router.push("/main");
+        }
+    }
+
+    const handleOnClick = useCallback((type: string) => {
+        clickEventType[type]();
     }, [])
-    
-    useEffect(() => {
-        const callAPIURL = `${process.env.NEXT_PUBLIC_API_DOMAIN}api/v1/member/join`;
-    },[])
+
+
 
     return (
         <LeftAreaWrapper >
@@ -50,7 +67,7 @@ const LeftAreaContainer = () => {
                     <span>
                         닉네임은최대10글자로제한
                     </span>
-                    <ChangeNickNameButton onClick={handleOnClick}>
+                    <ChangeNickNameButton onClick={() => { handleOnClick("changeNickName") }}>
                         <Image
                             src={profile_rightArrow}
                             width={"12px"}
@@ -75,7 +92,7 @@ const LeftAreaContainer = () => {
             </UserInfoWrapper>
 
 
-            <LogoutButton>
+            <LogoutButton onClick={() => { handleOnClick("logOut") }}>
                 로그아웃 버튼
             </LogoutButton>
 
