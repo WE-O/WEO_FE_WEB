@@ -37,8 +37,10 @@ export default class MyDocument extends Document {
         </Head>
       
         <body>
-          <Main></Main>
-          <NextScript></NextScript>
+          {/* IE에서도 동작할 수 있도록 폴리필 추가 */}
+          <script src="https://polyfill.io/v3/polyfill.min.js?features=default%2Ces2015%2Ces2016%2Ces2017%2Ces2018%2Ces2019" />
+          <Main />
+          <NextScript/>
         </body>
       </Html>
     );
