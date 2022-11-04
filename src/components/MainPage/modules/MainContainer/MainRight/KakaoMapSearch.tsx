@@ -44,7 +44,7 @@ const KakaoMapSearch = () => {
       }
     }
     const responseData = await call("GET", param);
-    debugger
+     
     searchRef.current.value = '';
   }, []);
 

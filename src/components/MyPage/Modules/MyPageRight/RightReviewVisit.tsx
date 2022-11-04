@@ -1,6 +1,8 @@
 const RightReviewVisit = () => {
     return (
-        <div></div>
+        <div>
+            오른쪽 리뷰
+        </div>
     )
 }
 

@@ -33,7 +33,7 @@ export const NaverLoginButton: React.FC<AppProps> = (props) => {
                 naverLogin.getLoginStatus((status: any) => {
                     if (status) { // 로그인 상태 값이 있을 경우
 
-                        debugger
+                         
                     }
                 });
             }

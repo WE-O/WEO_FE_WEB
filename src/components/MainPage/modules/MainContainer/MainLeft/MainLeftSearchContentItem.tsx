@@ -23,8 +23,8 @@ const MainLeftSearchContentItem = () => {
               {/* <ItemSpan case="titleTag">{item.category_name}</ItemSpan> */}
               <ItemTitleImg
                 onClick={(e) => {
-                  debugger;
-                  debugger;
+                   ;
+                   ;
                   e.stopPropagation();
                   console.log('즐겨찾기 업데이트 API');
                 }}

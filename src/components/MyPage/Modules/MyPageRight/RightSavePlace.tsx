@@ -1,6 +1,8 @@
 const RightSavePlace = () => {
     return (
-        <div></div>
+        <div>
+            오른쪽 장소 저장
+        </div>
     )
 }
 

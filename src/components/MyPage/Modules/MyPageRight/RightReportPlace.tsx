@@ -1,6 +1,8 @@
 const RightReportPlace = () => {
     return (
-        <div></div>
+        <div>
+            오른쪽 장소 
+        </div>
     )
 }
 

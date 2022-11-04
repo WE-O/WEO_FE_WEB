@@ -59,7 +59,7 @@ const UserSlice = createSlice({
       };
     },
     SET_userInfo: (state, action: PayloadAction<userData>) => {
-      debugger
+       
       state.userData = action.payload;
     },
     SET_weatherData: (state, action: PayloadAction<weather>) => {

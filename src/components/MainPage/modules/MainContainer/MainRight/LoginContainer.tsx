@@ -91,7 +91,7 @@ const Login = () => {
         const expires_in: string = authCode.split("expires_in=")[1];
         if (token) {
             naverLogin.getLoginStatus((status: any) => {
-                debugger
+                 
                 if (status) { // 로그인 상태 값이 있을 경우
                     console.log("토큰 : ", token);
                     CallLoginAPI(token, "naver");
@@ -126,7 +126,8 @@ const Login = () => {
         const responseData = call("GET", param);
         responseData.then((resData) => {
             handleOnLogin();
-            localStorage.setItem("UserInfo", JSON.stringify(resData.memberId));
+             
+            localStorage.setItem("UserInfo", JSON.stringify({ memberId: resData.memberId }));
             const userInfoActionPayload = {
                 email: resData.email,
                 nickname: resData.nickname,
@@ -136,7 +137,7 @@ const Login = () => {
             dispatch(SET_userInfo(userInfoActionPayload));
             router.push("/main");
         }).catch((error) => {
-            debugger
+             
         })
     }
 

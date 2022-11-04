@@ -12,13 +12,15 @@ import modalSlice, { modalState } from "./modules/ModalSlice";
 import userSlice, { userState } from "./modules/UserSlice";
 import SearchKeywordSlice, { searchKeywordState } from "./modules/SearchKeywordSlice";
 import MapSlice, { mapState } from "./modules/MapSlice";
+import MyPageSlice, { myPageState } from "./modules/MyPageSlice";
 
 // 리듀서 State 타입 정의, 신규 추가 하기
 export interface ReducerStates {
   modal: modalState;
   user: userState;
   searchKey: searchKeywordState;
-  map:mapState,
+  map: mapState;
+  myPage: myPageState;
 }
 
 // 루트 리듀서 생성
@@ -35,6 +37,7 @@ const rootReducer = (state: ReducerStates, action: AnyAction) => {
     user: userSlice,
     searchKey: SearchKeywordSlice,
     map: MapSlice,
+    myPage: MyPageSlice,
   })(state, action);
 };
 

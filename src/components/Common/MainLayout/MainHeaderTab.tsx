@@ -4,19 +4,25 @@ import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { addModal } from '../../../store/modules/ModalSlice';
 import { userLogIn } from '../../../store/modules/UserSlice';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { changeMyPageIndex } from '../../../store/modules/MyPageSlice';
 
 const MainHeaderTab = () => {
   const dispatch = useAppDispatch();
   const isLogin = useAppSelector((state) => state.user.isLogIn);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      if (localStorage?.getItem("UserInfo") !== null && JSON.parse(localStorage.UserInfo)?.memberId) {
-        dispatch(userLogIn());
-      }
+     
+    if (localStorage?.getItem("UserInfo") !== null && JSON.parse(localStorage.UserInfo)?.memberId) {
+      dispatch(userLogIn());
     }
   }, []);
+
+  const handleOnClick_loginButton = (e: React.MouseEvent<HTMLElement>) => {
+     
+    e.stopPropagation();
+    dispatch(changeMyPageIndex(0));
+  }
 
 
   return (
@@ -47,11 +53,15 @@ const MainHeaderTab = () => {
       {
         isLogin ?
           <Link href="/mypage">
-            <Button>마이페이지</Button>
+            <Button onClick={(e: React.MouseEvent<HTMLElement, MouseEvent>) => handleOnClick_loginButton(e)}>
+              마이페이지
+            </Button>
           </Link>
           :
           <Link href="/login">
-            <Button>로그인</Button>
+            <Button onClick={(e: React.MouseEvent<HTMLElement, MouseEvent>) => handleOnClick_loginButton(e)}>
+              로그인
+            </Button>
           </Link>
 
       }

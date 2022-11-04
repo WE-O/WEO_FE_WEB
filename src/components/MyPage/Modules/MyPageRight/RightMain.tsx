@@ -1,16 +1,30 @@
 import styled from "styled-components";
 import Image from "next/image";
-import { plant_icon_1, plant_icon_3, profile_rightArrow , profile_leftArrow} from "../../../../utils/images"
+import { plant_icon_1, plant_icon_3, profile_rightArrow, profile_leftArrow } from "../../../../utils/images"
 // import Carousel from "../Component/Carousel/Carousel";
 import ContentsBox from "../Component/ContentsBox/ContentsBox";
 import { useAppDispatch } from "../../../../store/hooks";
 import { addModal } from "../../../../store/modules/ModalSlice";
+import { changeMyPageIndex, changeMyPageInfo } from "../../../../store/modules/MyPageSlice";
+import { useCallback } from "react";
 
 const RightMain = () => {
 
-    // const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch();
+
+    const clickEventMap = {
+        "저장한장소": 1,
+        "방문후기작성": 2,
+        "장소제보": 3,
+    }
+    const handleOnClick_myPageRight = useCallback((e: React.MouseEvent<HTMLElement>, type: string) => {
+        e.preventDefault();
+        e.stopPropagation();
+        debugger
+        dispatch(changeMyPageIndex(clickEventMap[type]));
+    }, [])
     // dispatch(addModal('commonModal'));
-    
+
     return (
         <RightAreaWrapper>
             <TopWrapper>
@@ -23,18 +37,22 @@ const RightMain = () => {
                 </TitleWrapper>
 
                 <StatusBoard>
+
                     <StatusInnerBox>
                         <p>저장한 장소</p>
-                        <span>5</span>
+                        <button onClick={(e) => handleOnClick_myPageRight(e, "저장한장소")}>5</button>
                     </StatusInnerBox>
+
                     <StatusInnerBox>
                         <p>방문 후기 작성</p>
-                        <span>25</span>
+                        <button onClick={(e) => handleOnClick_myPageRight(e, "방문후기작성")}>5</button>
                     </StatusInnerBox>
+
                     <StatusInnerBox>
                         <p>장소 제보</p>
-                        <span>15</span>
+                        <button onClick={(e) => handleOnClick_myPageRight(e, "장소제보")}>5</button>
                     </StatusInnerBox>
+
                 </StatusBoard>
 
             </TopWrapper>
@@ -57,7 +75,7 @@ const RightMain = () => {
                 </TitleWrapper>
 
 
-                
+
                 <ScrapContents>
 
 
@@ -124,12 +142,14 @@ const StatusInnerBox = styled.div`
         color: #6F6F6F;
     }
 
-    span {
+    button {
         cursor : pointer;
         text-decoration : underline;
         font-weight: 700;
         font-size: 26px;
         line-height: 39px;
+        border:0;
+        background:white;
     }
 
 `;
