@@ -5,6 +5,23 @@ import { useAppSelector } from '../../../store/hooks';
 import AddressInfo from './AddressInfo';
 import PriceInfo from './PriceInfo';
 import ReviewInfo from './ReviewInfo';
+import { detailDataType } from './utils/type';
+
+const defaultData = {
+  addressName: '',
+  categoryGroupCode: '',
+  categoryGroupName: '',
+  distance: '',
+  phone: '',
+  placeId: '',
+  placeName: '',
+  placeUrl: '',
+  reviews: 0,
+  roadAddressName: '',
+  views: 0,
+  x: '',
+  y: '',
+};
 
 const selectType: string[] = [
   '상세정보',
@@ -13,19 +30,19 @@ const selectType: string[] = [
 ];
 
 const DetailModalContentHeader = () => {
+  const [detailData, setDetailData] = useState<detailDataType>(defaultData);
   const [type, setType] = useState<string>('type0');
 
   const modalParam = useAppSelector((state) => state.modal.modalParam);
 
   useEffect(() => {
     const getDetail = async () => {
-      const res = await call('GET', {
+      const res: detailDataType = await call('GET', {
         url: `${process.env.NEXT_PUBLIC_API_DOMAIN}/api/v1/places/${modalParam.selectId}`,
         data: {},
       });
 
-      debugger;
-      debugger;
+      setDetailData(res);
     };
 
     getDetail();
@@ -38,8 +55,8 @@ const DetailModalContentHeader = () => {
   return (
     <>
       <DetailModalHeaderWrapper>
-        <HeaderSpan case="title">상호명</HeaderSpan>
-        <HeaderSpan case="sub">원예, 화훼농원</HeaderSpan>
+        <HeaderSpan case="title">{detailData.placeName}</HeaderSpan>
+        <HeaderSpan case="sub">{detailData.categoryGroupName}</HeaderSpan>
         <DetailModalHeaderLink>
           <DetailModalHeaderLinkItem>후기 작성하기</DetailModalHeaderLinkItem>
           <DetailModalHeaderLinkItem>정보 수정 요청</DetailModalHeaderLinkItem>
@@ -58,7 +75,7 @@ const DetailModalContentHeader = () => {
       </DetailModalContentHeaderWrapper>
 
       <DetailModalContentMainWrapper>
-        {type === 'type0' && <AddressInfo />}
+        {type === 'type0' && <AddressInfo detailData={detailData} />}
         {type === 'type1' && <ReviewInfo />}
       </DetailModalContentMainWrapper>
     </>

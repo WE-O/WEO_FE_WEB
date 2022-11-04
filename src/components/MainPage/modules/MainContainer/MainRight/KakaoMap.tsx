@@ -1,7 +1,6 @@
 import { SetStateAction, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../../../../../store/hooks';
-import { setSearchData } from '../../../../../store/modules/MapSlice';
 import KakaoMapSearch from './KakaoMapSearch';
 import { Map, MapMarker, useInjectKakaoMapApi } from 'react-kakao-maps-sdk';
 import { searchData } from '../../../../../types/types';

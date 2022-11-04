@@ -6,6 +6,7 @@ import { call } from '../../../../../api/apis';
 import { useAppDispatch } from '../../../../../store/hooks';
 import { changeSearchKeyword } from '../../../../../store/modules/SearchKeywordSlice';
 import { search_icon } from '../../../../../utils/images';
+import { setSearchData } from '../../../../../store/modules/MapSlice';
 
 /*
 이 부분들 수정하면 좋을듯요?
@@ -33,19 +34,20 @@ const KakaoMapSearch = () => {
   const searchRef = useRef<any>(null);
 
   // 추후 클릭이벤트 달아주기
-  const handleOnSearch = useCallback(async(e: any) => {
+  const handleOnSearch = useCallback(async (e: any) => {
     e.preventDefault();
     dispatch(changeSearchKeyword(searchRef.current.value));
-    
+
     const param = {
       url: `${process.env.NEXT_PUBLIC_API_DOMAIN}/api/v1/places`,
       data: {
-        keyword: searchRef.current.value
-      }
-    }
-    const responseData = await call("GET", param);
-     
+        keyword: searchRef.current.value,
+      },
+    };
+    const responseData = await call('GET', param);
+
     searchRef.current.value = '';
+    dispatch(setSearchData(responseData.documents));
   }, []);
 
   return (

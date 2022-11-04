@@ -7,27 +7,25 @@ import {
   phone,
   url,
 } from '../../../utils/images';
+import { detailDataType } from './utils/type';
 
 const addressType: { [key: string]: any } = {
   주소: address,
-  시간: accessTime,
   URL: url,
   연락처: phone,
-  '배달가능 여부': delivery,
+  // 시간: accessTime,
+  // '배달가능 여부': delivery,
 };
 
-const AddressInfo = () => {
+const AddressInfo = (props: { detailData: detailDataType }) => {
+  const { detailData } = props;
+
   const tempData: { [key: string]: any } = {
-    주소: [
-      '서울특별시 도봉구 도봉로143길 60 102호',
-      '방학동 674-20 방학역3번',
-      '방학역 3번 출구에서 900m',
-    ],
-    시간: '10:00 - 22:00 일 13:00 - 18:00',
-    URL: '없음',
-    연락처: '010-9573-5777',
-    '배달가능 여부': '',
+    주소: detailData?.roadAddressName,
+    URL: detailData?.placeUrl,
+    연락처: detailData?.phone,
   };
+
   return (
     <>
       {Object.keys(addressType).map((item, idx) => (
@@ -40,10 +38,12 @@ const AddressInfo = () => {
               <span>{item}</span>
             </AddressHeader>
             <AddressContent>
-              {idx === 0 ? (
-                tempData[`${item}`].map((itemInfo: string) => (
-                  <span>{itemInfo}</span>
-                ))
+              {item === 'URL' ? (
+                <span>
+                  <a href={`${tempData[`${item}`]}`} target="_blank">
+                    {tempData[`${item}`]}
+                  </a>
+                </span>
               ) : (
                 <span>{tempData[`${item}`]}</span>
               )}
