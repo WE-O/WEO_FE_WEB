@@ -13,9 +13,14 @@ const MainLeftSearchContentItem = () => {
       {searchData.map((item, idx) => {
         return (
           <Item
-            key={`temp_${idx}`}
+            key={`ContentItem_${idx}`}
             onClick={() => {
-              dispatch(addModal('detailModal'));
+              dispatch(
+                addModal({
+                  modalNm: 'detailModal',
+                  modalParam: { selectId: item.id },
+                }),
+              );
             }}
           >
             <ItemTitle>
@@ -23,8 +28,8 @@ const MainLeftSearchContentItem = () => {
               {/* <ItemSpan case="titleTag">{item.category_name}</ItemSpan> */}
               <ItemTitleImg
                 onClick={(e) => {
-                   ;
-                   ;
+                  debugger;
+                  debugger;
                   e.stopPropagation();
                   console.log('즐겨찾기 업데이트 API');
                 }}
@@ -54,8 +59,8 @@ const MainLeftSearchContentItem = () => {
                 </ItemSpan>
               </li> */}
               <li>
-                <ItemSpan case="contentCount">{`조회수 ${item.searchCnt}`}</ItemSpan>
-                <ItemSpan case="contentCount">{`리뷰수 ${item.reviewCnt}`}</ItemSpan>
+                <ItemSpan case="contentCount">{`조회수 ${item.view}`}</ItemSpan>
+                <ItemSpan case="contentCount">{`리뷰수 ${item.review}`}</ItemSpan>
               </li>
             </ItemContent>
           </Item>

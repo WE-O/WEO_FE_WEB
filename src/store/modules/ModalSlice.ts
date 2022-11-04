@@ -2,21 +2,34 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface modalState {
   modalList: string[];
+  modalParam: { [key: string]: any };
 }
 
-const initialState: modalState = { modalList: [] };
+const initialState: modalState = { modalList: [], modalParam: {} };
 
 const ModalSlice = createSlice({
   name: 'ModalList',
   initialState,
   reducers: {
-    addModal: (state, action: PayloadAction<string>) => {
-      const filtered = state.modalList.filter(
-        (item) => item === action.payload,
-      );
+    addModal: (
+      state,
+      action: PayloadAction<string | { [key: string]: any }>,
+    ) => {
+      let modalNm: string = '';
+      let modalParam: { [key: string]: any } = {};
+      if (typeof action.payload === 'string') {
+        modalNm = action.payload;
+      } else if (typeof action.payload === 'object') {
+        modalNm = action.payload.modalNm as string;
+        modalParam = action.payload.modalParam as { [key: string]: any };
+      }
 
-      if (filtered.length === 0) {
-        state.modalList.push(action.payload);
+      if (
+        modalNm &&
+        state.modalList.filter((item) => item === modalNm).length === 0
+      ) {
+        state.modalList.push(modalNm);
+        state.modalParam = modalParam;
       }
     },
 

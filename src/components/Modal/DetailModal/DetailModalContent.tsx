@@ -1,5 +1,7 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
+import { call } from '../../../api/apis';
+import { useAppSelector } from '../../../store/hooks';
 import AddressInfo from './AddressInfo';
 import PriceInfo from './PriceInfo';
 import ReviewInfo from './ReviewInfo';
@@ -9,8 +11,25 @@ const selectType: string[] = [
   '식물집사가 작성한 방문후기',
   '식물집사가 선택한 키워드',
 ];
+
 const DetailModalContentHeader = () => {
   const [type, setType] = useState<string>('type0');
+
+  const modalParam = useAppSelector((state) => state.modal.modalParam);
+
+  useEffect(() => {
+    const getDetail = async () => {
+      const res = await call('GET', {
+        url: `${process.env.NEXT_PUBLIC_API_DOMAIN}/api/v1/places/${modalParam.selectId}`,
+        data: {},
+      });
+
+      debugger;
+      debugger;
+    };
+
+    getDetail();
+  }, []);
 
   const changeType = useCallback((clickType: string): void => {
     setType(clickType);
@@ -18,6 +37,15 @@ const DetailModalContentHeader = () => {
 
   return (
     <>
+      <DetailModalHeaderWrapper>
+        <HeaderSpan case="title">상호명</HeaderSpan>
+        <HeaderSpan case="sub">원예, 화훼농원</HeaderSpan>
+        <DetailModalHeaderLink>
+          <DetailModalHeaderLinkItem>후기 작성하기</DetailModalHeaderLinkItem>
+          <DetailModalHeaderLinkItem>정보 수정 요청</DetailModalHeaderLinkItem>
+        </DetailModalHeaderLink>
+      </DetailModalHeaderWrapper>
+
       <DetailModalContentHeaderWrapper>
         {selectType.map((item, idx) => (
           <DetailModalContentHeaderItem
@@ -38,6 +66,47 @@ const DetailModalContentHeader = () => {
 };
 
 export default DetailModalContentHeader;
+
+const DetailModalHeaderWrapper = styled.div`
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  margin: 0px 0px 30px 0px;
+`;
+
+const DetailModalHeaderLink = styled.div`
+  display: flex;
+  top: 0px;
+  gap: 20px;
+  position: absolute;
+  right: 0px;
+`;
+
+const DetailModalHeaderLinkItem = styled.button`
+  width: 120px;
+  height: 35px;
+  color: ${(props) => props.theme.primaryGreen};
+  border: ${(props) => `1px solid ${props.theme.primaryGreen}`};
+  background: white;
+  border-radius: 10px;
+`;
+
+const HeaderSpan = styled.span<{ case: string }>`
+  ${(Props) =>
+    Props.case === 'title' &&
+    css`
+      font-weight: 700;
+      font-size: 32px;
+      margin-right: 20px;
+    `}
+
+  ${(Props) =>
+    Props.case === 'sub' &&
+    css`
+      font-size: 16px;
+      color: ${(props) => props.theme.grey1};
+    `}
+`;
 
 const DetailModalContentHeaderWrapper = styled.div`
   height: 50px;
