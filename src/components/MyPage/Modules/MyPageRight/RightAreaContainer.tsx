@@ -15,14 +15,24 @@ const RightAreaContainer = () => {
     const myPageIdx = useAppSelector((state) => state.myPage.pageIndex);
 
     return (
-        myPageIdx === 0 ?
-            <RightMain /> : // 메인
-            myPageIdx === 1 ?
-                <RightSavePlace /> : // 저장한 장소
-                myPageIdx === 2 ?
-                    <RightReviewVisit /> : // 방문 후기 작성
-                    <RightReportPlace /> // 장소 제보
+        <RightAreaWrapper>
+            {
+                myPageIdx === 0 ?
+                    <RightMain /> : // 메인
+                    myPageIdx === 1 ?
+                        <RightSavePlace /> : // 저장한 장소
+                        myPageIdx === 2 ?
+                            <RightReviewVisit /> : // 방문 후기 작성
+                            <RightReportPlace /> // 장소 제보
+            }
+        </RightAreaWrapper>
     )
 }
+
+const RightAreaWrapper = styled.div`
+    border-left: solid 1px #DFDFDF;
+    min-width:907px;
+    // width:1000px;
+`;
 
 export default RightAreaContainer;

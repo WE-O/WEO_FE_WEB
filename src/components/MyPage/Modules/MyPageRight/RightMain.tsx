@@ -20,13 +20,12 @@ const RightMain = () => {
     const handleOnClick_myPageRight = useCallback((e: React.MouseEvent<HTMLElement>, type: string) => {
         e.preventDefault();
         e.stopPropagation();
-        debugger
         dispatch(changeMyPageIndex(clickEventMap[type]));
     }, [])
     // dispatch(addModal('commonModal'));
 
     return (
-        <RightAreaWrapper>
+        <>
             <TopWrapper>
                 <TitleWrapper>
                     <div>
@@ -90,16 +89,13 @@ const RightMain = () => {
 
 
             </BottomWrapper>
-        </RightAreaWrapper>
+        </>
     )
 }
 
 export default RightMain;
 
-const RightAreaWrapper = styled.div`
-    border-left: solid 1px #DFDFDF;
-    min-width:907px;
-`;
+
 const TopWrapper = styled.div`
     padding:32px;
     height: 30%;

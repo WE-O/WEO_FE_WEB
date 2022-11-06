@@ -7,6 +7,7 @@ interface Param {
 }
 
 export const call = (type: string, param: Param) => {
+  // process.env.NEXT_PUBLIC_API_DOMAIN
   switch (type) {
     case "GET":
       return axios
