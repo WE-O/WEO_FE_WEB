@@ -20,9 +20,8 @@ const RightSavePlace = () => {
                 }
             </MainContentsWrapper>
 
-            <RightSubMenuFooter>
-                푸터
-            </RightSubMenuFooter>
+            <RightSubMenuFooter/>
+                
         </RightSubMenuWrapper>
     )
 }

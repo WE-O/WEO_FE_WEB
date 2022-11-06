@@ -20,9 +20,8 @@ const RightReviewVisit = () => {
                 }
             </MainContentsWrapper>
 
-            <RightSubMenuFooter>
-                푸터
-            </RightSubMenuFooter>
+            <RightSubMenuFooter/>
+                
         </RightSubMenuWrapper>
     )
 }
