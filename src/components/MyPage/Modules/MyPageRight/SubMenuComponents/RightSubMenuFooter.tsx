@@ -1,14 +1,21 @@
+import { useState } from "react";
 import styled from "styled-components"
 import { Pagination } from "../../../../Common";
 
 
 export const RightSubMenuFooter = () => {
+
+    const [page, setPage] = useState(1);
     return (
         <RightSubMenuFooterWrapper>
-            <Pagination />
+            <Pagination
+                total={10}
+                limit={3}
+                page={page}
+                setPage={setPage}
+            />
         </RightSubMenuFooterWrapper>
     )
-
 }
 
 
