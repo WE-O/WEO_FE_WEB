@@ -37,7 +37,7 @@ const DetailModalContentHeader = () => {
 
   const modalParam = useAppSelector((state) => state.modal.modalParam);
 
-  /*
+  /* joint
   useEffect(() => {
     const getDetail = async () => {
       const res: detailDataType = await call('GET', {
@@ -123,6 +123,7 @@ const DetailModalHeaderLinkItem = styled.button`
   border: ${(props) => `1px solid ${props.theme.primaryGreen}`};
   background: white;
   border-radius: 10px;
+  cursor: pointer;
 `;
 
 const HeaderSpan = styled.span<{ case: string }>`
