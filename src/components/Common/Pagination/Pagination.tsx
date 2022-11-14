@@ -64,24 +64,22 @@ const Button = styled.button`
   padding: 8px;
   margin: 0;
   background: white;
-  color: #9D9EA3;
+  color: #214712;
   font-size: 1rem;
 
   &:hover {
-    background: tomato;
     cursor: pointer;
     transform: translateY(-2px);
   }
 
   &[disabled] {
-    background: grey;
     cursor: revert;
     transform: revert;
   }
 
   &[aria-current] {
-    background: deeppink;
     font-weight: bold;
+    text-decoration: underline;
     cursor: revert;
     transform: revert;
   }
