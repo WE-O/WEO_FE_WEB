@@ -41,3 +41,5 @@ export { default as bookmark_icon } from './bookmark_icon.png';
 
 // 지도 위에 사용되는 이미지
 export { default as search_icon } from './search_icon.png';
+
+export { default as reviewVisit } from './reviewVisit.png';

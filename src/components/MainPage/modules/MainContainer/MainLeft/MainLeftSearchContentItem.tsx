@@ -28,8 +28,6 @@ const MainLeftSearchContentItem = () => {
               {/* <ItemSpan case="titleTag">{item.category_name}</ItemSpan> */}
               <ItemTitleImg
                 onClick={(e) => {
-                  debugger;
-                  debugger;
                   e.stopPropagation();
                   console.log('즐겨찾기 업데이트 API');
                 }}
@@ -76,8 +74,9 @@ const Item = styled.div`
   width: 100%;
   height: 170px;
   border: ${(props) => `1px solid ${props.theme.primaryGreen}`};
-  border-radius: 10px;
-  padding: 15px;
+  border-bottom-left-radius: 30px;
+  border-top-right-radius: 30px;
+  padding: 22px;
   cursor: pointer;
 `;
 
@@ -146,6 +145,6 @@ const ItemContent = styled.ul`
   list-style: none;
 
   li {
-    height: 30px;
+    height: 23px;
   }
 `;

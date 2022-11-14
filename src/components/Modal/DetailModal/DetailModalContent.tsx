@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { call } from '../../../api/apis';
-import { useAppSelector } from '../../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { addModal } from '../../../store/modules/ModalSlice';
 import AddressInfo from './AddressInfo';
 import PriceInfo from './PriceInfo';
 import ReviewInfo from './ReviewInfo';
@@ -30,11 +31,13 @@ const selectType: string[] = [
 ];
 
 const DetailModalContentHeader = () => {
+  const dispatch = useAppDispatch();
   const [detailData, setDetailData] = useState<detailDataType>(defaultData);
   const [type, setType] = useState<string>('type0');
 
   const modalParam = useAppSelector((state) => state.modal.modalParam);
 
+  /*
   useEffect(() => {
     const getDetail = async () => {
       const res: detailDataType = await call('GET', {
@@ -47,10 +50,19 @@ const DetailModalContentHeader = () => {
 
     getDetail();
   }, []);
+  */
 
   const changeType = useCallback((clickType: string): void => {
     setType(clickType);
   }, []);
+
+  const onClickReview = useCallback(
+    (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+      e.preventDefault();
+      dispatch(addModal('reviewModal'));
+    },
+    [],
+  );
 
   return (
     <>
@@ -58,7 +70,9 @@ const DetailModalContentHeader = () => {
         <HeaderSpan case="title">{detailData.placeName}</HeaderSpan>
         <HeaderSpan case="sub">{detailData.categoryGroupName}</HeaderSpan>
         <DetailModalHeaderLink>
-          <DetailModalHeaderLinkItem>후기 작성하기</DetailModalHeaderLinkItem>
+          <DetailModalHeaderLinkItem onClick={onClickReview}>
+            후기 작성하기
+          </DetailModalHeaderLinkItem>
           <DetailModalHeaderLinkItem>정보 수정 요청</DetailModalHeaderLinkItem>
         </DetailModalHeaderLink>
       </DetailModalHeaderWrapper>
@@ -68,6 +82,7 @@ const DetailModalContentHeader = () => {
           <DetailModalContentHeaderItem
             isClicked={type === `type${idx}`}
             onClick={() => changeType(`type${idx}`)}
+            key={`DetailModalContentHeaderItem_${idx}`}
           >
             {item}
           </DetailModalContentHeaderItem>
@@ -76,7 +91,9 @@ const DetailModalContentHeader = () => {
 
       <DetailModalContentMainWrapper>
         {type === 'type0' && <AddressInfo detailData={detailData} />}
-        {type === 'type1' && <ReviewInfo />}
+        {type === 'type1' && (
+          <ReviewInfo modalParam={modalParam} onClickReview={onClickReview} />
+        )}
       </DetailModalContentMainWrapper>
     </>
   );

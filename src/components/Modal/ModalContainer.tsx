@@ -22,20 +22,35 @@ const ModalContanier = () => {
 
   return (
     <>
-      {modalList.length > 0 && (
-        <ModalContainerWrapper>
-          {modalList.includes('detailModal') && (
-            <DetailModal key={'detailModal'} />
-          )}
+      {modalList.length > 0 &&
+        modalList.map((item: string, idx) => {
+          if (item === 'detailModal')
+            return (
+              <ModalContainerWrapper key={`modal_${item}`}>
+                <DetailModal
+                  key={`DetailModal${item}`}
+                  isTop={idx === modalList.length - 1}
+                />
+              </ModalContainerWrapper>
+            );
 
-          {modalList.includes('reviewModal') && (
-            <ReviewModal key={'reviewModal'} />
-          )}
-          {modalList.includes('commonModal') && (
-            <CommonModal key={'commonModal'} />
-          )}
-        </ModalContainerWrapper>
-      )}
+          if (item === 'reviewModal')
+            return (
+              <ModalContainerWrapper key={`modal_${item}`}>
+                <ReviewModal
+                  key={`ReviewModal${item}`}
+                  isTop={idx === modalList.length - 1}
+                />
+              </ModalContainerWrapper>
+            );
+
+          if (item === 'commonModal')
+            return (
+              <ModalContainerWrapper key={`modal_${item}`}>
+                <CommonModal key={`CommonModal${item}`} />
+              </ModalContainerWrapper>
+            );
+        })}
     </>
   );
 };

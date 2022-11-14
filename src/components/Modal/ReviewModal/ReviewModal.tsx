@@ -8,11 +8,16 @@ import { useAppDispatch } from '../../../store/hooks';
 import useOnClickOutside from '../../Common/hooks/useOnClickOutside';
 import { deleteModal } from '../../../store/modules/ModalSlice';
 
-const ReviewModal = () => {
+interface Props {
+  isTop: boolean;
+}
+
+const ReviewModal: React.FC<Props> = (props: Props) => {
   const reviewRef = useRef<HTMLDivElement>(null);
   const dispatch = useAppDispatch();
 
-  useOnClickOutside(reviewRef, () => closeReviewModal());
+  // isTop관련 정리하기 => useOnClickOutside multiple elements 에러
+  useOnClickOutside(reviewRef, () => closeReviewModal(), props.isTop);
 
   const closeReviewModal = useCallback(() => {
     dispatch(deleteModal('reviewModal'));
@@ -40,6 +45,7 @@ const ReviewModalWrapper = styled.div`
   background-color: white;
   border-radius: 10px;
   padding: 10px 30px 10px 30px;
+  position: absolute;
 `;
 
 const AlertSpan = styled.span`
