@@ -15,7 +15,6 @@ export default MainLeftSearchContent;
 
 const MainLeftSearchContentWrapper = styled.div`
   width: 100%;
-  // height: 560px;
   height: 680px;
   overflow: scroll;
 `;

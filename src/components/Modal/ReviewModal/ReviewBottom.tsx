@@ -104,6 +104,7 @@ const Btn = styled.button<{ name: string }>`
       color: ${(Props) => Props.theme.primaryGreen};
       background: white;
       padding: 5px;
+      border-radius: 5px;
     `}
 
   ${(Props) =>

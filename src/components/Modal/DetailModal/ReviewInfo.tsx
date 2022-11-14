@@ -1,10 +1,18 @@
 import styled, { css } from 'styled-components';
+import Image from 'next/image';
+import { reviewVisit } from '../../../utils/images';
 
-const ReviewInfo = () => {
+interface Props {
+  modalParam: { [key: string]: any };
+  onClickReview: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+}
+
+const ReviewInfo: React.FC<Props> = (props: Props) => {
   return (
     <ReviewEmpty>
+      <Image src={reviewVisit} />
       <span>후기가 없어요, 후기를 제일 처음으로 작성 해볼까요?</span>
-      <button>후기 작성하기</button>
+      <button onClick={props.onClickReview}>후기 작성하기</button>
     </ReviewEmpty>
   );
 };
