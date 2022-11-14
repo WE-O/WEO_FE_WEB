@@ -3,17 +3,17 @@ import {
   MainLeftDeafultItemWrapper,
   MainLeftDeafultItemTitle,
 } from './MainLefCss';
-import MainLeftOfferWrapperItem from './MainLeftOfferItem';
+import MainLeftOfferCarouse from './MainLeftOfferCarouse';
 
 const MainLeftOffer = () => {
   return (
     <MainLeftDeafultItemWrapper>
       <MainLeftDeafultItemTitle>
         <span>식집사를 위한 장소 추천</span>
-        {/* <MainLeftOfferSpan>더보기</MainLeftOfferSpan> */}
+        <MainLeftOfferSpan>더보기</MainLeftOfferSpan>
       </MainLeftDeafultItemTitle>
       <MainLeftOfferWrapper>
-        <MainLeftOfferWrapperItem />
+        <MainLeftOfferCarouse />
       </MainLeftOfferWrapper>
     </MainLeftDeafultItemWrapper>
   );
@@ -26,7 +26,6 @@ const MainLeftOfferWrapper = styled.div`
   height: 305px;
   position: relative;
   width: 100%;
-  overflow: scroll;
 `;
 
 const MainLeftOfferSpan = styled.span`

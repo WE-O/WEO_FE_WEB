@@ -14,7 +14,7 @@ const ReviewModalHeader = () => {
 export default ReviewModalHeader;
 
 const ReviewModalHeaderWrapper = styled.div`
-  height: 130px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-around;

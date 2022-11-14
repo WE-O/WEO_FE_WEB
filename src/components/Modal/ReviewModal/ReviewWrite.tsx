@@ -1,23 +1,51 @@
 import styled from 'styled-components';
+import { useState, useEffect, useCallback } from 'react';
 
-const ReviewWrite = () => {
+const ReviewContent = () => {
   return (
-    <ReviewWriteWrapper
-      placeholder="(선택) 장소에 방문한 식물집사님의 경험을 공유해주세요."
-      // placeholder="(선택) 장소에 방문한 식물집사님의 경험을 공유해주세요.&#13;&#10;구매한 식물의 사진과 이름, 가격을 알려주시면 다른 사용자에게 많은 도움이 됩니다.&#13;&#10;장소와 무관한 사진 및 욕설, 비속어가 포함된 리뷰는 고지 없이 삭제될 수 있습니다.&#13;&#10;"
-    ></ReviewWriteWrapper>
+    <ReviewContentWrapper>
+      <ReviewWriteWrapper
+        placeholder="(선택) 장소에 방문한 식물집사님의 경험을 공유해주세요."
+        maxLength={100}
+        onKeyUp={(e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+          document.getElementById('count').innerHTML = `${
+            (e.target as HTMLInputElement).value.length
+          } / 100 자`;
+        }}
+      />
+      <CountWrapper>
+        <span id="count">0 / 100 자</span>
+      </CountWrapper>
+    </ReviewContentWrapper>
   );
 };
 
-export default ReviewWrite;
+export default ReviewContent;
+
+const ReviewContentWrapper = styled.div`
+  width: 640px;
+  margin-bottom: 10px;
+`;
 
 const ReviewWriteWrapper = styled.textarea`
-  width: 540px;
-  height: 250px;
+  width: 100%;
+  height: 200px;
   margin: auto;
-  border: 1px solid black;
+  border: 1px solid lightgray;
   border-radius: 10px;
-  font-size: 15px;
+  font-size: 16px;
   padding: 20px;
   resize: none;
+`;
+
+const CountWrapper = styled.div`
+  position: relative;
+
+  span {
+    font-size: 16px;
+    color: #6d7280;
+    position: absolute;
+    right: 15px;
+    top: -30px;
+  }
 `;
