@@ -33,7 +33,11 @@ const MyPageContainer = () => {
                     email: resData.email,
                     nickname: resData.nickname,
                     profileImg: resData.profileImg,
-                    snsType: resData.snsType
+                    snsType: resData.snsType,
+                    bookmarkCnt: resData.bookmarkCnt,
+                    reviewCnt: resData.reviewCnt,
+                    reportCnt: resData.reportCnt,
+                    scrapList: resData.scrapList,
                 }
                 dispatch(SET_userInfo(userInfoActionPayload));
             }).catch((error) => {

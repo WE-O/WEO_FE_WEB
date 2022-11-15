@@ -3,12 +3,19 @@ import Image from "next/image";
 import { plant_icon_1, plant_icon_3, profile_rightArrow, profile_leftArrow } from "../../../../utils/images"
 // import Carousel from "../Component/Carousel/Carousel";
 import ContentsBox from "../Component/ContentsBox/ContentsBox";
-import { useAppDispatch } from "../../../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
 import { addModal } from "../../../../store/modules/ModalSlice";
 import { changeMyPageIndex, changeMyPageInfo } from "../../../../store/modules/MyPageSlice";
 import { useCallback } from "react";
 
-const RightMain = () => {
+import { UserDataType } from "./RightAreaContainer";
+import { RightSubMenuEmptySet } from "./SubMenuComponents";
+
+interface Props {
+    userData: UserDataType
+}
+
+const RightMain = (props: Props) => {
 
     const dispatch = useAppDispatch();
 
@@ -22,6 +29,9 @@ const RightMain = () => {
         e.stopPropagation();
         dispatch(changeMyPageIndex(clickEventMap[type]));
     }, [])
+
+    const { bookmarkCnt, reviewCnt, reportCnt, scrapList } = props.userData;
+
     // dispatch(addModal('commonModal'));
 
     return (
@@ -39,22 +49,29 @@ const RightMain = () => {
 
                     <StatusInnerBox>
                         <p>저장한 장소</p>
-                        <button onClick={(e) => handleOnClick_myPageRight(e, "저장한장소")}>5</button>
+                        <button onClick={(e) => handleOnClick_myPageRight(e, "저장한장소")}>
+                            {bookmarkCnt}
+                        </button>
                     </StatusInnerBox>
 
                     <StatusInnerBox>
                         <p>방문 후기 작성</p>
-                        <button onClick={(e) => handleOnClick_myPageRight(e, "방문후기작성")}>5</button>
+                        <button onClick={(e) => handleOnClick_myPageRight(e, "방문후기작성")}>
+                            {reviewCnt}
+                        </button>
                     </StatusInnerBox>
 
                     <StatusInnerBox>
                         <p>장소 제보</p>
-                        <button onClick={(e) => handleOnClick_myPageRight(e, "장소제보")}>5</button>
+                        <button onClick={(e) => handleOnClick_myPageRight(e, "장소제보")}>
+                            {reportCnt}
+                        </button>
                     </StatusInnerBox>
 
                 </StatusBoard>
 
             </TopWrapper>
+
             <BottomWrapper>
                 <TitleWrapper>
                     <div>
@@ -75,11 +92,18 @@ const RightMain = () => {
 
 
 
+                {/* {userData.scrapList} */}
                 <ScrapContents>
 
-
                     {/*  콘텐츠 보여주는 박스 */}
-                    <ContentsBox />
+                    {
+                        scrapList.length === 0 ?
+                            <EmptySet>
+                                스크랩한 컨텐츠가 없습니다.
+                            </EmptySet>
+                            :
+                            <ContentsBox />
+                    }
 
                     <WithDrawal>
                         회원탈퇴
@@ -95,6 +119,17 @@ const RightMain = () => {
 
 export default RightMain;
 
+
+const EmptySet = styled.div`
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    color: #9D9EA3;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
 
 const TopWrapper = styled.div`
     padding:32px;

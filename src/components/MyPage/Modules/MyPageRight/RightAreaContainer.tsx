@@ -8,22 +8,31 @@ import RightSavePlace from "./RightSavePlace";
 import RightReviewVisit from "./RightReviewVisit";
 import RightReportPlace from "./RightReportPlace";
 
-const RightAreaContainer = () => {
+
+export type UserDataType = {
+    bookmarkCnt: number;
+    reviewCnt: number;
+    reportCnt: number;
+    scrapList: [];
+}
+
+const RightAreaContainer: React.FC<UserDataType> = () => {
 
     const dispatch = useAppDispatch();
-    // todo 셀렉터 최적화 하는법 
+    // todo 셀렉터 최적화 하는법
     const myPageIdx = useAppSelector((state) => state.myPage.pageIndex);
+    const userData = useAppSelector((state) => state.user.userData);
 
     return (
         <RightAreaWrapper>
             {
                 myPageIdx === 0 ?
-                    <RightMain /> : // 메인
+                    <RightMain userData={userData}/> : // 메인
                     myPageIdx === 1 ?
-                        <RightSavePlace /> : // 저장한 장소
+                        <RightSavePlace userData={userData}  /> : // 저장한 장소
                         myPageIdx === 2 ?
-                            <RightReviewVisit /> : // 방문 후기 작성
-                            <RightReportPlace /> // 장소 제보
+                            <RightReviewVisit userData={userData}  /> : // 방문 후기 작성
+                            <RightReportPlace userData={userData}  /> // 장소 제보
             }
         </RightAreaWrapper>
     )

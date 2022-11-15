@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import styled from "styled-components";
+import { useAppSelector } from "../../../store/hooks";
 
 interface paginationProps {
     total: number;

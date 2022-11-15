@@ -6,6 +6,7 @@ import { Pagination } from "../../../../Common";
 export const RightSubMenuFooter = () => {
 
     const [page, setPage] = useState(1);
+    // 
     return (
         <RightSubMenuFooterWrapper>
             <Pagination

@@ -2,7 +2,13 @@ import styled from "styled-components";
 import { RightSubMenuEmptySet, RightSubMenuFooter, RightSubMenuHeader } from "./SubMenuComponents";
 import { RightSubMenuWrapper } from "./SubMenuComponents/RightSubMenuWrapper";
 
-const RightReportPlace = () => {
+import { UserDataType } from "./RightAreaContainer";
+
+interface Props {
+    userData: UserDataType
+}
+
+const RightReportPlace = (props:Props) => {
     return (
         <RightSubMenuWrapper>
             <RightSubMenuHeader>

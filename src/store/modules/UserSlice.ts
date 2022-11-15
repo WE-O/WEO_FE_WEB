@@ -12,6 +12,12 @@ interface userData {
   nickname: string;
   profileImg: string;
   snsType: string;
+  bookmarkCnt?: number;
+  reviewCnt?: number,
+  reportCnt?: number,
+  scrapList?: [],
+  joinDate?: any,
+  delDate?: any,
 }
 
 export interface userState {
@@ -35,6 +41,10 @@ const initialState: userState = {
     snsType: '',
     // 저장한 장소, 작성 후기 , 장소 제보
     // 스크랩한 콘텐츠
+    bookmarkCnt: 0,
+    reviewCnt: 0,
+    reportCnt: 0,
+    scrapList: [],
   },
 
   weatherData: {
