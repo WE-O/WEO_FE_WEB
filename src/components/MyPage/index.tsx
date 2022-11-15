@@ -7,8 +7,8 @@ import { SET_userInfo } from "../../store/modules/UserSlice";
 import CommonModal from "../Modal/CommonModal/CommonModal";
 import { LeftArea, RightArea } from "./Modules";
 
-const MyPageContainer = () => {
 
+const MyPageContainer = () => {
 
     const dispatch = useAppDispatch();
 
@@ -50,7 +50,7 @@ const MyPageContainer = () => {
     return (
         <MyPageContainerWrapper>
             <LeftArea />
-            <RightArea />
+            <RightArea bookmarkCnt={0} reviewCnt={0} reportCnt={0} scrapList={[]} />
         </MyPageContainerWrapper>
     )
 }
