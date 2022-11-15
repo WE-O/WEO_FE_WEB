@@ -1,5 +1,5 @@
-import axios from "axios";
-import { url } from "inspector";
+import axios from 'axios';
+import { url } from 'inspector';
 
 interface Param {
   url: string;
@@ -9,7 +9,7 @@ interface Param {
 export const call = (type: string, param: Param) => {
   // process.env.NEXT_PUBLIC_API_DOMAIN
   switch (type) {
-    case "GET":
+    case 'GET':
       return axios
         .get(param.url, {
           params: param.data,
@@ -23,9 +23,9 @@ export const call = (type: string, param: Param) => {
         .catch(() => {
           // 어떨게 처리..?
         });
-    case "POST":
-    case "PUT":
-    case "DELETE":
+    case 'POST':
+    case 'PUT':
+    case 'DELETE':
       break;
   }
 };

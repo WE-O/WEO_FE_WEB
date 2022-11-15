@@ -4,6 +4,7 @@ import { useAppSelector } from '../../store/hooks';
 import DetailModal from './DetailModal/DetailModal';
 import ReviewModal from './ReviewModal/ReviewModal';
 import CommonModal from './CommonModal/CommonModal';
+import AlertModal from './AlertModal/AlertModal';
 
 const ModalContanier = () => {
   const modalList = useAppSelector((state) => state.modal.modalList);
@@ -48,6 +49,13 @@ const ModalContanier = () => {
             return (
               <ModalContainerWrapper key={`modal_${item}`}>
                 <CommonModal key={`CommonModal${item}`} />
+              </ModalContainerWrapper>
+            );
+
+          if (item === 'alertModal')
+            return (
+              <ModalContainerWrapper>
+                <AlertModal isTop={idx === modalList.length - 1} />
               </ModalContainerWrapper>
             );
         })}

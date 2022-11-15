@@ -5,6 +5,7 @@ import { reviewVisit } from '../../../utils/images';
 interface Props {
   modalParam: { [key: string]: any };
   onClickReview: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+  isLogin: boolean;
 }
 
 const ReviewInfo: React.FC<Props> = (props: Props) => {
@@ -12,7 +13,9 @@ const ReviewInfo: React.FC<Props> = (props: Props) => {
     <ReviewEmpty>
       <Image src={reviewVisit} />
       <span>후기가 없어요, 후기를 제일 처음으로 작성 해볼까요?</span>
-      <button onClick={props.onClickReview}>후기 작성하기</button>
+      {props.isLogin && (
+        <button onClick={props.onClickReview}>후기 작성하기</button>
+      )}
     </ReviewEmpty>
   );
 };

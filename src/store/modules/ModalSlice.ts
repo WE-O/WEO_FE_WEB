@@ -20,8 +20,8 @@ const ModalSlice = createSlice({
       if (typeof action.payload === 'string') {
         modalNm = action.payload;
       } else if (typeof action.payload === 'object') {
-        modalNm = action.payload.modalNm as string;
-        modalParam = action.payload.modalParam as { [key: string]: any };
+        modalNm = action.payload.modalNm;
+        modalParam = action.payload.modalParam;
       }
 
       if (
@@ -29,12 +29,19 @@ const ModalSlice = createSlice({
         state.modalList.filter((item) => item === modalNm).length === 0
       ) {
         state.modalList.push(modalNm);
-        state.modalParam = modalParam;
+
+        if (Object.keys(modalParam).length > 0) {
+          state.modalParam = { ...state.modalParam, ...modalParam };
+        }
       }
     },
 
     deleteModal: (state, action: PayloadAction<string>) => {
       state.modalList.pop();
+
+      if (state.modalList.length === 0) {
+        state.modalParam = {};
+      }
     },
 
     clearModal: (state) => {

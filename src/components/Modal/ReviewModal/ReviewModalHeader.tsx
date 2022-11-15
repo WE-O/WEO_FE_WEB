@@ -36,11 +36,3 @@ const HeaderTextSub = styled.span`
   font-size: 15px;
   color: gray;
 `;
-
-const HeaderBtn = styled.button<{ btnType: string }>`
-  color: ${(Props) => (Props.btnType === 'cancle' ? 'black' : 'blue')};
-  background-color: white;
-  font-size: 20px;
-  font-weight: 600;
-  border: none;
-`;

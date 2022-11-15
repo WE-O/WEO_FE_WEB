@@ -6,6 +6,7 @@ import { addModal } from '../../../../../store/modules/ModalSlice';
 
 const MainLeftSearchContentItem = () => {
   const searchData = useAppSelector((state) => state.map.searchData);
+  const isLogin: boolean = useAppSelector((state) => state.user.isLogIn);
   const dispatch = useAppDispatch();
 
   return (
@@ -15,10 +16,16 @@ const MainLeftSearchContentItem = () => {
           <Item
             key={`ContentItem_${idx}`}
             onClick={() => {
+              // dispatch(
+              //   addModal({
+              //     modalNm: 'alertModal',
+              //     modalParam: { cancel: item.id, isLogin: isLogin },
+              //   }),
+              // );
               dispatch(
                 addModal({
                   modalNm: 'detailModal',
-                  modalParam: { selectId: item.id },
+                  modalParam: { selectId: item.id, isLogin: isLogin },
                 }),
               );
             }}
@@ -26,18 +33,20 @@ const MainLeftSearchContentItem = () => {
             <ItemTitle>
               <ItemSpan case="titleName">{item.place_name}</ItemSpan>
               {/* <ItemSpan case="titleTag">{item.category_name}</ItemSpan> */}
-              <ItemTitleImg
-                onClick={(e) => {
-                  e.stopPropagation();
-                  console.log('즐겨찾기 업데이트 API');
-                }}
-              >
-                {item.like ? (
-                  <Image src={likeOn} alt="" />
-                ) : (
-                  <Image src={likeOff} alt="" />
-                )}
-              </ItemTitleImg>
+              {isLogin && (
+                <ItemTitleImg
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    console.log('즐겨찾기 업데이트 API');
+                  }}
+                >
+                  {item.like ? (
+                    <Image src={likeOn} alt="" />
+                  ) : (
+                    <Image src={likeOff} alt="" />
+                  )}
+                </ItemTitleImg>
+              )}
             </ItemTitle>
             <ItemContent>
               <li>

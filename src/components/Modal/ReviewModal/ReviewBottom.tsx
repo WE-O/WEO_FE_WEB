@@ -61,7 +61,7 @@ const ReviewBtnArea: React.FC<Props> = (props: Props) => {
         )}
       </TopArea>
       <BotArea>
-        <Btn name="cancle" onClick={props.closeReviewModal}>
+        <Btn name="cancel" onClick={props.closeReviewModal}>
           취소하기
         </Btn>
         <Btn name="ok">등록하기</Btn>
@@ -108,7 +108,7 @@ const Btn = styled.button<{ name: string }>`
     `}
 
   ${(Props) =>
-    Props.name === 'cancle' &&
+    Props.name === 'cancel' &&
     css`
       width: 290px;
       height: 55px;

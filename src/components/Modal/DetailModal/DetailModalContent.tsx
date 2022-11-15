@@ -69,12 +69,16 @@ const DetailModalContentHeader = () => {
       <DetailModalHeaderWrapper>
         <HeaderSpan case="title">{detailData.placeName}</HeaderSpan>
         <HeaderSpan case="sub">{detailData.categoryGroupName}</HeaderSpan>
-        <DetailModalHeaderLink>
-          <DetailModalHeaderLinkItem onClick={onClickReview}>
-            후기 작성하기
-          </DetailModalHeaderLinkItem>
-          <DetailModalHeaderLinkItem>정보 수정 요청</DetailModalHeaderLinkItem>
-        </DetailModalHeaderLink>
+        {modalParam.isLogin && (
+          <DetailModalHeaderLink>
+            <DetailModalHeaderLinkItem onClick={onClickReview}>
+              후기 작성하기
+            </DetailModalHeaderLinkItem>
+            <DetailModalHeaderLinkItem>
+              정보 수정 요청
+            </DetailModalHeaderLinkItem>
+          </DetailModalHeaderLink>
+        )}
       </DetailModalHeaderWrapper>
 
       <DetailModalContentHeaderWrapper>
@@ -92,7 +96,11 @@ const DetailModalContentHeader = () => {
       <DetailModalContentMainWrapper>
         {type === 'type0' && <AddressInfo detailData={detailData} />}
         {type === 'type1' && (
-          <ReviewInfo modalParam={modalParam} onClickReview={onClickReview} />
+          <ReviewInfo
+            modalParam={modalParam}
+            onClickReview={onClickReview}
+            isLogin={modalParam.isLogin}
+          />
         )}
       </DetailModalContentMainWrapper>
     </>
