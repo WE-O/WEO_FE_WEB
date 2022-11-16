@@ -50,7 +50,7 @@ const MyPageContainer = () => {
     return (
         <MyPageContainerWrapper>
             <LeftArea />
-            <RightArea bookmarkCnt={0} reviewCnt={0} reportCnt={0} scrapList={[]} />
+            <RightArea/>
         </MyPageContainerWrapper>
     )
 }

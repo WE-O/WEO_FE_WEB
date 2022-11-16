@@ -16,7 +16,7 @@ export type UserDataType = {
     scrapList: [];
 }
 
-const RightAreaContainer: React.FC<UserDataType> = () => {
+const RightAreaContainer = () => {
 
     const dispatch = useAppDispatch();
     // todo 셀렉터 최적화 하는법
