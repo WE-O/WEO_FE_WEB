@@ -29,15 +29,15 @@ const MainHeaderTab = () => {
       <Link href="/">
         <MainHeaderTabItem>장소 검색</MainHeaderTabItem>
       </Link>
-      <Link href="/">
+      {/* <Link href="/">
         <MainHeaderTabItem>인기 장소</MainHeaderTabItem>
-      </Link>
-      <Link href="/">
+      </Link> */}
+      <Link href="/dictionary">
         <MainHeaderTabItem>식물 키우기 사전</MainHeaderTabItem>
       </Link>
-      <Link href="/">
+      {/* <Link href="/">
         <MainHeaderTabItem>제보하기</MainHeaderTabItem>
-      </Link>
+      </Link> */}
 
       {isLogin ? (
         <Link href="/mypage">
