@@ -6,7 +6,7 @@ const DicHeader = () => {
             <MainText>
                 식물 키우기 사전
             </MainText>
-
+            <br/>
             <SubText>
                 식집사만을 위한 단 8가지 가이드 <br/>
                 반려식물과 같이 살기 위한 첫걸음을 준비해 보세요.

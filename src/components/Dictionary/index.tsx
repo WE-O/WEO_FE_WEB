@@ -1,13 +1,11 @@
 import styled from "styled-components";
-import { DicBody, DicHeader, DicContents } from "./Modules";
+import { DicBody, DicHeader } from "./Modules";
 
 const DictionaryContainer = () => {
     return (
         <DicContainer>
             <DicHeader />
-            <DicBody>
-                <DicContents />
-            </DicBody>
+            <DicBody/>
         </DicContainer>
     )
 }
@@ -19,7 +17,6 @@ const DicContainer = styled.div`
     width: 1200px;
     margin: 0px auto;
     flex-direction: column;
-    align-items: flex-start;
-    
+    align-items: flex-start;   
 }
 `
