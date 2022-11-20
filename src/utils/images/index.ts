@@ -43,3 +43,13 @@ export { default as bookmark_icon } from './bookmark_icon.png';
 export { default as search_icon } from './search_icon.png';
 
 export { default as reviewVisit } from './reviewVisit.png';
+
+// 큐레이션에서 사용되는 이미지
+export { default as banner_01 } from './banner_01.png';
+export { default as banner_02 } from './banner_02.png';
+export { default as banner_03 } from './banner_03.png';
+export { default as banner_04 } from './banner_04.png';
+export { default as banner_05 } from './banner_05.png';
+export { default as banner_06 } from './banner_06.png';
+export { default as banner_07 } from './banner_07.png';
+export { default as banner_08 } from './banner_08.png';

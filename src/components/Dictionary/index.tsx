@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { DicBody, DicHeader, DictionaryList } from "./Modules";
+import { DicBody, DicHeader, DicContents } from "./Modules";
 
 const DictionaryContainer = () => {
     return (
         <DicContainer>
             <DicHeader />
             <DicBody>
-                <DictionaryList />
+                <DicContents />
             </DicBody>
         </DicContainer>
     )
