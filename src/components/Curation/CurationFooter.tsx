@@ -10,4 +10,4 @@ const CurationFooter = () => {
 
 export default CurationFooter;
 
-const CurationFooterStyle = styled.div``;
+const CurationFooterStyle = styled.footer``;
