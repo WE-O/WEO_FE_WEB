@@ -9,6 +9,21 @@ const handle = app.getRequestHandler();
 const HTTP_PORT = 3000;
 const HTTPS_PORT = 443;
 
+const DOMAIN = "https://siksikmulmul.shop/main";
+const express = require('express');
+const express_app = express();
+
+express_app.get("*", (req, res, next) => {
+    if(req.secure){
+        // --- https
+        next();
+    }else{
+        // -- http
+
+        return res.redirect("https://" + req.headers.host + req.url);
+    }
+})
+
 app.prepare().then(() => {
     http
         .createServer((req, res) => {
