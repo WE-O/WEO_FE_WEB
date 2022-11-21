@@ -21,7 +21,7 @@ const MyPageContainer = () => {
         if (localStorage.getItem("UserInfo")) {
             const memberID = JSON.parse(localStorage.getItem("UserInfo")).memberId;
             const param = {
-                url: `${process.env.NEXT_PUBLIC_API_DOMAIN}api/v1/member/mypage/${memberID}`,
+                url: `${process.env.NEXT_PUBLIC_API_DOMAIN}/api/v1/member/mypage/${memberID}`,
                 data: {
                     memberId: memberID,
                 }

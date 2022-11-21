@@ -117,7 +117,7 @@ const Login = () => {
 
     const CallLoginAPI = (token: string, type: string) => {
         const param = {
-            url: `${process.env.NEXT_PUBLIC_API_DOMAIN}api/v1/member/join`,
+            url: `${process.env.NEXT_PUBLIC_API_DOMAIN}/api/v1/member/join`,
             data: {
                 accessToken: token,
                 snsType: type,
