@@ -18,7 +18,7 @@ app.prepare().then(() => {
         })
         .listen(PORT, (err) => {
             if (err) throw err;
-            console.log(`> Ready on http://localhost:${PORT}`);
+            console.log(`> Ready on http://localhost:${PORT+1}`);
         });
 
 
@@ -37,6 +37,6 @@ app.prepare().then(() => {
         })
         .listen(PORT + 1, (err) => {
             if (err) throw err;
-            console.log(`> Ready on https://localhost:${PORT + 1}`);
+            console.log(`> Ready on https://localhost:${PORT}`);
         });
 });
