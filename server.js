@@ -6,7 +6,8 @@ const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-const PORT = 3000;
+const HTTP_PORT = 3000;
+const HTTPS_PORT = 443;
 
 app.prepare().then(() => {
     http
@@ -16,9 +17,9 @@ app.prepare().then(() => {
             const parsedUrl = parse(req.url, true);
             handle(req, res, parsedUrl);
         })
-        .listen(PORT, (err) => {
+        .listen(HTTP_PORT, (err) => {
             if (err) throw err;
-            console.log(`> Ready on http://localhost:${PORT+1}`);
+            console.log(`> Ready on http://localhost:${HTTP_PORT}`);
         });
 
 
@@ -35,8 +36,8 @@ app.prepare().then(() => {
             const parsedUrl = parse(req.url, true);
             handle(req, res, parsedUrl);
         })
-        .listen(PORT + 1, (err) => {
+        .listen(HTTPS_PORT, (err) => {
             if (err) throw err;
-            console.log(`> Ready on https://localhost:${PORT}`);
+            console.log(`> Ready on https://localhost:${HTTPS_PORT}`);
         });
 });

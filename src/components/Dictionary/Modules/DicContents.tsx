@@ -28,7 +28,7 @@ const DicContents = (props: CurationType) => {
         const returnItem = [];
         props.keyWord.forEach((iter,idx) => {
             returnItem.push(
-                <KeyWord key={idx}>
+                <KeyWord key={iter}>
                     {iter}
                 </KeyWord>
             )
