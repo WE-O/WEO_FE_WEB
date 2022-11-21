@@ -73,7 +73,7 @@ const Login = () => {
     const naverInit = () => {
         naverLogin = new naver.LoginWithNaverId({
             clientId: process.env.NEXT_PUBLIC_NAVER_CLIENT_ID, // ClientID
-            callbackUrl: process.env.NEXT_PUBLIC_CALLBACK_URL_DEV,
+            callbackUrl: process.env.NEXT_PUBLIC_CALLBACK_URL,
             isPopup: false, // 팝업 형태로 인증 여부
             loginButton: {
                 color: 'green', // 색상
