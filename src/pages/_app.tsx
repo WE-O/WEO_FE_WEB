@@ -8,13 +8,21 @@ import { MainLayout } from "../components/Common";
 import wrapper from "../store";
 import Script from "next/script";
 import { Footer } from "../components/MainPage/modules";
+import { useEffect, useState } from "react";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   if (router.pathname === "_error") return <Component {...pageProps} />;
 
-    
+  useEffect(() => {
+    if (process.env.NODE_ENV === "production") {
+      if (window.location.href.substring(0, 5).toLocaleLowerCase() === "http:") {
+        window.location.href = window.location.href.replace(':', "s:");
+      }
+    }
+  }, [])
+
   return (
     <ThemeProvider theme={theme}>
       <MainLayout>
@@ -33,7 +41,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
         <Component {...pageProps} />
       </MainLayout>
-      <Footer/>
+      <Footer />
     </ThemeProvider>
   );
 }

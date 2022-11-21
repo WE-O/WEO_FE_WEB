@@ -9,20 +9,21 @@ const handle = app.getRequestHandler();
 const HTTP_PORT = 3000;
 const HTTPS_PORT = 443;
 
-const DOMAIN = "https://siksikmulmul.shop/main";
-const express = require('express');
-const expressApp = express();
+// 이거 안됨 왜 안되는지는 모름 ㅡㅡ 
+// const DOMAIN = "https://siksikmulmul.shop/main";
+// const express = require('express');
+// const expressApp = express();
 
-expressApp.use(function (request, response, next) {
+// expressApp.use(function (request, response, next) {
 
-    if (process.env.NODE_ENV != 'development' && !request.secure) {
-        console.log("Redirect Testing ... ");
-        console.log(request);
-        return response.redirect("https://" + request.headers.host + request.url);
-    }
+//     if (process.env.NODE_ENV != 'development' && !request.secure) {
+//         console.log("Redirect Testing ... ");
+//         console.log(request);
+//         return response.redirect("https://" + request.headers.host + request.url);
+//     }
 
-    next();
-})
+//     next();
+// })
 
 app.prepare().then(() => {
     http
