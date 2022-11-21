@@ -11,48 +11,48 @@ const HTTPS_PORT = 443;
 
 const DOMAIN = "https://siksikmulmul.shop/main";
 const express = require('express');
-const express_app = express();
+const expressApp = express();
 
-express_app.all("*", (req, res, next) => {
-    if(req.secure){
-        // --- https
-        next();
-    }else{
-        // -- http
-        return res.redirect("https://" + req.headers.host + req.url);
+expressApp.use(function (request, response, next) {
+
+    if (process.env.NODE_ENV != 'development' && !request.secure) {
+        console.log("Redirect Testing ... ");
+        console.log(request);
+        return response.redirect("https://" + request.headers.host + request.url);
     }
+
+    next();
 })
-setTimeout(() => {
-    app.prepare().then(() => {
-        http
-            .createServer((req, res) => {
-                // Be sure to pass `true` as the second argument to `url.parse`.
-                // This tells it to parse the query portion of the URL.
-                const parsedUrl = parse(req.url, true);
-                handle(req, res, parsedUrl);
-            })
-            .listen(HTTP_PORT, (err) => {
-                if (err) throw err;
-                console.log(`> Ready on http://localhost:${HTTP_PORT}`);
-            });
+
+app.prepare().then(() => {
+    http
+        .createServer((req, res) => {
+            // Be sure to pass `true` as the second argument to `url.parse`.
+            // This tells it to parse the query portion of the URL.
+            const parsedUrl = parse(req.url, true);
+            handle(req, res, parsedUrl);
+        })
+        .listen(HTTP_PORT, (err) => {
+            if (err) throw err;
+            console.log(`> Ready on http://localhost:${HTTP_PORT}`);
+        });
 
 
-        const https = require("https");
-        const fs = require("fs");
-        const options = {
-            key: fs.readFileSync('/etc/letsencrypt/live/siksikmulmul.shop/privkey.pem'),
-            cert: fs.readFileSync('/etc/letsencrypt/live/siksikmulmul.shop/cert.pem')
-        };
-        https
-            .createServer(options, function (req, res) {
-                // Be sure to pass `true` as the second argument to `url.parse`.
-                // This tells it to parse the query portion of the URL.
-                const parsedUrl = parse(req.url, true);
-                handle(req, res, parsedUrl);
-            })
-            .listen(HTTPS_PORT, (err) => {
-                if (err) throw err;
-                console.log(`> Ready on https://localhost:${HTTPS_PORT}`);
-            });
-    });
-})
+    const https = require("https");
+    const fs = require("fs");
+    const options = {
+        key: fs.readFileSync('/etc/letsencrypt/live/siksikmulmul.shop/privkey.pem'),
+        cert: fs.readFileSync('/etc/letsencrypt/live/siksikmulmul.shop/cert.pem')
+    };
+    https
+        .createServer(options, function (req, res) {
+            // Be sure to pass `true` as the second argument to `url.parse`.
+            // This tells it to parse the query portion of the URL.
+            const parsedUrl = parse(req.url, true);
+            handle(req, res, parsedUrl);
+        })
+        .listen(HTTPS_PORT, (err) => {
+            if (err) throw err;
+            console.log(`> Ready on https://localhost:${HTTPS_PORT}`);
+        });
+});
