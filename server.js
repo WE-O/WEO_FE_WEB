@@ -19,8 +19,7 @@ express_app.get("*", (req, res, next) => {
         next();
     }else{
         // -- http
-
-        return res.redirect("https://" + req.headers.host + req.url);
+        return res.redirect(DOMAIN);
     }
 })
 
