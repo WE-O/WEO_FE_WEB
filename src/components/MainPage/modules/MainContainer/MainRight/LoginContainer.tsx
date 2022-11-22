@@ -124,9 +124,7 @@ const Login = () => {
             }
         }
         const responseData = call("GET", param);
-        debugger
         responseData.then((resData) => {
-            debugger
             handleOnLogin();
              
             localStorage.setItem("UserInfo", JSON.stringify({ memberId: resData.memberId }));
