@@ -21,16 +21,16 @@ const Footer = () => {
               개인정보처리방침
             </RedicrectText>
         </FooterItems>
-        <FooterItems>
+        {/* <FooterItems>
           <RedicrectText href={RedirectMap["서비스문의"]} target="_blank">
             서비스 문의
           </RedicrectText>
-        </FooterItems>
+        </FooterItems> */}
       </FooterItemTopWrapper>
 
       <FooterItemBotWrapper>
         <FooterItems id={"copyright"}>
-          © Copyright 2022 SicsicMulmul Inc. All Rights Reserved.
+          © Copyright 2022 SiksikMulmul Inc. All Rights Reserved.
         </FooterItems>
       </FooterItemBotWrapper>
     </FooterWrapper>

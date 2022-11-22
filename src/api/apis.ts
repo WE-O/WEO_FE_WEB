@@ -7,9 +7,11 @@ interface Param {
 }
 
 export const call = (type: string, param: Param) => {
+  debugger
   // process.env.NEXT_PUBLIC_API_DOMAIN
   switch (type) {
     case 'GET':
+      debugger
       return axios
         .get(param.url, {
           params: param.data,
@@ -22,6 +24,7 @@ export const call = (type: string, param: Param) => {
         })
         .catch(() => {
           // 어떨게 처리..?
+          debugger
         });
     case 'POST':
     case 'PUT':
