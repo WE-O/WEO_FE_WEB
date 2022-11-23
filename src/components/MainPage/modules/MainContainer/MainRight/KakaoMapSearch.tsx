@@ -72,7 +72,7 @@ const KakaoMapSearchComponent = styled.input`
   border-radius: 26px;
   width: 530px;
   height: 45px;
-  font-size: 18px;
+  font-size: 15px;
   padding: 10px 40px;
   border: 2px solid #22cc88;
   ::-webkit-input-placeholder {

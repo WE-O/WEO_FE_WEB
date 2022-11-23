@@ -172,6 +172,7 @@ const KakaoMapSearchWrapper = styled.div`
 `;
 
 const KakaoMapWrapper = styled(Map)`
+  border: 1px solid lightgray;
   width: 100%;
   height: 100%;
 `;

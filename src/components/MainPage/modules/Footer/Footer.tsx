@@ -2,8 +2,8 @@ import Link from "next/link";
 import styled from "styled-components";
 
 const RedirectMap = {
-  "이용약관": "https://www.notion.so/bside/022d8afc5a2d45b59f338d34963db76c",
-  "개인정보처리방침": "https://www.notion.so/bside/860ee74ed37047088da341fe38ff6f35",
+  "이용약관": "https://wandering-newsprint-a20.notion.site/22b9f1bd049446cdb177ecbabdeba4e2",
+  "개인정보처리방침": "https://wandering-newsprint-a20.notion.site/627a2d8643f64219ba23cd9f533f72c3",
   "서비스문의" : ""
 }
 

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { useGetWeather } from '../../../Logics/mainLeftLogic';
 import { useAppDispatch, useAppSelector } from '../../../../../store/hooks';
@@ -13,10 +13,27 @@ import {
 } from './MainLefCss';
 
 const MainLeftWeather = () => {
+
+
   const dispatch = useAppDispatch();
   const weatherData = useAppSelector((state) => state.user.weatherData);
 
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    initLocation();
+  }, []);
+
+  const initLocation = useCallback(async () => {
+    const default_lat = Number(process.env.NEXT_PUBLIC_DEFAULT_LAT);
+    const default_lng = Number(process.env.NEXT_PUBLIC_DEFAULT_LNG)
+    const getWeatherData = await useGetWeather(
+      default_lat,
+      default_lng,
+    );
+    dispatch(SET_location({ lat: default_lat, lng: default_lng }));
+    dispatch(SET_weatherData(getWeatherData));
+  }, [])
 
   const getLocation = useCallback(() => {
     if (navigator.geolocation) {

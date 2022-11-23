@@ -30,8 +30,8 @@ export interface userState {
 }
 
 const initialState: userState = {
-  lat: 37.5666805,
-  lng: 126.9784147,
+  lat: Number(process.env.NEXT_PUBLIC_DEFAULT_LAT),
+  lng: Number(process.env.NEXT_PUBLIC_DEFAULT_LNG),
   isLogIn: false,
 
   userData: {
