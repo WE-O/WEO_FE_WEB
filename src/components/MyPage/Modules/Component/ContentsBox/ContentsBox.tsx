@@ -3,67 +3,33 @@ import { mypage_test,bookmark_icon } from "../../../../../utils/images";
 import styled from "styled-components";
 import Image from "next/image";
 
-const ContentsBox = () => {
+interface ContentsBoxPropsTypes {
+    scrapList: any[];
+}
+const ContentsBox = (props:ContentsBoxPropsTypes) :JSX.Element => {
 
-    const getRenderItems = (param) => {
+    const getRenderItems = () => {
+        const { scrapList } = props;
         return (
-            param.map(item => (
+            scrapList.map(item => (
                 <Contents>
-                    <Image src={param} />
+                    <BookMarkerWrapper>
+                        <Image src={bookmark_icon} />
+                    </BookMarkerWrapper>
+                    <Image src={mypage_test} />
                     <ContentsText>
-                        {param}
+                        {item.title}
                     </ContentsText>
-                </Contents>  
+                </Contents>
             ))
         )
     }
 
     return (
         <ContentsBoxWrapper>
-            <Contents>
-                <BookMarkerWrapper>
-                    <Image src={bookmark_icon}/>
-                </BookMarkerWrapper>
-                <Image src={mypage_test} />
-                <ContentsText>
-                    실내에서 키우는 공기정화 식물 추천 BEST
-                </ContentsText>
-            </Contents>
-
-            <Contents>
-                <BookMarkerWrapper>
-                    <Image src={bookmark_icon} />
-                </BookMarkerWrapper>
-                <Image src={mypage_test} />
-                <ContentsText>
-                    실내에서 키우는 공기정화 식물 추천 BEST
-                </ContentsText>
-            </Contents><Contents>
-                <BookMarkerWrapper>
-                    <Image src={bookmark_icon} />
-                </BookMarkerWrapper>
-                <Image src={mypage_test} />
-                <ContentsText>
-                    실내에서 키우는 공기정화 식물 추천 BEST
-                </ContentsText>
-            </Contents><Contents>
-                <BookMarkerWrapper>
-                    <Image src={bookmark_icon} />
-                </BookMarkerWrapper>
-                <Image src={mypage_test} />
-                <ContentsText>
-                    실내에서 키우는 공기정화 식물 추천 BEST
-                </ContentsText>
-            </Contents><Contents>
-                <BookMarkerWrapper>
-                    <Image src={bookmark_icon} />
-                </BookMarkerWrapper>
-                <Image src={mypage_test} />
-                <ContentsText>
-                    실내에서 키우는 공기정화 식물 추천 BEST
-                </ContentsText>
-            </Contents>
-            
+            {
+                getRenderItems()
+            }       
         </ContentsBoxWrapper>
     )
 

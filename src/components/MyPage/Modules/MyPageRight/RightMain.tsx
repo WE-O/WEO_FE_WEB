@@ -15,6 +15,7 @@ interface Props {
     userData: UserDataType
 }
 
+
 const RightMain = (props: Props) => {
 
     const dispatch = useAppDispatch();
@@ -31,8 +32,7 @@ const RightMain = (props: Props) => {
     }, [])
 
     const { bookmarkCnt, reviewCnt, reportCnt, scrapList } = props.userData;
-    debugger
-
+    // debugger
     // dispatch(addModal('commonModal'));
 
     return (
@@ -103,7 +103,7 @@ const RightMain = (props: Props) => {
                                 스크랩한 컨텐츠가 없습니다.
                             </EmptySet>
                             :
-                            <ContentsBox />
+                            <ContentsBox scrapList={scrapList} />
                     }
 
                     <WithDrawal>
