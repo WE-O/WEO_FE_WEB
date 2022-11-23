@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { loginBanner, naverLoginButton, kakaoLoginButton, plant_icon_2 } from "../../../../../utils/images";
 import { useRouter } from 'next/router';
-import { useAppDispatch } from "../../../../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../../store/hooks";
 import { userLogIn, SET_userInfo } from "../../../../../store/modules/UserSlice";
 import { call } from "../../../../../api/apis"
 
@@ -22,6 +22,7 @@ const Login = () => {
 
     const router = useRouter();
     const dispatch = useAppDispatch();
+    const userData = useAppSelector((state) => state.user.userData);
 
 
 
@@ -129,6 +130,7 @@ const Login = () => {
              
             localStorage.setItem("UserInfo", JSON.stringify({ memberId: resData.memberId }));
             const userInfoActionPayload = {
+                ...userData,
                 email: resData.email,
                 nickname: resData.nickname,
                 profileImg: resData.profileImg,

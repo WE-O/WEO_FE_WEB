@@ -42,6 +42,7 @@ app.prepare().then(() => {
     const https = require("https");
     const fs = require("fs");
     const options = {
+        // ca: fs.readFileSync('/etc/letsencrypt/live/siksikmulmul.shop/fullchain.pem'),
         key: fs.readFileSync('/etc/letsencrypt/live/siksikmulmul.shop/privkey.pem'),
         cert: fs.readFileSync('/etc/letsencrypt/live/siksikmulmul.shop/cert.pem')
     };

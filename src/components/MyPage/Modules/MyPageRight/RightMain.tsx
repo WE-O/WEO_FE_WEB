@@ -31,6 +31,7 @@ const RightMain = (props: Props) => {
     }, [])
 
     const { bookmarkCnt, reviewCnt, reportCnt, scrapList } = props.userData;
+    debugger
 
     // dispatch(addModal('commonModal'));
 
