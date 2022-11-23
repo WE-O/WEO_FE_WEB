@@ -70,9 +70,9 @@ const MainLeftPlaceItem = styled.span`
 `;
 
 const MainLeftPlaceBtn = styled.button`
-  width: 90px;
-  height: 30px;
-  font-size: 10px;
+  width: 95px;
+  height: 35px;
+  font-size: 13px;
   color: white;
   border: none;
   border-radius: 10px;
