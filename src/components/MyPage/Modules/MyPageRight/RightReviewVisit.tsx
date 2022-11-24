@@ -57,7 +57,14 @@ const RightReviewVisit = (props: Props) => {
                             <ReviewText>
                                 {iter.contents}
                             </ReviewText>
+
+                            <ButtonWrapper>
+                                <FixButton>수정</FixButton>
+                                <DeleteButton>삭제</DeleteButton>
+                            </ButtonWrapper>
+
                             <ReviewLine />
+
                         </ReviewWrapper>
                     )
                 })
@@ -80,6 +87,8 @@ const RightReviewVisit = (props: Props) => {
                 }
             </MainContentsWrapper>
 
+
+
             <RightSubMenuFooter />
 
         </RightSubMenuWrapper>
@@ -95,6 +104,7 @@ const MainContentsWrapper = styled.div`
     align-items: flex-start;
     flex-direction: column;
     gap:10px;
+    width : 800px;
 `;
 
 const ReviewWrapper = styled.div`
@@ -128,5 +138,37 @@ const ReviewLine = styled.div`
     border-bottom: 1px solid #D9D9D9;
     align-self: center;
     margin-right : 80px;
+`
+
+const ButtonWrapper = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    gap: 21px;
+        
+`
+const FixButton = styled.button`
+    width: 60px;
+    height: 40px;
+    background: #FFFFFF;
+    border: 1.5px solid #9D9EA3;
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: rgba(37, 40, 47, 0.65);
+    cursor : pointer;
+`
+const DeleteButton = styled.button`
+    width: 60px;
+    height: 40px;
+    background: #FFFFFF;
+    border: 1.5px solid #FF5B5B;
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #FF5B5B;
+    cursor : pointer;
 `
 export default RightReviewVisit;
