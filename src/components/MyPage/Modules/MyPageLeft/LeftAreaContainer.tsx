@@ -26,14 +26,14 @@ const LeftAreaContainer = () => {
     const profileData = useAppSelector((state) => state.user.userData);
 
     const clickEventType = {
-        changeImage() {
+        changeImage: () => {
 
         },
-        changeNickName() {
+        changeNickName: () => {
             dispatch(addModal('commonModal'));
             // 닉네임 변경 API 주소 -> /api​/v1 / member / nickname
         },
-        logOut() {
+        logOut: () => {
             dispatch(userLogOut());
             localStorage.removeItem("UserInfo");
             router.push("/main");

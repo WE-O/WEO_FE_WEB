@@ -22,9 +22,10 @@ interface ModalType {
   handleOnClose?: any;
 }
 
-const CommonModal = (props: any) => {
+const CommonModal = (props: ModalType) => {
   const dispatch = useAppDispatch();
   const changeNickNameRef = useRef(null);
+
   useOnClickOutside(changeNickNameRef, () =>
     dispatch(deleteModal('commonModal')),
   );
@@ -33,7 +34,7 @@ const CommonModal = (props: any) => {
     e.preventDefault();
     switch (type) {
       case 'close':
-        console.log('닫기버튼');
+        dispatch(deleteModal('commonModal'));
         break;
       default:
         break;
@@ -76,4 +77,5 @@ const CloseButton = styled.button`
   top: 0;
   right: 0;
   cursor: pointer;
+  border-radius : 500px;
 `;
