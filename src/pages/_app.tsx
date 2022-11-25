@@ -10,8 +10,40 @@ import Script from "next/script";
 import { Footer } from "../components/MainPage/modules";
 import { useEffect, useState } from "react";
 
+
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import React from "react";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { toast } from "../store/modules/ToastSlice";
+
+// const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+//   props,
+//   ref,
+// ) {
+//   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+// });
+
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
+  // const toastInfo = useAppSelector((state) => state.toast);
+  // const [open, setOpen] = useState(toastInfo.toastOpen);
+  
+
+  // useEffect(() => {
+  //   setOpen(toastInfo.toastOpen);
+  // },[open])
+
+  // const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+  //   if (reason === 'clickaway') {
+  //     return;
+  //   }
+  //   dispatch(toast({
+  //     toastOpen: false,
+  //   }));
+  // };
 
   if (router.pathname === "_error") return <Component {...pageProps} />;
 
@@ -44,8 +76,22 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </MainLayout>
       <Footer />
+
+
+      {/* <Snackbar open={open} autoHideDuration={1000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity={toastInfo.type} sx={{ width: '100%' }}>
+          {
+            toastInfo.toastText
+          }
+        </Alert>
+      </Snackbar> */}
+
     </ThemeProvider>
   );
 }
 
 export default wrapper.withRedux(MyApp);
+function dispatch(arg0: any) {
+  throw new Error("Function not implemented.");
+}
+

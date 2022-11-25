@@ -6,6 +6,7 @@ import useOnClickOutside from '../../Common/hooks/useOnClickOutside';
 import { deleteModal } from '../../../store/modules/ModalSlice';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { call } from '../../../api/apis';
+import { toast } from '../../../store/modules/ToastSlice';
 
 interface ModalType {
     key: any;
@@ -53,10 +54,20 @@ const ChangeModal = (props: ModalType) => {
                         // 닉네임 중복 , return 추가
                         console.log("닉네임중복!");
                         setDupNickname(true);
+                        dispatch(toast({
+                            toastText: '닉네임이 중복되었습니다.',
+                            toastOpen: true,
+                            type: 'error'
+                        }));
                         return false;
                     }
                     callAPI(curModalName, inputNickname);
                     // 변경 API 호출 , 다이얼로그 닫기
+                    // dispatch(toast({
+                    //     toastText: '닉네임이 변경되었습니다.',
+                    //     toastOpen: true,
+                    //     type: 'success'
+                    // }));
                 }
                 break;
             default:

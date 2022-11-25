@@ -13,6 +13,7 @@ import userSlice, { userState } from "./modules/UserSlice";
 import SearchKeywordSlice, { searchKeywordState } from "./modules/SearchKeywordSlice";
 import MapSlice, { mapState } from "./modules/MapSlice";
 import MyPageSlice, { myPageState } from "./modules/MyPageSlice";
+import ToastSlice, { ToastSliceType } from "./modules/ToastSlice";
 
 // 리듀서 State 타입 정의, 신규 추가 하기
 export interface ReducerStates {
@@ -21,6 +22,7 @@ export interface ReducerStates {
   searchKey: searchKeywordState;
   map: mapState;
   myPage: myPageState;
+  toast: ToastSliceType;
 }
 
 // 루트 리듀서 생성
@@ -38,6 +40,7 @@ const rootReducer = (state: ReducerStates, action: AnyAction) => {
     searchKey: SearchKeywordSlice,
     map: MapSlice,
     myPage: MyPageSlice,
+    toast : ToastSlice,
   })(state, action);
 };
 
