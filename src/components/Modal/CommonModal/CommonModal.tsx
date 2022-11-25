@@ -20,6 +20,7 @@ interface ModalType {
   rightButtonFunc?: any;
 
   handleOnClose?: any;
+  isTop: boolean;
 }
 
 const CommonModal = (props: ModalType) => {

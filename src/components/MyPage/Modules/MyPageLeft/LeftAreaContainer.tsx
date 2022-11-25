@@ -21,16 +21,19 @@ interface imgProps {
 
 
 const LeftAreaContainer = () => {
-
     const dispatch = useAppDispatch();
     const profileData = useAppSelector((state) => state.user.userData);
-
     const clickEventType = {
         changeImage: () => {
 
         },
         changeNickName: () => {
-            dispatch(addModal('commonModal'));
+            dispatch(
+                addModal({
+                    modalNm: 'changeModal',
+                    modalParam: { type:"changeModal" },
+                }),
+            );
             // 닉네임 변경 API 주소 -> /api​/v1 / member / nickname
         },
         logOut: () => {

@@ -5,6 +5,8 @@ import DetailModal from './DetailModal/DetailModal';
 import ReviewModal from './ReviewModal/ReviewModal';
 import CommonModal from './CommonModal/CommonModal';
 import AlertModal from './AlertModal/AlertModal';
+import { ChangeModal, RequestModal } from './MyPageModal';
+
 
 const ModalContanier = () => {
   const modalList = useAppSelector((state) => state.modal.modalList);
@@ -48,10 +50,31 @@ const ModalContanier = () => {
           if (item === 'commonModal')
             return (
               <ModalContainerWrapper key={`modal_${item}`}>
-                <CommonModal key={`CommonModal${item}`} />
+                <CommonModal
+                  key={`CommonModal${item}`}
+                  isTop={idx === modalList.length - 1}
+                />
               </ModalContainerWrapper>
             );
-
+          if (item === 'requestModal')
+            return (
+              <ModalContainerWrapper key={`modal_${item}`}>
+                <RequestModal
+                  key={`RequestModal${item}`}
+                  isTop={idx === modalList.length - 1}
+                />
+              </ModalContainerWrapper>
+            );
+          if (item === 'changeModal')
+            return (
+              <ModalContainerWrapper key={`modal_${item}`}>
+                <ChangeModal
+                  key={`ChangeModal${item}`}
+                  isTop={idx === modalList.length - 1}
+                />
+              </ModalContainerWrapper>
+            );
+        
           if (item === 'alertModal')
             return (
               <ModalContainerWrapper>
