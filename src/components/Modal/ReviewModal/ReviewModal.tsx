@@ -71,8 +71,8 @@ const ReviewModal: React.FC<Props> = (props: Props) => {
   return (
     <ReviewModalWrapper ref={reviewRef}>
       <ReviewModalHeader 
-        placeName={modalParam.detailData.placeName}
-        categoryGroupName={modalParam.detailData.categoryGroupName}
+        placeName={modalParam.detailData?.placeName}
+        categoryGroupName={modalParam.detailData?.categoryGroupName}
       />
       <ReviewContent 
         keyWordList={keyWordList}
