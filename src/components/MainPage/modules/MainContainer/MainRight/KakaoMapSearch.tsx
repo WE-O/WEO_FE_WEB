@@ -44,10 +44,10 @@ const KakaoMapSearch = () => {
         keyword: searchRef.current.value,
       },
     };
-    // const responseData = await call('GET', param);
+    const responseData = await call('GET', param);
 
     searchRef.current.value = '';
-    // dispatch(setSearchData(responseData.documents));
+    dispatch(setSearchData(responseData.documents));
   }, []);
 
   return (

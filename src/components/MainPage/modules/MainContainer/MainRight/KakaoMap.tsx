@@ -138,12 +138,13 @@ const KakaoMap = () => {
             position={marker.position}
             // Todo 정인님 요기 부분 이벤트 태워주셔야됩니다!
             onClick={() => {
-              dispatch(
-                addModal({
-                  modalNm: 'detailModal',
-                  modalParam: { selectId: marker.id},
-                }),
-              )
+              // joint
+              // dispatch(
+              //   addModal({
+              //     modalNm: 'detailModal',
+              //     modalParam: { selectId: marker.id},
+              //   }),
+              // )
             }}
             image={{
               src: active_picker?.src,

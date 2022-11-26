@@ -46,6 +46,7 @@ const ModalSlice = createSlice({
 
     clearModal: (state) => {
       state.modalList = [];
+      state.modalParam = {};
     },
   },
 });
