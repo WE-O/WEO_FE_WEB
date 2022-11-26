@@ -30,7 +30,7 @@ export const call = (type: string, param: Param) => {
           // 메인으로 보내고 토스트 메세지 보내주는 형식으로 해야할 듯.
           // 오류났을 때 마이페이지가 보여지면 안됨.
           console.log(error.message);
-          router.push("/");
+          router.push("/main");
         });
     case 'POST':
     case 'PUT':
@@ -51,7 +51,7 @@ export const call = (type: string, param: Param) => {
           // 메인으로 보내고 토스트 메세지 보내주는 형식으로 해야할 듯.
           // 오류났을 때 마이페이지가 보여지면 안됨.
           console.log(error.message);
-          router.push("/");
+          router.push("/main");
         });
     case 'DELETE':
       break;
