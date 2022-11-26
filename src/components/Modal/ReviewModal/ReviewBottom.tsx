@@ -9,6 +9,7 @@ import styled, { css } from 'styled-components';
 
 interface Props {
   closeReviewModal: () => void;
+  okReviewModal: () => void;
 }
 
 const ReviewBtnArea: React.FC<Props> = (props: Props) => {
@@ -64,7 +65,7 @@ const ReviewBtnArea: React.FC<Props> = (props: Props) => {
         <Btn name="cancel" onClick={props.closeReviewModal}>
           취소하기
         </Btn>
-        <Btn name="ok">등록하기</Btn>
+        <Btn name="ok" onClick={props.okReviewModal}>등록하기</Btn>
       </BotArea>
     </>
   );

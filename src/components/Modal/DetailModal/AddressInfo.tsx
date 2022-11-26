@@ -29,8 +29,7 @@ const AddressInfo = (props: { detailData: detailDataType }) => {
   return (
     <>
       {Object.keys(addressType).map((item, idx) => (
-        <>
-          <AddressContentWrapper>
+          <AddressContentWrapper key={`${item}_${idx}`}>
             <AddressHeader>
               <div>
                 <Image src={addressType[`${item}`]} alt="" />
@@ -49,7 +48,6 @@ const AddressInfo = (props: { detailData: detailDataType }) => {
               )}
             </AddressContent>
           </AddressContentWrapper>
-        </>
       ))}
     </>
   );

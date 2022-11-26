@@ -5,6 +5,7 @@ import KakaoMapSearch from './KakaoMapSearch';
 import { Map, MapMarker, useInjectKakaoMapApi } from 'react-kakao-maps-sdk';
 import { searchData } from '../../../../../types/types';
 import { active_picker } from "../../../../../utils/images";
+import { addModal } from '../../../../../store/modules/ModalSlice';
 
 declare global {
   interface Window {
@@ -60,6 +61,7 @@ const KakaoMap = () => {
                   lng: data[i].x,
                 },
                 content: data[i].place_name,
+                id:data[i].id
               });
               // @ts-ignore
               bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
@@ -135,7 +137,14 @@ const KakaoMap = () => {
             key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
             position={marker.position}
             // Todo 정인님 요기 부분 이벤트 태워주셔야됩니다!
-            // onClick={() => setInfo(marker)}
+            onClick={() => {
+              dispatch(
+                addModal({
+                  modalNm: 'detailModal',
+                  modalParam: { selectId: marker.id},
+                }),
+              )
+            }}
             image={{
               src: active_picker?.src,
               size: {

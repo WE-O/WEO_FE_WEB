@@ -1,10 +1,20 @@
 import styled from 'styled-components';
-import { useState, useEffect, useCallback } from 'react';
+import { forwardRef, useImperativeHandle} from 'react';
 
-const ReviewContent = () => {
+interface Props{
+  ref : any
+}
+
+const ReviewContent = forwardRef((props:Props, ref) => {
+
+  useImperativeHandle(ref, ()=>({
+    getContent: (document.getElementById('ReviewWriteWrapper') as HTMLInputElement)?.value
+  }))
+
   return (
     <ReviewContentWrapper>
       <ReviewWriteWrapper
+        id='ReviewWriteWrapper'
         placeholder="(선택) 장소에 방문한 식물집사님의 경험을 공유해주세요."
         maxLength={100}
         onKeyUp={(e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -18,7 +28,7 @@ const ReviewContent = () => {
       </CountWrapper>
     </ReviewContentWrapper>
   );
-};
+});
 
 export default ReviewContent;
 

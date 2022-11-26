@@ -1,23 +1,17 @@
 import styled from 'styled-components';
-import { useState, useEffect, useCallback } from 'react';
+import { forwardRef, useImperativeHandle, useState, useEffect, useCallback } from 'react';
 
-const keyWordList: { [key: string]: string } = {
-  '#친절한': '친절해요',
-  '#싱싱한': '식물이 싱싱해요',
-  '#다양한': '다양한 식물을 판매해요',
-  '#희귀한': '희귀한 식물을 구매할 수 있어요',
-  '#합리적인': '가격이 합리적이예요',
-  '#화분과흙': '화분이나 흙도 구매할 수 있어요',
-  '#가치있는': '비싼만큼 가치있어요',
-  '#주차가편한': '주차하기 편해요',
-  '#교통이편리한': '교통이 편리해요',
-  '#포장가능': '포장이 정성스러워요',
-  '#배달가능': '배달서비스를 제공해요',
-  '#혼자가도괜찮은': '혼자가도 괜찮아요',
-};
+interface Props{
+  ref : any
+  keyWordList: { [key: string]: string }
+}
 
-const ReviewContent = () => {
+const ReviewContent = forwardRef((props:Props, ref) => {
   const [clickedArr, setClickedArr] = useState<string[]>([]);
+
+  useImperativeHandle(ref, ()=>({
+    getKeyword: clickedArr
+  }))
 
   const clickedFunc = useCallback((item: string): void => {
     setClickedArr((prev) => {
@@ -41,7 +35,7 @@ const ReviewContent = () => {
       <AlertSpan2>키워드는 최대 3개까지 선택할 수 있습니다.</AlertSpan2>
       <ReviewContentUlWrapper>
         <ReviewContentUl>
-          {Object.keys(keyWordList).map((item, idx) => {
+          {Object.keys(props.keyWordList).map((item, idx) => {
             return (
               <ReviewContenLi
                 key={`${item}_${idx}`}
@@ -50,7 +44,7 @@ const ReviewContent = () => {
                 }}
                 checked={clickedArr.includes(item)}
               >
-                {keyWordList[`${item}`]}
+                {props.keyWordList[`${item}`]}
               </ReviewContenLi>
             );
           })}
@@ -58,7 +52,7 @@ const ReviewContent = () => {
       </ReviewContentUlWrapper>
     </ReviewContentWrapper>
   );
-};
+});
 
 export default ReviewContent;
 

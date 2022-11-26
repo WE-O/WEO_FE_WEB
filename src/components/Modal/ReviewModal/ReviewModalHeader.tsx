@@ -1,11 +1,16 @@
 import styled, { css } from 'styled-components';
 
-const ReviewModalHeader = () => {
+interface Props{
+  placeName:string,
+  categoryGroupName:string
+}
+
+const ReviewModalHeader = (props:Props) => {
   return (
     <ReviewModalHeaderWrapper>
       <HeaderWrapper>
-        <HeaderText>상호명</HeaderText>
-        <HeaderTextSub>업종</HeaderTextSub>
+        <HeaderText>{props.placeName}</HeaderText>
+        <HeaderTextSub>{props.categoryGroupName}</HeaderTextSub>
       </HeaderWrapper>
     </ReviewModalHeaderWrapper>
   );

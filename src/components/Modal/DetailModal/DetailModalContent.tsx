@@ -36,8 +36,9 @@ const DetailModalContentHeader = () => {
   const [type, setType] = useState<string>('type0');
 
   const modalParam = useAppSelector((state) => state.modal.modalParam);
+  const isLogin: boolean = useAppSelector((state) => state.user.isLogIn);
 
-  /* joint
+  // joint
   useEffect(() => {
     const getDetail = async () => {
       const res: detailDataType = await call('GET', {
@@ -50,7 +51,6 @@ const DetailModalContentHeader = () => {
 
     getDetail();
   }, []);
-  */
 
   const changeType = useCallback((clickType: string): void => {
     setType(clickType);
@@ -59,9 +59,13 @@ const DetailModalContentHeader = () => {
   const onClickReview = useCallback(
     (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
       e.preventDefault();
-      dispatch(addModal('reviewModal'));
+      dispatch(addModal(
+        {
+          modalNm: 'reviewModal',
+          modalParam: {...modalParam, detailData:detailData},
+        }));
     },
-    [],
+    [modalParam,detailData],
   );
 
   return (
@@ -69,7 +73,7 @@ const DetailModalContentHeader = () => {
       <DetailModalHeaderWrapper>
         <HeaderSpan case="title">{detailData.placeName}</HeaderSpan>
         <HeaderSpan case="sub">{detailData.categoryGroupName}</HeaderSpan>
-        {modalParam.isLogin && (
+        {isLogin && (
           <DetailModalHeaderLink>
             <DetailModalHeaderLinkItem onClick={onClickReview}>
               후기 작성하기
@@ -99,7 +103,7 @@ const DetailModalContentHeader = () => {
           <ReviewInfo
             modalParam={modalParam}
             onClickReview={onClickReview}
-            isLogin={modalParam.isLogin}
+            isLogin={isLogin}
           />
         )}
       </DetailModalContentMainWrapper>
