@@ -5,4 +5,6 @@ export const RightSubMenuEmptySet = styled.div`
     font-size: 18px;
     line-height: 21px;
     color: #9D9EA3;
+    align-self: center;
+}
 `
