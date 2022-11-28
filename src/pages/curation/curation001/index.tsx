@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { CurationHeader, CurationArticle } from "../../../components/Curation";
 import CurationContainer from "../../../components/Curation/CurationContainer";
 import Image from "next/image";
-import { curImg_1,curImg_2,curImg_3,curImg_4 } from "./img";
+import { curImg_1,curImg_2,curImg_3,curImg_4 } from "../../../utils/curation/curation001/img";
 
 
 const Curation001 = () => {
