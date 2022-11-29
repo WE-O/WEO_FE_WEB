@@ -21,6 +21,7 @@
     "framer-motion": "^6.5.1",
     "next": "^12.3.0",
     "next-redux-wrapper": "^8.0.0",
+    "npm": "^9.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-kakao-maps-sdk": "^1.1.4",
