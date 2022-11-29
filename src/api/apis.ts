@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { url } from 'inspector';
 import router, { Router } from 'next/router';
-import ErrorPage from '../pages/_error';
 
 interface Param {
   url: string;
