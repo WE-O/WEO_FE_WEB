@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { CurationHeader, CurationArticle } from "../../../components/Curation";
+import { CurationHeader } from "../../../components/Curation";
 import CurationContainer from "../../../components/Curation/CurationContainer";
 import Image from "next/image";
-import { curImg_1,curImg_2,curImg_3,curImg_4 } from "../../../utils/curation/curation001/img";
+import { curImg_1, curImg_2, curImg_3, curImg_4 } from "../../../utils/curation/curation001/img";
 import YoutubePlayer from "../../../components/Curation/YoutubePlayer";
 
 
@@ -19,25 +19,35 @@ const Curation001 = () => {
                     <h1>테라리움에 대해 들어보신 적 있나요?</h1>
                     테라리움이란 밀폐된 유리 그릇이나 아가리가 작은 유리병 따위의 안에 작은 식물을 재배하는 방법을 뜻합니다.<br />
                     책상위 작은 정원으로 많이들 알고 계실 거에요!<br />
-                    
+
                     <figure>
-                        <br />
-                        <Image src={curImg_1.src} width={"500px"} height={"450px"} />
-                        &nbsp;&nbsp;&nbsp;
-                        <Image src={curImg_2.src} width={"500px"} height={"450px"} />
+                        <ImageWrapper>
+                            <div>
+                                <Image src={curImg_1.src} width={"500px"} height={"450px"} />
+                            </div>
+                            <div>
+                                <Image src={curImg_2.src} width={"500px"} height={"450px"} />
+                            </div>
+                        </ImageWrapper>
                         <figcaption>이미지 출처 : <a href="https://blog.naver.com/ysqueen1/222890984348">https://blog.naver.com/ysqueen1/222890984348</a></figcaption>
                     </figure>
+
 
                     <br />
                     <br />
 
                     <h1>혹시, 짱구 좋아하시나요?</h1><br />
                     <figure>
-                        <Image src={curImg_3.src} width={"500px"} height={"450px"} />
-                        &nbsp;&nbsp;&nbsp;
-                        <Image src={curImg_4.src} width={"500px"} height={"450px"} />
-                        <figcaption>이미지 출처 : <a href="https://blog.naver.com/ysqueen1/222890984348">https://blog.naver.com/ysqueen1/222890984348</a></figcaption>
-                        <figcaption>이미지 출처 : <a href="https://blog.naver.com/ysqueen1/222890984348">https://blog.naver.com/ysqueen1/222890984348</a></figcaption>
+                        <ImageWrapper>
+                            <div>
+                                <Image src={curImg_3.src} width={"500px"} height={"450px"} />
+                                <figcaption>이미지 출처 : <a href="https://blog.naver.com/dayooki/220793529817">https://blog.naver.com/dayooki/220793529817</a></figcaption>
+                            </div>
+                            <div>
+                                <Image src={curImg_4.src} width={"500px"} height={"450px"} />
+                                <figcaption>이미지 출처 : <a href="https://www.idus.com/w/product/e659adba-acae-4e76-82df-708e9d48527d">https://www.idus.com/w/product/e659adba-acae-4e76-82df-708e9d48527d</a></figcaption>
+                            </div>
+                        </ImageWrapper>
                         <br />
                     </figure>
 
@@ -54,13 +64,13 @@ const Curation001 = () => {
                     </figure>
 
                     <br />
-
+                    - (중급) 본격적으로 테라리움 만들기<br />
                     <figure>
                         <YoutubePlayer videoId={"WQqbQ3zqU-w"} width={"1024"} height={"550"} />
                         <figcaption>영상 출처 : <a href="https://youtu.be/v=WQqbQ3zqU-w">https://youtu.be/v=WQqbQ3zqU-w</a></figcaption>
                     </figure>
 
-                    <br/>
+                    <br />
                     요즘은 테라리움 만들기 kit를 구매하여서 바로 만들어 볼 수도 있습니다.
                     <h1>테라리움, 곰팡이 생길까 걱정되시나요?</h1>
                     걱정 마세요! 딱 3가지만 기억해주시면 오래오래 함께 할 수 있답니다.<br />
@@ -69,13 +79,13 @@ const Curation001 = () => {
                     마지막 세번째 이끼의 특성 상 햇빛이 잘 통하는 창가보다는 내 책상 위와 같은 서늘한 곳에 놓아주시면 더 좋습니다.<br />
                     <br />
                     <h1>테라리움에 대한 궁금증이 해소되셨나요?</h1>
-                    <hr/>
+                    <hr />
                     긴 글 읽어주셔서 감사합니다. 식식물물.<br />
                     <br />
                     <h2>© 글에 대한 저작권은 식식물물이 보유하고 있습니다.</h2>
                     <br /><br /><br />
                 </article>
-                
+
             </CurationInnerBox>
         </CurationContainer>
     );
@@ -100,4 +110,8 @@ const CurationInnerBox = styled.div`
     a{
         color: gray;
     }
+`
+const ImageWrapper = styled.div`
+    display: flex;
+    gap: 25px;
 `

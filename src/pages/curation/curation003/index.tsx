@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { CurationHeader, CurationArticle } from "../../../components/Curation";
+import { CurationHeader} from "../../../components/Curation";
 import CurationContainer from "../../../components/Curation/CurationContainer";
-import Image from "next/image";
 import YoutubePlayer from "../../../components/Curation/YoutubePlayer";
 
 
@@ -33,14 +32,14 @@ const Curation003 = () => {
                     <strong>[연락처]</strong>  02-6014-0814<br />
                     <strong>[결제]</strong> 제로페이 가능<br />
                     <strong>[기타]</strong> 포장/배달/예약 가능, 반려동물 동반<br />
-                    <strong>[SNS]</strong> <a href="https://www.instagram.com/naturallynatural_official/" target='_blank'>인스타그램</a> / <a href="http://naturallynatural.kr/" target='_blank'>웹사이트</a><br />
-                    <br />
+                    <strong>[SNS]</strong> <a href="https://www.instagram.com/naturallynatural_official/" target='_blank'>인스타그램</a> / <a href="http://naturallynatural.kr/" target='_blank'>웹사이트</a>
+                    <br /><br />
                     <HashtagWrapper>
                         <Hashtag> # 나혼자산다 </Hashtag>
                         <Hashtag> # 박세리선수도다녀간 </Hashtag>
                         <Hashtag> # 뚝섬역식물샵 </Hashtag>
                     </HashtagWrapper>
-                    <br />
+                    
 
                     <h1>전라북도 전주시 웨리단길, &lt;양치&gt;</h1>
                     ‘초록손이 될 당신을 응원합니다!’라는 문구와 함께 모두를 위한 공간이라고 입구에 쓰여있는 곳,<br />
@@ -58,12 +57,13 @@ const Curation003 = () => {
                     <strong>[연락처]</strong>  010-2079-6585<br />
                     <strong>[결제]</strong> 지역화폐/제로페이/네이버페이 가능<br />
                     <strong>[기타]</strong> 주차/포장/배달/방문접수/출장/예약 가능, 반려동물 동반<br />
-                    <strong>[SNS]</strong> <a href="https://www.instagram.com/yangchee_plant" target='_blank'>인스타그램</a> / <a href="https://smartstore.naver.com/yangchee_plant" target='_blank'>웹사이트</a><br />
-                    <br />
+                    <strong>[SNS]</strong> <a href="https://www.instagram.com/yangchee_plant" target='_blank'>인스타그램</a> / <a href="https://smartstore.naver.com/yangchee_plant" target='_blank'>웹사이트</a>
+                    <br /><br />
                     <HashtagWrapper>
                         <Hashtag> # 식물을팝니다 </Hashtag>
                         <Hashtag> # 식물과삽니다 </Hashtag>
                     </HashtagWrapper>
+                    <br />
 
                     <br />
                     <h1>대구광역시 중구 삼덕동, &lt; 하프(HAF)&gt;</h1>
@@ -72,7 +72,7 @@ const Curation003 = () => {
                     <strong>[주소]</strong>  대구 중구 달구벌대로447길 38, 1층 (대구 지하철 2호선 경대병원역 4번 출구에서 도보 9분)<br />
                     <strong>[영업시간]</strong> 월요일, 수요일 ~ 일요일 12:00 - 19:00, 화요일 정기휴무<br />
                     <strong>[SNS]</strong> <a href="https://www.instagram.com/__.haf/" target='_blank'>인스타그램</a> 
-                    <br />
+                    <br /><br />
                     <HashtagWrapper>
                         <Hashtag> # 삼덕동 </Hashtag>
                         <Hashtag> # 대구식물샵 </Hashtag>
@@ -89,7 +89,7 @@ const Curation003 = () => {
                     <strong>[연락처]</strong>  0507-1308-0818<br />
                     <strong>[기타]</strong> 포장/예약 가능, 반려동물 동반<br />
                     <strong>[SNS]</strong> <a href="https://www.instagram.com/http://www.instagram.com/hangmock_jeju" target='_blank'>인스타그램</a>
-                    <br />
+                    <br /><br />
                     <HashtagWrapper>
                         <Hashtag> # 일상과함께하는식물샵 </Hashtag>
                         <Hashtag> # 행복을주는나무 </Hashtag>
