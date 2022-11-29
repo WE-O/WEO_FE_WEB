@@ -134,10 +134,10 @@ const ReviewText = styled.div`
     color: #6F6F6F;
 `
 const ReviewLine = styled.div`
-    width : 90%;
+    width : 100%;
     border-bottom: 1px solid #D9D9D9;
     align-self: center;
-    margin-right : 80px;
+    // margin-right : 80px;
 `
 
 const ButtonWrapper = styled.div`

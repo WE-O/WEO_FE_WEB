@@ -4,12 +4,10 @@ import { CurationHeader, CurationArticle } from "../../../components/Curation";
 import CurationContainer from "../../../components/Curation/CurationContainer";
 import Image from "next/image";
 import { curImg_1,curImg_2,curImg_3,curImg_4 } from "../../../utils/curation/curation001/img";
+import YoutubePlayer from "../../../components/Curation/YoutubePlayer";
 
 
 const Curation001 = () => {
-    
-    
-    
     return (
         <CurationContainer>
 
@@ -22,35 +20,47 @@ const Curation001 = () => {
                     테라리움이란 밀폐된 유리 그릇이나 아가리가 작은 유리병 따위의 안에 작은 식물을 재배하는 방법을 뜻합니다.<br />
                     책상위 작은 정원으로 많이들 알고 계실 거에요!<br />
                     
-                    <div>
+                    <figure>
                         <br />
-                        <Image src={curImg_1.src} width={"450px"} height={"450px"} />
+                        <Image src={curImg_1.src} width={"500px"} height={"450px"} />
                         &nbsp;&nbsp;&nbsp;
-                        <Image src={curImg_2.src} width={"450px"} height={"450px"} />
-                    </div>
-                    이미지 출처 : https://blog.naver.com/ysqueen1/222890984348
-                    <br /><br />
+                        <Image src={curImg_2.src} width={"500px"} height={"450px"} />
+                        <figcaption>이미지 출처 : <a href="https://blog.naver.com/ysqueen1/222890984348">https://blog.naver.com/ysqueen1/222890984348</a></figcaption>
+                    </figure>
+
+                    <br />
+                    <br />
+
                     <h1>혹시, 짱구 좋아하시나요?</h1><br />
-                    <div>
-                        <Image src={curImg_3.src} width={"450px"} height={"450px"} />
+                    <figure>
+                        <Image src={curImg_3.src} width={"500px"} height={"450px"} />
                         &nbsp;&nbsp;&nbsp;
-                        <Image src={curImg_4.src} width={"450px"} height={"450px"} />
-                        <br /><br />
-                    </div>
-                    {/* <div>
-                        https://blog.naver.com/dayooki/220793529817
-                        https://www.idus.com/w/product/e659adba-acae-4e76-82df-708e9d48527d
-                    </div> */}
+                        <Image src={curImg_4.src} width={"500px"} height={"450px"} />
+                        <figcaption>이미지 출처 : <a href="https://blog.naver.com/ysqueen1/222890984348">https://blog.naver.com/ysqueen1/222890984348</a></figcaption>
+                        <figcaption>이미지 출처 : <a href="https://blog.naver.com/ysqueen1/222890984348">https://blog.naver.com/ysqueen1/222890984348</a></figcaption>
+                        <br />
+                    </figure>
+
+
                     요즘은 평소 좋아하는 캐릭터의 피규어와 식물을 결합해 아기자기한 나만의 테라리움을 꾸미는 분들이 많이 계시답니다. <br />
                     <h1>테라리움 만드는 방법? 어렵지 않아요!</h1>
                     사실 유리 병에 모래를 부어주고, 병 안에서 자라게될 미끼를 올려주면 끝이 난답니다.<br />
                     더 자세하게, 어떻게 테라리움을 만들 수 있는지 영상으로 알아볼까요? 유튜브에서 가장 인기가 많은 영상 2개를 가지고 왔습니다.<br />
                     <br />
                     - (초급) 다이소 재료로 테라리움 만들기<br />
-                    <a href="https://www.youtube.com/watch?v=qj2g11iZnFw">https://www.youtube.com/watch?v=qj2g11iZnFw</a><br />
+                    <figure>
+                        <YoutubePlayer videoId={"qj2g11iZnFw"} width={"1024"} height={"550"} />
+                        <figcaption>영상 출처 : <a href="https://youtu.be/v=qj2g11iZnFw">https://youtu.be/v=qj2g11iZnFw</a></figcaption>
+                    </figure>
+
                     <br />
-                    - (중급) 본격적으로 테라리움 만들기<br />
-                    <a href="https://www.youtube.com/watch?v=qj2g11iZnFw">https://www.youtube.com/watch?v=qj2g11iZnFw</a><br />
+
+                    <figure>
+                        <YoutubePlayer videoId={"WQqbQ3zqU-w"} width={"1024"} height={"550"} />
+                        <figcaption>영상 출처 : <a href="https://youtu.be/v=WQqbQ3zqU-w">https://youtu.be/v=WQqbQ3zqU-w</a></figcaption>
+                    </figure>
+
+                    <br/>
                     요즘은 테라리움 만들기 kit를 구매하여서 바로 만들어 볼 수도 있습니다.
                     <h1>테라리움, 곰팡이 생길까 걱정되시나요?</h1>
                     걱정 마세요! 딱 3가지만 기억해주시면 오래오래 함께 할 수 있답니다.<br />
@@ -86,5 +96,8 @@ const CurationInnerBox = styled.div`
         font-size: 16px;
         letter-spacing: -0.1px;
         line-height: 34px;
+    }
+    a{
+        color: gray;
     }
 `
