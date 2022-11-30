@@ -26,12 +26,14 @@ const HTTPS_PORT = 443;
 // })
 
 app.prepare().then(() => {
-    http
-        .createServer((req, res) => {
+    console.log('asd');
+    http.createServer((req, res) => {
             // Be sure to pass `true` as the second argument to `url.parse`.
             // This tells it to parse the query portion of the URL.
+            console.log('http 부분');
             const parsedUrl = parse(req.url, true);
             handle(req, res, parsedUrl);
+            console.log('http 부분 핸들링 종료');
         })
         .listen(HTTP_PORT, (err) => {
             if (err) throw err;
@@ -46,12 +48,13 @@ app.prepare().then(() => {
         key: fs.readFileSync('/etc/letsencrypt/live/siksikmulmul.shop/privkey.pem'),
         cert: fs.readFileSync('/etc/letsencrypt/live/siksikmulmul.shop/cert.pem')
     };
-    https
-        .createServer(options, function (req, res) {
+    https.createServer(options, function (req, res) {
+            console.log('https 부분 실행');
             // Be sure to pass `true` as the second argument to `url.parse`.
             // This tells it to parse the query portion of the URL.
             const parsedUrl = parse(req.url, true);
             handle(req, res, parsedUrl);
+            console.log('https 부분 핸들링 종료');
         })
         .listen(HTTPS_PORT, (err) => {
             if (err) throw err;

@@ -7,7 +7,6 @@ export default class MyDocument extends Document {
     const originalRenderPage = ctx.renderPage;
 
     try {
-      debugger
       ctx.renderPage = () =>
         originalRenderPage({
           enhanceApp: (App) => (props) =>
@@ -25,7 +24,6 @@ export default class MyDocument extends Document {
         ),
       };
     } finally {
-      debugger
       sheet.seal();
     }
   }
