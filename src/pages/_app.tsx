@@ -9,10 +9,7 @@ import wrapper from "../store";
 import Script from "next/script";
 import { Footer } from "../components/MainPage/modules";
 import { useEffect, useState } from "react";
-
 import React from "react";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { toast } from "../store/modules/ToastSlice";
 
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -21,8 +18,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   if (router.pathname === "_error") return <Component {...pageProps} />;
 
-  // http -> https 리다이렉션
-  // nodeJS로 리다이렉션을 구현하려하였지만 실패,,
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
       if (window.location.href.substring(0, 5).toLocaleLowerCase() === "http:") {
