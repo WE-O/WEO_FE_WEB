@@ -81,7 +81,7 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 >; // Thunk 를 위한 타입
 */
 
-const wrapper = createWrapper<AppStore>(makeStore, {
+const wrapper = createWrapper(makeStore, {
   debug: false,
 });
 
