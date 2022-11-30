@@ -82,7 +82,7 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 */
 
 const wrapper = createWrapper<AppStore>(makeStore, {
-  debug: process.env.NODE_ENV === "development",
+  debug: false,
 });
 
 // wrapper 익스포트
